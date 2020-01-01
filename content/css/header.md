@@ -5,9 +5,8 @@ description: "Header with transparent to solid navbar and hero image"
 
 import { Message } from '@theme-ui/components';
 
-<Message variant='important'>
-  🔔️ <b>Important</b> <br/>
-  <strong>Flexbox</strong> is used to layout sections whereas <strong>Grid</strong> is used to layout the entire page. It's important to keep this distinction.
+<Message variant='info'>
+  Header element with <strong>navbar</strong> that starts transparent and becomes solid when scrolling down. Hero image.
 </Message>
 
 #### .html
@@ -69,7 +68,6 @@ nav ul {
 }
 
 nav li {
-  background: transparent;
   padding-bottom: 0.5rem;
 }
 
@@ -77,13 +75,12 @@ nav a {
   color: #fff;
   text-decoration: none;
   font-weight: 600;
-  transition: .5s;
   padding: .5rem .5rem;
+  transition: .5s;
 }
 
 nav a:hover {
   background: rgb(47, 153, 223);
-  transition: .5s;
 }
 
 .btn {
@@ -100,7 +97,6 @@ nav a:hover {
 .btn:hover {
   background: #eaeaea;
   color: #333;
-  transition: .5s;
 }
 ```
 
@@ -113,7 +109,6 @@ window.onscroll = () => {
     document.querySelector('nav').style.transition = "1s";
   } else {
     document.querySelector('nav').style.background = "transparent";
-    document.querySelector('nav').style.transition = "1s";
   }
 }
 ```
