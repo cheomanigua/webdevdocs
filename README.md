@@ -1,4 +1,3 @@
-[![Netlify Status](https://api.netlify.com/api/v1/badges/d466b31d-9db9-4b3a-8e7b-08e65ac91f18/deploy-status)](https://app.netlify.com/sites/linuxdocs/deploys)
 
 Welcome to 
 [GNU/Linux Reference documentation](https://gnulinux.netlify.com/), 
