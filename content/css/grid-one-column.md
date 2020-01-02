@@ -32,34 +32,55 @@ import { Message } from '@theme-ui/components';
     </header>
 
     <main>
+      <!-- Section A -->
       <section></section>
       
+      <!-- Section B -->
       <section id="about">
         <div class="card">
           <img src="" alt="">
           <div class="card-content">
-            <h3 class="card-title"></h3>
+            <h3></h3>
             <p></p>
           </div>
         </div>
         <div class="card">
           <img src="" alt="">
           <div class="card-content">
-            <h3 class="card-title"></h3>
+            <h3></h3>
             <p></p>
           </div>
         </div>
         <div class="card">
           <img src="" alt="">
           <div class="card-content">
-            <h3 class="card-title"></h3>
+            <h3 ></h3>
             <p></p>
           </div>
         </div>
       </section>
 
+      <!-- Section C -->
       <section></section>
+
+      <!-- Section D -->
+      <section id="contact">
+        <div class="box">
+          <h3></h3>
+          <p></p>
+        </div>
+        <div class="box">
+          <h3></h3>
+          <p></p>
+        </div>
+      </section>
     </main>
+    
+    <!-- Footer -->
+    <footer id="main-footer">
+      <div>Acme Web Solutions &#169; 2020</div>
+      <div>Project by <a href="#" target="_blank">Digital Realm</a></div>
+    </footer> 
   </div>
 </body>
 ```
@@ -67,9 +88,16 @@ import { Message } from '@theme-ui/components';
 #### .css
 
 ```css
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 html {
   scroll-behavior: smooth;
-  /* font-size: 62.5%;*/
+  /* font-size: 62.5%;
+  font-family: "DosisBold", "Courier New", Courier, monospace;  */
 }
 
 body {
@@ -94,11 +122,12 @@ body {
 header {
   height: 70vh;
   color: #fff;
+
 }
 
 header .bg-image {
   position: absolute;
-  background: #333 url('image.png');
+  background: #333 url('');
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -159,7 +188,7 @@ nav a:hover {
 section {
   background: #fff;
   color: #000;
-  padding: 10rem 2em 0 2rem;
+  padding: 5rem 2em 5rem 2rem;
 }
 
 img {
@@ -182,6 +211,47 @@ p {
   margin: 10rem 2rem;
 }
 
+/* Card */
+.card {
+  margin: 1em 0;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  transition: 0.3s;
+  width: 100%;
+}
+
+.card:hover {
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+
+.card-content {
+  padding: 2px 16px;
+}
+/* Card end */
+
+.box{
+  padding: 1em 1em;
+  color: #fff;
+  background: #333;
+}
+
+.box:first-child {
+  background: #2690d4;
+}
+
+/* Footer */
+#main-footer {
+  padding: 2em;
+  background: #000;
+  color: #fff;
+  text-align: center;
+}
+
+#main-footer a {
+  color: #2690d4;
+  text-decoration: none;
+}
+/* Footer end*/
+
 @media(min-width: 600px) {
   #about {
     display: grid;
@@ -196,6 +266,11 @@ p {
 
   nav li {
     padding-bottom: 0;
+  }
+
+  #contact {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
   }
 }
 ```
