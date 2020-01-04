@@ -15,7 +15,7 @@ import { Message } from '@theme-ui/components';
 <section>
   <div class="twoColumns">
     <div class="text"></div>
-    <div class="ilustration"></div>  
+    <div class="illustration"></div>  
   </div>
 </section>
 ```
@@ -36,6 +36,7 @@ section {
   align-items: center;
   padding: 2rem 0;
   width: 70%;
+  margin: auto;
 }
 
 .text {
@@ -49,5 +50,6 @@ section {
   /* flex: 1 */
   flex-grow: 1;
   padding: 2rem 2rem;
+  max-width: 20rem;
 }
 ```
