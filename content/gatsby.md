@@ -61,6 +61,24 @@ In order to enable responsible pages in HTML, you must add this metatag in your 
 
 `<img src={myimage} alt='My Image' />`
 
+### Importing Javascript snippets
+
+Add the javascript snippet on the <a href="https://www.gatsbyjs.org/docs/browser-apis/#onClientRender" target="_black">onClientEntry</a> under **gatsby-browser.js**:
+
+´´´js
+exports.onClientEntry = () => {
+  window.onscroll = () => {
+    if (window.pageYOffset > 150) {
+      document.querySelector('nav').style.background = "#333";
+      document.querySelector('nav').style.transition = "1s";
+    } else {
+      document.querySelector('nav').style.background = "transparent";
+    }
+  }
+}
+```
+
+
 #### Commenting Gatsby JSX code
 
 `{/* Gatsby code comment here */}`
