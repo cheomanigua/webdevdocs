@@ -63,9 +63,9 @@ In order to enable responsible pages in HTML, you must add this metatag in your 
 
 ### Importing vanilla Javascript snippets
 
-Add the javascript snippet under the <a href="https://www.gatsbyjs.org/docs/browser-apis/#onClientRender" target="_black">onClientEntry</a> function at **gatsby-browser.js**:
+Add the javascript snippet under the <a href="https://www.gatsbyjs.org/docs/browser-apis/#onClientEntry" target="_black">onClientEntry</a> function at **gatsby-browser.js**:
 
-´´´js
+```js
 exports.onClientEntry = () => {
   window.onscroll = () => {
     if (window.pageYOffset > 150) {
