@@ -155,6 +155,18 @@ Branching means you diverge from the main line of development and continue to do
 
 This moves `HEAD` to the `testing` branch. All new commits from this point will only affect the `testing` branch. If you switch back to `master` and commit from there, the commit will only affect `master`. You have diverted your project in two separated branches.
 
+### Merging branches
+
+Move to the master branch and then merge with testing branch:
+
+`$ git checkout master`
+
+`$ git merge testing`
+
+You can delete now testing branch:
+
+`$ git branch -d testing`
+
 ### Listing branches
 
 `$ git branch -a`
