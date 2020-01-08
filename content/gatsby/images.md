@@ -37,7 +37,7 @@ module.exports = {
 4. Write a **GraphQL** query using one of the included <a href="https://www.gatsbyjs.org/packages/gatsby-image/#fragments" target="_blank">GraphQL “fragments”</a> which specify the fields needed by `gatsby-image` to create a responsive, optimized image. This example will use `GatsbyImageSharpFluid`. An example of a GraphQL query is below where the path listed is the path relative to the location specified in the `gatsby-source-filesystem` options.
 
 ```js
-file(relativePath: { eq: "images/default.jpg" }) {
+file(relativePath: { eq: "default.jpg" }) {
   childImageSharp {
     # Specify the image processing specifications right in the query.
     fluid {
