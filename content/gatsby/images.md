@@ -65,52 +65,53 @@ export default ({ data }) => (
 
 This GraphQL query creates multiple sizes of the image and when the page is rendered the image that is appropriate for the current screen resolution (e.g. desktop, mobile, and everything in between) is used. The `gatsby-image` component automatically enables a blur-up effect as well as lazy loading images that are not currently on screen.
 
-* Another example of what a component using `gatsby-image` looks like:
-
-```js
-import React from "react"
-import { graphql } from "gatsby"
-import Img from "gatsby-image"
-
-export default ({ data }) => (
-  <div>
-    <h1>Hello gatsby-image</h1>
-    <Img fixed={data.file.childImageSharp.fixed} />
-  </div>
-)
-
-export const query = graphql`
-  query {
-    file(relativePath: { eq: "blog/avatars/kyle-mathews.jpeg" }) {
-      childImageSharp {
-        # Specify the image processing specifications right in the query.
-        # Makes it trivial to update as your page's design changes.
-        fixed(width: 125, height: 125) {
-          ...GatsbyImageSharpFixed
-        }
-      }
-    }
-  }
-`
-```
 
 #### Quering several image files
 
 ```js
-export const ImageQuery = graphql`
-  query ImageQuery {
-    firstImage: imageSharp(id: { regex: “/img-name-one/” }) {
-      sizes(maxWidth: 1600 ) {
-        …GatsbyImageSharpSizes_withWebp  
+import React from "react"
+import { StaticQuery, graphql } from "gatsby"
+import Img from "gatsby-image"
+
+const MyComponent = () => (
+  
+  <StaticQuery 
+    query = {graphql`
+      query {
+        image1: file(relativePath: {eq: "image1.jpeg"}) {
+          childImageSharp {
+            fluid (maxWidth: 500) {
+              ...GatsbyImageSharpFluid_withWebp
+            }
+          }
+        },
+        image2: file(relativePath: {eq: "image2.jpg"}) {
+          childImageSharp {
+            fluid (maxWidth: 500) {
+              ...GatsbyImageSharpFluid_withWebp
+            }
+          }
+        },
+        image3: file(relativePath: {eq: "image3.jpeg"}) {
+          childImageSharp {
+            fluid (maxWidth: 500) {
+              ...GatsbyImageSharpFluid_withWebp
+            }
+          }
+        }
       }
-    }, 
-    secondImage: imageSharp(id: { regex: “/img-name-two/” }) {
-      sizes(maxWidth: 1600 ) {
-        …GatsbyImageSharpSizes_withWebp
-      }
-    }
-  }
-`
+    `}
+  
+    render={data => (
+      <section id="services">
+        <Img fluid={data.image1.childImageSharp.fluid} />
+        <Img fluid={data.image2.childImageSharp.fluid} />
+        <Img fluid={data.image3.childImageSharp.fluid} />
+      </section>
+    )}
+  />
+)
+export default MyComponent
 ```
 
 
