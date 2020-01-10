@@ -99,43 +99,12 @@ If you messed up your local repository beyond repair, don't worry. You can resto
 
 ## Cloning vs Pulling
 
-**Cloning** will make an exact copy of the GitHub repository to your local machine so you can start a new project, but you will **never push** again to the original repository, but to a new repository.
+**Cloning** will download the whole GitHub repository to your local machine. You can now either start a new project with that repository or you can collaborate with that repository:
 
-**Pulling** will download only the updated information of the GitHub repository to your current project. You will **push** to the original repository afterward. In addition, you can use the **pull** command to restore a messed up local repository, as explained at the section [GitHub as backup](#github-as-backup).
+1. If you want to start a new project, you must delete the `.git` directory (to remove the original remote push repository). You then can `git init` and add a different new remote repository.
+2. If you want to collaborate, you just keep the `.git` directory and push normally.
 
-## SSH to GitHub
-
-With SSH keys, you can connect to GitHub without supplying your username or password at each visit.
-
-#### Generating new SSH, adding it to SSH agent and setting SSH URL to repo
-
-1. Checking for existing SSH keys:
-
-`ls -al ~/.ssh`
-
-If there is no results, generate a new SSH key.
-
-2. Generate the SSH key, substituting in your GitHub email address:
-
-`$ ssh-keygen -t rsa -b 4096 -C "your_email@example.com"`
-
-3. Start the ssh-agent in the background:
-
-`eval "$(ssh-agent -s)"`
-
-4. Add key to ssh-agent:
-
-`$ ssh-add ~/.ssh/id_rsa`
-
-5. Set a SSH url for the existing repo (**Note**: This step is necessary only for SSH servers under a secure connection, https, like GitHub).
-
-`$ git remote set-url origin git@github.com:mygitaccount/myrepository.git`
-
-#### Adding a new SSH key to your GitHub account
-
-1. Open your `~/.ssh/id_rsa.pub` file and copy the content
-2. Go to GitHub ➡️ Settings ➡️ SSH and GPG keys ➡️ New SSH key
-3. Paste the SSH key into the 'Key' field. Add a descriptive label for the 'Title' field.
+**Pulling** will download only the updated information of the GitHub repository in relation to your local repository. You will **push** to the original remote repository afterward. In addition, you can use the **pull** command to restore a messed up local repository, as explained at the section [GitHub as backup](#github-as-backup).
 
 ## Branches
 
@@ -153,7 +122,12 @@ Branching means you diverge from the main line of development and continue to do
 
 `$ git checkout testing`
 
-This moves `HEAD` to the `testing` branch. All new commits from this point will only affect the `testing` branch. If you switch back to `master` and commit from there, the commit will only affect `master`. You have diverted your project in two separated branches.
+This moves `HEAD` to the `testing` branch. All new commits from this point will only affect the `testing` branch. If you switch back to `master` and commit from there, the commit will only affect `master`. You have diverted your project in two separated branches.'
+
+<Message variant='important'>
+  🔔️ <b>Important</b> <br/>
+  For the new branch to be fully separated from the master branch, you must <strong>commit</strong> the changes in the new branch.
+</Message>
 
 ### Merging branches
 
@@ -187,4 +161,42 @@ If we don't know the branches to look up, issue:
 ### See list of files ready to be pushed
 
 `$ git diff --stat --cached origin/master`
+
+
+
+# SSH to GitHub
+
+With SSH keys, you can connect to GitHub without supplying your username or password at each visit.
+
+#### Generating new SSH, adding it to SSH agent and setting SSH URL to repo
+
+1. Checking for existing SSH keys:
+
+`ls -al ~/.ssh`
+
+If there is no results, generate a new SSH key.
+
+2. Generate the SSH key, substituting in your GitHub email address:
+
+`$ ssh-keygen -t rsa -b 4096 -C "your_email@example.com"`
+
+3. Start the ssh-agent in the background:
+
+`eval "$(ssh-agent -s)"`
+
+4. Add key to ssh-agent:
+
+`$ ssh-add ~/.ssh/id_rsa`
+
+5. Set a SSH url for the existing repo (**Note**: This step is necessary only for SSH servers under a secure connection, https, like GitHub).
+
+`$ git remote set-url origin git@github.com:mygitaccount/myrepository.git`
+
+#### Adding a new SSH key to your GitHub account
+
+1. Open your `~/.ssh/id_rsa.pub` file and copy the content
+2. Go to GitHub ➡️ Settings ➡️ SSH and GPG keys ➡️ New SSH key
+3. Paste the SSH key into the 'Key' field. Add a descriptive label for the 'Title' field.
+
+
 
