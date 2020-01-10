@@ -201,10 +201,11 @@ If there is no results, generate a new SSH key.
 # Two-factor authentication
 
 If you have enabled two-factor authentication in your GitHub account, you must create a Security Key in order to operate from the GitHub repository when using **https** :
+
 1. Go to GitHub ➡️ Settings ➡️ Developer settings ➡ Personal access tokens ➡ Generate new token
 2. In the new page that loads, check the **repo** scope checkbox and type a meaningful note in the **note** text box.
 3. Click on *'Generate token'*
-4. Copy the new generated personal access token because you won't be able to see it again.'
+4. Copy the new generated personal access token in a secure location because you won't be able to see it again.
 5. When you clone a repository, you will be prompted to type the username. Type the personal access token.
 6. When prompted to type the password, leave it blank and press `Enter`
 7. From that point on, you will operate without adding any credential. 
