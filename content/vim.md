@@ -104,6 +104,12 @@ vmap <buffer> ;bo "zdi<strong><c-r>z</strong><esc>
 
 `:so $MYVIMRC`
 
+<Message variant='info'>
+  🎁 <b>Gift</b> <br/>
+You can download a useful <i>~/.vimrc</i> file from <a href="https://drive.google.com/file/d/1nsb1_P6ZCeXsTTf-Ry9iL1-ri2aqyHWu/view?usp=sharing" target="_blank">here</a>
+</Message>
+
+
 ### Key mapping
 
 - List keymaps: `:map`
