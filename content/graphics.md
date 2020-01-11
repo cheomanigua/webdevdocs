@@ -27,6 +27,10 @@ description: "Graphic tools for web development"
 
 # Inkscape
 
+### How to set background transparent
+
+File ➡ Document properties ➡ Page ➡ Background ➡ Checkerboard background
+
 ### How to convert PNG to SVG
 
 1. File ➡ Import
@@ -47,9 +51,10 @@ Now a vectorized image of your original bitmap will be seen on top of the bitmap
 ### How to transform a multi-color SVG image to monocolor foreground and transparent background
 
 1. Import SVG file
-2. Make white color transparent:
+2. Select all elements and group them together
+3. Make white color transparent:
   * Filters ➡ Fill & Transparency Utilities ➡ Light Eraser
   * Expansion: 7.0, Erosion: 10.0, Global opacity: 1.00
-3. Make rest of colors white:
+4. Make rest of colors white:
   * Filters ➡ Color ➡ Fade to Black or White
   * Level: 0.00, Fade to white
