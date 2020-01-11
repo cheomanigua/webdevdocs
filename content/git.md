@@ -64,38 +64,6 @@ If there are several machines working with local respositories from a common rem
 - Set your commit email address in Git:
 `git config --global user.email "email@example.com"` 
 
-## GitHub as backup
-
-If you messed up your local repository beyond repair, don't worry. You can restore the project from the repository at GitHub. Follow these steps:
-
-1. Completely delete the directory of your project in your local machine:
-
-  `$ sudo rm -r project`
-
-2. Create a new empty directory where to accommodate the new backup project from GitHub:
-
-  `$ mkdir project`
-
-3. Get into the new directory:
-
-  `$ cd project`
-
-4. Initialize Git:
-
-  `$ git init`
-
-5. Add the repository from GitHub:
-
-  `$ git remote add origin https://github.com/mygitaccount/myrepository.git`
-
-6. Incorporate the last changes of the current branch from your GitHub repository. As there is no repository in our local machine, it will download the whole repository from GitHub:
-
-  `$ git pull origin master`
-
-7. Push the current branch and set the remote as upstream
-
- `$ git push --set-upstream origin master`
-
 
 ## Cloning vs Pulling
 
@@ -104,7 +72,7 @@ If you messed up your local repository beyond repair, don't worry. You can resto
 1. If you want to start a new project, you must delete the `.git` directory (to remove the original remote push repository). You then can `git init` and add a different new remote repository.
 2. If you want to collaborate, you just keep the `.git` directory and push normally.
 
-**Pulling** will download only the updated information of the GitHub repository in relation to your local repository. You will **push** to the original remote repository afterward. In addition, you can use the **pull** command to restore a messed up local repository, as explained at the section [GitHub as backup](#github-as-backup).
+**Pulling** will download only the updated information of the GitHub repository in relation to your local repository. You will **push** to the original remote repository afterward. 
 
 ## Branches
 
