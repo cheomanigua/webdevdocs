@@ -73,12 +73,16 @@ import { Message } from '@theme-ui/components';
 
 ### Buffers
 
-*  Open new file in buffer -\> **:e \<filename path\>**
-*  Open a new file and split screen -\> **:sp**
-*  List active buffers -\> **:ls**
-*  Change to specific buffer -\> **:b \<buffer-number\>**
-*  Move to next/previous buffer -\> **:bn** / **:bp**
-*  Jump back/forward to last jump location -\> **Ctrl** + **o** / **Ctrl** + **i**
+* Open a new 100 characters width window buffer explorer -\> **:100vs .** 
+* Toggle between open windows: -\> **Ctrl** + **w** + **w**
+* Close window -\> **:q**
+* Open new file in buffer -\> **:e <filename path\>**
+* Open a new file and split screen -\> **:sp**
+* List active buffers -\> **:ls**
+* Change to specific buffer -\> **:b <buffer-number\>**
+* Move to next/previous buffer -\> **:bn** / **:bp**
+* Delete current buffer -\> **:bd**
+* Jump back/forward to last jump location -\> **Ctrl** + **o** / **Ctrl** + **i**
 
 ## Customize Vim
 
@@ -142,6 +146,7 @@ It is recommended to install a plugin manager in order to install, load and unin
 1. Download <a href="https://github.com/junegunn/vim-plug" target="_blank">vim-plug</a>:
 
   `$ curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim`
+
 2. Add **vim-plug** in your **~/.vimrc** file:
 ```
 " vim-plug
@@ -153,13 +158,14 @@ call plug#begin('~/.vim/plugged')
 call plug#end()
 ```
 
-3. Add, for example, <a href="https://github.com/MaxMEllon/vim-jsx-pretty" target="_blank">vim-jsx-pretty</a> plugin in your **~/.vimrc** file:
+3. Add, for instance, <a href="https://github.com/MaxMEllon/vim-jsx-pretty" target="_blank">vim-jsx-pretty</a> and <a href="https://github.com/mattn/emmet-vim" target="_blank">emmet-vim</a> plugins in your **~/.vimrc** file:
 ```
 " vim-plug
 call plug#begin('~/.vim/plugged')
 
 " plugin section
 Plug 'maxmellon/vim-jsx-pretty'
+Plug 'mattn/emmet-vim'
 
 " end vim-plug
 call plug#end()
