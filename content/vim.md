@@ -27,21 +27,24 @@ import { Message } from '@theme-ui/components';
 
 ### Editing
 
-#### Verbs
-Verbs specify which operation to perfom:
+#### Operators
+Operators specify which operation to perfom:
 
 * **d** -\> Delete/Cut
 * **c** -\> Change (delete and enter insert mode)
+* **r** -\> Replace
 * **>** -\> Indent
 * **v** -\> Visually select
 * **y** -\> Yank (copy)
 
-#### Nouns
-Noums specifies where the Verbs operate:
+#### Motion
+Motion specifies where the Operators operate:
 
 - **w** -\> word (forward by a "word")
 - **b** -\> back (back by a "word")
 - **2j** -\> down 2 lines
+- **e** -\> until the end of the word
+- **$** -\> until the end of the line
 - **iw** -\> "inner word" (works from anywhere in a word)
 - **it** -\> "inner tag" (works within the contents of an HTML tag)
 - **i"** -\> "inner quotes"
