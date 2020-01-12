@@ -4,6 +4,13 @@ description: "Vim editor short cut cheat sheet"
 ---
 import { Message } from '@theme-ui/components';
 
+## Modes
+
+* Normal (N)
+* Insert (I)
+* Visual (V)
+* Command (C)
+
 ## Editing
 
 ### Moving around
@@ -20,17 +27,24 @@ import { Message } from '@theme-ui/components';
 
 ### Editing
 
+#### Base
+* **d** -\> Delete/Cut
+* **c** -\> Change (delete and enter insert mode)
+* **>** -\> Indent
+* **v** -\> Visually select
+* **y** -\> Yank (copy)
+
+* repeat last operation -\> **.**
 * select characters -\> **v** and move the cursor keys. Selection includes the cursor
 * select line -\> **shift** + **v**
 * select block -\> **ctrl** + **v** and move the cursor keys
 * copy selection -\> **y**
 * copy line -\> **yy**
-* cut selection -\> **d** 
-* cut word -\> **dw** 
-* cut line -\> **dd**
+* delete/cut selection -\> **d** 
+* delete/cut word -\> **dw** 
+* delete/cut line -\> **dd**
 * paste -\> **p**
 * paste line above -\> **shift** + **p**
-* delete character -\> **x**
 * create new line below -\> **o**
 * create a new line above -\> **shift** + **o**
 * undo -\> **u**
