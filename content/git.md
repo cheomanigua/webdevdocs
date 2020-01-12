@@ -9,11 +9,44 @@ import { Message } from '@theme-ui/components';
   It is assumed that you are issuing all the <strong>Git</strong> commands from the <strong>root</strong> directory of your project.
 </Message>
 
-* First you have to [create a repository](https://help.github.com/en/github/getting-started-with-github/create-a-repo) on *GitHub*
-* Then move to the root directory of your project and download the `.gitignore` file:
+Below are shown the most common git commands. To see these commands in use in real case scenarios, move down to the section [Ordinary operations](#ordinary-operations). 
+
+#### git init
+
+Create a new **git** repository in the curren directory.
+
+#### git status
+
+Checks which files have changed and are ready to be added to the staging area.
+
+#### git add
+
+Adds the selected changed files or all changed files (`git add .`) to the staging area.
+
+#### git commit
+
+Makes a snapshot of the of the current state of the directory as per files added in the staging area.
+
+#### git push
+
+Pushes the new commits to the remote repository.
+
+#### git pull
+
+Pulls the remote repository commits into the local repository. It's a way to update the local repository.
+
+
+### Ordinary operations
+
+#### Creating a remote repository in GitHub:
+
+* [Create a repository](https://help.github.com/en/github/getting-started-with-github/create-a-repo) on *GitHub*
+* Then move to the root directory of your local project and download this `.gitignore` file:
   * For [Gatsby](https://drive.google.com/file/d/1Gjd28wj7tGGPjzh0JFAy3LNhOZovSG5r/view?usp=sharing)
   * For [React](https://drive.google.com/file/d/17PUFFPg2N5r4xaguBbtooMIu7LFI35JE/view?usp=sharing)
-* Issue these commands:
+
+
+#### Creating a new local repository
 
 ```
 $ git init
@@ -23,42 +56,37 @@ $ git remote add origin https://github.com/mygitaccount/myrepository.git
 $ git push -u origin master
 ```
 
-### Updating remote repository
+#### Updating remote repository
 ```
 $ git add . # or git add -A
 $ git commit -m 'changed some stuff'
 $ git push
 ```
 
-### Updating local repository from remote repository
+#### Updating local repository from remote repository
 ```
 $ git pull
 ```
 
-### Removing file from git commit
+If there are several machines working with local respositories from a common remote repositories, before pushing to the remote repository from one of the local repositories, we must pull the information from the remote repository, as it may have changed due to another machine pushing changes to it.
+
+### Other operations
+
+#### Removing file from git commit
 
 `$ git reset HEAD <file>`
 
-### Removing file from staging area
+#### Removing file from staging area
 
 `$ git rm --cached <file>`
 
-### Updating local repository
-```
-$ git pull
-```
+#### Cloning a remote repository
 
-### git pull
-If there are several machines working with local respositories from a common remote repositories, before pushing to the remote repository from one of the local repositories, we must pull the information from the remote repository, as it may have changed due to another machine pushing changes to it.
-
+`git clone https://github.com/mygitaccount/myrepository.git`
 
 ### Useful commands
 
-- See changes: `$ git status`
-- Keep your local version updated: `$ git pull`
 - Don't update a file: `git checkout file.txt`
-- Clone a repository:
-`git clone https://github.com/mygitaccount/myrepository.git`
 - Setting your Git username for every repository in your computer:
 `$ git config --global user.name "John Doe"`
 - Set your commit email address in Git:
@@ -78,15 +106,15 @@ If there are several machines working with local respositories from a common rem
 
 Branching means you diverge from the main line of development and continue to do work **without messing** with that main line.
 
-### Creating a new branch
+#### Creating a new branch
 
 `$ git branch testing`
 
-### Show where the branch pointers (`HEAD`) are pointing
+#### Show where the branch pointers (`HEAD`) are pointing
 
 `$ git log --oneline --decorate`
 
-### Switching Branches
+#### Switching Branches
 
 `$ git checkout testing`
 
@@ -97,7 +125,7 @@ This moves `HEAD` to the `testing` branch. All new commits from this point will 
   For the new branch to be fully separated from the master branch, you must <strong>commit</strong> the changes in the new branch.
 </Message>
 
-### Merging branches
+#### Merging branches
 
 Move to the master branch and then merge with testing branch:
 
@@ -109,16 +137,16 @@ You can delete now testing branch:
 
 `$ git branch -d testing`
 
-### Listing branches
+#### Listing branches
 
 `$ git branch -a`
 
-### Deleting branches
+#### Deleting branches
 
 - Local: `$ git branch -d testing`
 - Remote: `$ git push origin --delete testing`
 
-### See differences between local repository and remote repository
+#### See differences between local repository and remote repository
 
 `$ git diff master origin/master`
 
@@ -126,7 +154,7 @@ If we don't know the branches to look up, issue:
 
 `$ git branch -a`
 
-### See list of files ready to be pushed
+#### See list of files ready to be pushed
 
 `$ git diff --stat --cached origin/master`
 
@@ -166,7 +194,7 @@ If there is no results, generate a new SSH key.
 2. Go to GitHub ➡️ Settings ➡️ SSH and GPG keys ➡️ New SSH key
 3. Paste the SSH key into the 'Key' field. Add a descriptive label for the 'Title' field.
 
-# Two-factor authentication
+## Two-factor authentication
 
 If you have enabled two-factor authentication in your GitHub account, you must create a Security Key in order to operate from the GitHub repository when using **https** :
 
