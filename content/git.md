@@ -84,6 +84,15 @@ If there are several machines working with local respositories from a common rem
 
 `git clone https://github.com/mygitaccount/myrepository.git`
 
+#### See list of files ready to be pushed
+
+`$ git diff --stat --cached origin/master`
+
+#### See differences between local repository and remote repository
+
+`$ git diff master origin/master`
+
+
 ### Useful commands
 
 - Don't update a file: `git checkout file.txt`
@@ -109,6 +118,10 @@ Branching means you diverge from the main line of development and continue to do
 #### Creating a new branch
 
 `$ git branch testing`
+
+#### Listing branches
+
+`$ git branch -a`
 
 #### Show where the branch pointers (`HEAD`) are pointing
 
@@ -137,27 +150,10 @@ You can delete now testing branch:
 
 `$ git branch -d testing`
 
-#### Listing branches
-
-`$ git branch -a`
-
 #### Deleting branches
 
 - Local: `$ git branch -d testing`
 - Remote: `$ git push origin --delete testing`
-
-#### See differences between local repository and remote repository
-
-`$ git diff master origin/master`
-
-If we don't know the branches to look up, issue:
-
-`$ git branch -a`
-
-#### See list of files ready to be pushed
-
-`$ git diff --stat --cached origin/master`
-
 
 
 # SSH to GitHub
