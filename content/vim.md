@@ -1,6 +1,6 @@
 ---
 title: "Vim"
-description: "Vim editor short cut cheat sheet"
+description: "Vim editor concepts and cheat sheet"
 ---
 import { Message } from '@theme-ui/components';
 
@@ -27,13 +27,33 @@ import { Message } from '@theme-ui/components';
 
 ### Editing
 
-#### Base
+#### Verbs
+Verbs specify which operation to perfom:
+
 * **d** -\> Delete/Cut
 * **c** -\> Change (delete and enter insert mode)
 * **>** -\> Indent
 * **v** -\> Visually select
 * **y** -\> Yank (copy)
 
+#### Nouns
+Noums specifies where the Verbs operate:
+
+- **w** -\> word (forward by a "word")
+- **b** -\> back (back by a "word")
+- **2j** -\> down 2 lines
+- **iw** -\> "inner word" (works from anywhere in a word)
+- **it** -\> "inner tag" (works within the contents of an HTML tag)
+- **i"** -\> "inner quotes"
+- **ip** -\> "inner paragraph"
+- **as** -\> "a sentence"
+- **f**, **F** -\> "find" the next character, including the character
+- **t**, **T** -\> "find" the next character, up to that character
+- **/** -\> Search (up to next match)
+
+For instance, to delete everything between a tag, type: `dit`
+
+#### Common commands
 * repeat last operation -\> **.**
 * select characters -\> **v** and move the cursor keys. Selection includes the cursor
 * select line -\> **shift** + **v**
