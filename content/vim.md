@@ -23,7 +23,9 @@ import { Message } from '@theme-ui/components';
 - Move to beginning/end of line and start editing -\> **shift** + **i** / **shift** + **a**
 - Move to the end of line -\> **$**
 - Jump forward/backward one line -\> **j** / **k**
-- Jump forward/backward one paragraph -\> **{** / **}**
+- Jump forward/backward one paragraph -\> **}** / **{**
+- Jump to the top/middle/bottom of the page -\> **Shift** + **h** / **m** / **l**
+- Jump forward/backward one page -\> **Ctrl** + **f**  / **b**
 - Move to the beginning/end of document -\> **gg** / **shift** + **g**
 
 ### Line numbers
