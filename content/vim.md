@@ -26,9 +26,9 @@ import { Message } from '@theme-ui/components';
 
 ### Line numbers
 - Activate absolute line numbers -\> **:set nu**
-- Activate relative line numbers -\> **: set rnu**
+- Activate relative line numbers -\> **:set rnu**
 - Toggle absolunte line numbers -\> **:set nu!**
-- Toggle relative line numbers -\> **: set rnu!**
+- Toggle relative line numbers -\> **:set rnu!**
 
 ### Editing
 
@@ -38,7 +38,6 @@ Operators specify which operation to perfom:
 - **d** -\> Delete/Cut
 - **c** -\> Change (delete and enter insert mode)
 - **r** -\> Replace
-- **>** -\> Indent
 - **v** -\> Visually select
 - **y** -\> Yank (copy)
 - **<** -\> Indent to the left
