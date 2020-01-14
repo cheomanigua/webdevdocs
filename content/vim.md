@@ -11,7 +11,6 @@ import { Message } from '@theme-ui/components';
 * Visual (V)
 * Command (C)
 
-## Editing
 
 ### Moving around
 
@@ -24,6 +23,12 @@ import { Message } from '@theme-ui/components';
 * Jump forward/backward one line -\> **j** / **k**
 * Jump forward/backward one paragraph -\> **{** / **}**
 * Move to the beginning/end of document -\> **gg** / **shift** + **g**
+
+### Line numbers
+- Activate absolute line numbers -\> **:set nu**
+- Activate relative line numbers -\> **: set rnu**
+- Toggle absolunte line numbers -\> **:set nu!**
+- Toggle relative line numbers -\> **: set rnu!**
 
 ### Editing
 
