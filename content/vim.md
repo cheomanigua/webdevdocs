@@ -4,25 +4,27 @@ description: "Vim editor concepts and cheat sheet"
 ---
 import { Message } from '@theme-ui/components';
 
-## Modes
+### Modes
 
-* Normal (N)
-* Insert (I)
-* Visual (V)
-* Command (C)
+- Normal 
+- Insert 
+- Visual 
+- Command
 
 
 ### Moving around
 
-* Find text -\> **/text** (next hit -\> **n**, previous hit -\> **N**)
-* Find an replace all occurrences of *foo* with *bar* -\> **:%s/foo/bar/g**
-* Move to the beginning/end of a word (forward) -\> **w** / **e**
-* Move to the beginning/end of a word (backward) -\> **b** / **ge**
-* Move to beginning/end of line and start editing -\> **shift** + **i** / **shift** + **a**
-* Move to the end of line -\> **$**
-* Jump forward/backward one line -\> **j** / **k**
-* Jump forward/backward one paragraph -\> **{** / **}**
-* Move to the beginning/end of document -\> **gg** / **shift** + **g**
+- Search forward (up to next match) -\> **/** 
+- Search backward (up to next match) -\> **?** 
+- On search: (next hit -\> **n**, previous hit -\> **N**)
+- Find an replace all occurrences of *foo* with *bar* -\> **:%s/foo/bar/g**
+- Move to the beginning/end of a word (forward) -\> **w** / **e**
+- Move to the beginning/end of a word (backward) -\> **b** / **ge**
+- Move to beginning/end of line and start editing -\> **shift** + **i** / **shift** + **a**
+- Move to the end of line -\> **$**
+- Jump forward/backward one line -\> **j** / **k**
+- Jump forward/backward one paragraph -\> **{** / **}**
+- Move to the beginning/end of document -\> **gg** / **shift** + **g**
 
 ### Line numbers
 - Activate absolute line numbers -\> **:set nu**
@@ -51,20 +53,20 @@ Motion specifies where the Operators operate:
 - **2j** -\> down 2 lines
 - **e** -\> until the end of the word
 - **$** -\> until the end of the line
+- **Ctrl** + **v** -\> Select block
 - **i** -\> INNER: inside/between something
   - **iw** -\> "inner word" (works from anywhere in a word)
   - **it** -\> "inner tag" (works within the contents of an HTML tag)
   - **i"** -\> "inner quotes"
   - **is** -\> "inner sentence"
   - **ip** -\> "inner paragraph"
-- **a** -\> ALL: includes all
-  - **at** -\> "all tag" (works withing the content of an HTML tag including the tags)
-  - **a"** -\> "all quotes"
-  - **as** -\> "all sentence"
-  - **ap** -\> "all paragraph"
+- **a** -\> AROUND: like INNER, but including the tag, quotes, etc
+  - **at** -\> "around tag" (works within the content of an HTML tag including the tags)
+  - **a"** -\> "around quotes" (works within the content of including the quotes)
+  - **as** -\> "around sentence"
+  - **ap** -\> "around paragraph"
 - **f**, **F** -\> "find" the next character, including the character
 - **t**, **T** -\> "find" the next character, up to that character
-- **/** -\> Search (up to next match)
 
 Examples:
 
@@ -94,44 +96,44 @@ Examples:
 
 ### Explorer
 
-* Open file explorer -\> **:Explore**
-* List files in current directory -\> **:e** then press **Space** and **Ctrl**+**d**
-* Open file in new window -\> **vsplit filename**
-* Cycle through windows -\> **Ctrl** + **w** twice
-* Close current window -\> **:hide**
-* Close all windows except current one: -\> **:only**
+- Open file explorer -\> **:Explore**
+- List files in current directory -\> **:e** then press **Space** and **Ctrl**+**d**
+- Open file in new window -\> **vsplit filename**
+- Cycle through windows -\> **Ctrl** + **w** twice
+- Close current window -\> **:hide**
+- Close all windows except current one: -\> **:only**
 
 ### Save/Quit
 
-* Save file -\> **:w**
-* Save file and quit -\> **:x**
-* Quit -\> **:q**
-* Quit discarding changes -\> **:q!**
+- Save file -\> **:w**
+- Save file and quit -\> **:x**
+- Quit -\> **:q**
+- Quit discarding changes -\> **:q!**
 
 ### Tabs
 
-* New tab -\> **:tabnew**
-* Go to next tab -\> **gt**
-* Go to previous tab -\> **gT**
-* Go to tab number -\> **#gt**
-* Go to first tab -\> **:tabr**
-* Go to last tab -\> **:tabl**
-* Move current tab to the last position -\> **:tabm**
-* Move current tab to the # position -\> **:tabm #**
-* Close tab -\> **:close**
+- New tab -\> **:tabnew**
+- Go to next tab -\> **gt**
+- Go to previous tab -\> **gT**
+- Go to tab number -\> **#gt**
+- Go to first tab -\> **:tabr**
+- Go to last tab -\> **:tabl**
+- Move current tab to the last position -\> **:tabm**
+- Move current tab to the # position -\> **:tabm #**
+- Close tab -\> **:close**
 
 ### Buffers
 
-* Open a new 100 characters width window buffer explorer -\> **:100vs .** 
-* Toggle between open windows: -\> **Ctrl** + **w** + **w**
-* Close window -\> **:q**
-* Open new file in buffer -\> **:e <filename path\>**
-* Open a new file and split screen -\> **:sp**
-* List active buffers -\> **:ls**
-* Change to specific buffer -\> **:b <buffer-number\>**
-* Move to next/previous buffer -\> **:bn** / **:bp**
-* Delete current buffer -\> **:bd**
-* Jump back/forward to last jump location -\> **Ctrl** + **o** / **Ctrl** + **i**
+- Open a new 100 characters width window buffer explorer -\> **:100vs .** 
+- Toggle between open windows: -\> **Ctrl** + **w** + **w**
+- Close window -\> **:q**
+- Open new file in buffer -\> **:e <filename path\>**
+- Open a new file and split screen -\> **:sp**
+- List active buffers -\> **:ls**
+- Change to specific buffer -\> **:b <buffer-number\>**
+- Move to next/previous buffer -\> **:bn** / **:bp**
+- Delete current buffer -\> **:bd**
+- Jump back/forward to last jump location -\> **Ctrl** + **o** / **Ctrl** + **i**
 
 ## Customize Vim
 
