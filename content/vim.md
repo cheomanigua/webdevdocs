@@ -27,7 +27,7 @@ import { Message } from '@theme-ui/components';
 ### Line numbers
 - Activate absolute line numbers -\> **:set nu**
 - Activate relative line numbers -\> **:set rnu**
-- Toggle absolunte line numbers -\> **:set nu!**
+- Toggle absolute line numbers -\> **:set nu!**
 - Toggle relative line numbers -\> **:set rnu!**
 
 ### Editing
