@@ -30,12 +30,14 @@ import { Message } from '@theme-ui/components';
 #### Operators
 Operators specify which operation to perfom:
 
-* **d** -\> Delete/Cut
-* **c** -\> Change (delete and enter insert mode)
-* **r** -\> Replace
-* **>** -\> Indent
-* **v** -\> Visually select
-* **y** -\> Yank (copy)
+- **d** -\> Delete/Cut
+- **c** -\> Change (delete and enter insert mode)
+- **r** -\> Replace
+- **>** -\> Indent
+- **v** -\> Visually select
+- **y** -\> Yank (copy)
+- **<** -\> Indent to the left
+- **>** -\> Indent to the right
 
 #### Motion
 Motion specifies where the Operators operate:
