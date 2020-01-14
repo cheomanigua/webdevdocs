@@ -51,37 +51,43 @@ Motion specifies where the Operators operate:
 - **2j** -\> down 2 lines
 - **e** -\> until the end of the word
 - **$** -\> until the end of the line
-- **iw** -\> "inner word" (works from anywhere in a word)
-- **it** -\> "inner tag" (works within the contents of an HTML tag)
-- **i"** -\> "inner quotes"
-- **ip** -\> "inner paragraph"
-- **as** -\> "a sentence"
+- **i** -\> INNER: inside/between something
+  - **iw** -\> "inner word" (works from anywhere in a word)
+  - **it** -\> "inner tag" (works within the contents of an HTML tag)
+  - **i"** -\> "inner quotes"
+  - **is** -\> "inner sentence"
+  - **ip** -\> "inner paragraph"
+- **a** -\> ALL: includes all
+  - **at** -\> "all tag" (works withing the content of an HTML tag including the tags)
+  - **a"** -\> "all quotes"
+  - **as** -\> "all sentence"
+  - **ap** -\> "all paragraph"
 - **f**, **F** -\> "find" the next character, including the character
 - **t**, **T** -\> "find" the next character, up to that character
 - **/** -\> Search (up to next match)
 
-For instance, to delete everything between a tag, type: `dit`
+Examples:
+
+- Delete everything between a tag, type: `dit`
+- Delete everything until it finds a dot: `df.`
 
 #### Common commands
-* repeat last operation -\> **.**
-* select characters -\> **v** and move the cursor keys. Selection includes the cursor
-* select line -\> **shift** + **v**
-* select block -\> **ctrl** + **v** and move the cursor keys
-* copy selection -\> **y**
-* copy line -\> **yy**
-* delete/cut selection -\> **d** 
-* delete/cut word -\> **dw** 
-* delete/cut line -\> **dd**
-* paste -\> **p**
-* paste line above -\> **shift** + **p**
-* create new line below -\> **o**
-* create a new line above -\> **shift** + **o**
-* undo -\> **u**
-* redo -\> **ctrl** + **r**
-* delete character -\> **x**
-* delete character and switch to insert mode -\> **s**
-* Switch to 'Insert' mode -\> **i**
-* Exit 'Insert' mode -\> **ESC**
+- repeat last operation -\> **.**
+- copy selection -\> **y**
+- copy line -\> **yy**
+- delete/cut selection -\> **d** 
+- delete/cut word -\> **dw** 
+- delete/cut line -\> **dd**
+- paste -\> **p**
+- paste line above -\> **shift** + **p**
+- create new line below -\> **o**
+- create a new line above -\> **shift** + **o**
+- undo -\> **u**
+- redo -\> **ctrl** + **r**
+- delete character -\> **x**
+- delete character and switch to insert mode -\> **s**
+- Switch to 'Insert' mode -\> **i**
+- Exit 'Insert' mode -\> **ESC**
 
 
 ## File Management
