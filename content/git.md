@@ -158,7 +158,7 @@ You can delete now testing branch:
 
 # SSH to GitHub
 
-With SSH keys, you can connect to GitHub without supplying your username or password at each visit.
+With SSH keys, you can connect to GitHub without supplying your username or password at each visit. You'll need to perfom the steps below for each computer you intend to use to connect to your GitHub repository.
 
 #### Generating new SSH, adding it to SSH agent and setting SSH URL to repo
 
@@ -192,7 +192,7 @@ If there is no results, generate a new SSH key.
 
 ## Two-factor authentication
 
-If you have enabled two-factor authentication in your GitHub account, you must create a Security Key in order to operate from the GitHub repository when using **https** :
+If you have enabled two-factor authentication in your GitHub account, you must create a Security Key in order to operate from the GitHub repository when using **https**. The steps belows only need to be performed once. The security key will work in any computer you use to connect to your GitHub account, as long as you know what is the security key.
 
 1. Go to GitHub ➡️ Settings ➡️ Developer settings ➡ Personal access tokens ➡ Generate new token
 2. In the new page that loads, check the **repo** scope checkbox and type a meaningful note in the **note** text box.
