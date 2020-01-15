@@ -34,8 +34,8 @@ $ sudo dnf install -y nodejs
 - Add the following lines:
 
 ```
-check_alt "MX" "Continuum" "Debian" "stretch"
-check_alt "mx-linux" "Continuum" "Debian" "stretch"
+check_alt "MX" "patito feo" "Debian" "stretch"
+check_alt "mx-linux" "patito feo" "Debian" "stretch"
 ```
 
 - Save the file as `setup_13.x` and make it ejecutable: `chmod +x setup_13.x`, then:

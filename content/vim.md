@@ -20,12 +20,13 @@ import { Message } from '@theme-ui/components';
 - Find an replace all occurrences of *foo* with *bar* -\> **:%s/foo/bar/g**
 - Move to the beginning/end of a word (forward) -\> **w** / **e**
 - Move to the beginning/end of a word (backward) -\> **b** / **ge**
-- Move to beginning/end of line and start editing -\> **shift** + **i** / **shift** + **a**
+- Move to beginning/end of line and start editing -\> **shift** + **i** / **a**
 - Move to the end of line -\> **$**
 - Jump forward/backward one line -\> **j** / **k**
 - Jump forward/backward one paragraph -\> **}** / **{**
 - Jump to the top/middle/bottom of the page -\> **Shift** + **h** / **m** / **l**
 - Jump forward/backward one page -\> **Ctrl** + **f**  / **b**
+- Move line where cursor is to the /top/middle/bottom of the page -\> **zt** / **zz** / **zb**
 - Move to the beginning/end of document -\> **gg** / **shift** + **g**
 
 ### Line numbers
