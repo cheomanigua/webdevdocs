@@ -14,14 +14,13 @@ import { Message } from '@theme-ui/components';
 
 ### Moving around
 
-- Search forward (up to next match) -\> **/** 
-- Search backward (up to next match) -\> **?** 
+- Search forward and backward (up to next match) -\> **/** and **?**
 - On search: (next hit -\> **n**, previous hit -\> **N**)
 - Find an replace all occurrences of *foo* with *bar* -\> **:%s/foo/bar/g**
 - Move to the beginning/end of a word (forward) -\> **w** / **e**
 - Move to the beginning/end of a word (backward) -\> **b** / **ge**
 - Move to beginning/end of line and start editing -\> **shift** + **i** / **a**
-- Move to the end of line -\> **$**
+- Move to the beginning/end of line -\> **0** / **$**
 - Jump forward/backward one line -\> **j** / **k**
 - Jump forward/backward one paragraph -\> **}** / **{**
 - Jump to the top/middle/bottom of the page -\> **Shift** + **h** / **m** / **l**
