@@ -212,7 +212,7 @@ call plug#begin('~/.vim/plugged')
 call plug#end()
 ```
 
-3. Add, for instance, <a href="https://github.com/MaxMEllon/vim-jsx-pretty" target="_blank">vim-jsx-pretty</a> and <a href="https://github.com/mattn/emmet-vim" target="_blank">emmet-vim</a> plugins in your **~/.vimrc** file:
+3. Add, for instance, <a href="https://github.com/MaxMEllon/vim-jsx-pretty" target="_blank">vim-jsx-pretty</a>, <a href="https://github.com/mattn/emmet-vim" target="_blank">emmet-vim</a> and <a href="https://github.com/neoclide/coc.nvim" target="_blank">Intellisense</a> plugins in your **~/.vimrc** file:
 ```
 " vim-plug
 call plug#begin('~/.vim/plugged')
@@ -220,6 +220,7 @@ call plug#begin('~/.vim/plugged')
 " plugin section
 Plug 'maxmellon/vim-jsx-pretty'
 Plug 'mattn/emmet-vim'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 " end vim-plug
 call plug#end()
