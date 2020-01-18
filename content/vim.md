@@ -6,10 +6,10 @@ import { Message } from '@theme-ui/components';
 
 ### Modes
 
-- Normal 
-- Insert 
-- Visual 
-- Command
+- Normal -\> **ESC**
+- Insert -\> **i**, **I**, **a**, **A**
+- Visual -\> **v**, **V**, **Ctrl** + **v**
+- Command -\> **:**
 
 
 ### Moving around
@@ -92,7 +92,7 @@ Examples:
 - delete character and switch to insert mode -\> **s**
 - Switch to 'Insert' mode -\> **i**
 - Exit 'Insert' mode -\> **ESC**
-
+- Format block of text -\> **Shift** + **v** + *text selection* + **=**
 
 ## File Management
 
@@ -227,6 +227,62 @@ call plug#end()
 4. Launch Vim and run: `:PlugInstall`
 
 That's it. This is how you install plugins in Vim with <a href="https://github.com/junegunn/vim-plug" target="_blank">vim-plug</a>.
+
+
+
+# .VIMRC
+
+This is a useful *.vimrc* file:
+
+```bash
+" map leader key to comma key
+let mapleader = ","
+
+" vim-plug
+call plug#begin('~/.vim/plugged')
+
+" plugin section
+Plug 'maxmellon/vim-jsx-pretty'
+Plug 'mattn/emmet-vim'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+
+" end vim-plug
+call plug#end()
+
+" Set tab width and indentations with spaces (no hard tabs) 
+set expandtab
+set shiftwidth=2
+set softtabstop=2
+
+" Auto-indenting
+set autoindent
+set smartindent
+filetype indent on
+filetype plugin indent on
+
+" Line numbers
+set number " enable absolute line number
+set relativenumber "enable relative line number
+syntax enable " syntax highlighting enabled
+
+"set hidden
+
+"--- KEY MAPPINGS ---
+
+" pressing <leader>ee will open Explore in a new vertical window
+nmap <leader>ee :vsplit<cr> :Explore<cr> 
+
+" Pressing <leader>zz will open ~/.vimrc in a new window
+nmap <leader>zz :split $MYVIMRC<cr> 
+
+" Pressing <leader>zx will source the changes made in ~/.vimrc
+nmap <leader>zx :source $MYVIMRC<cr> 
+
+"-- EMMET CONFIG --
+"redefine trigger key (press emmet_leader key (,) twice to trigger
+let g:user_emmet_leader_key=','
+```
+
 
 # Visual Studio Code
 
