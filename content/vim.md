@@ -102,9 +102,11 @@ Examples:
 #### Special replacement operation
 - How to replace *word1* for *word2* X number of times:
   1. Search for *word1*: `/word1` + **enter**
-  2. `cgn` + `word2`
+  2. Type `cgn` + `word2`
   3. **ESC**
-  4. Press **.** as many times as necessary to replace as many *word1* instances as you see fit
+  4. Iterate through the results:
+    - Press **.** to replace next *word1* instance for *word2*
+    - Press **n** to skip next *word1* instance
 
 ## File Management
 
