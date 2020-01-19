@@ -100,7 +100,8 @@ Examples:
 - Indent current line plus 2 lines below -\> **3<<** or **3>>**
 
 #### Special replacement operation
-- How to replace *word1* for *word2* X number of times:
+How to replace *word1* for *word2* X number of times:
+
   1. Search for *word1*: `/word1` + **enter**
   2. Type `cgn` + `word2`
   3. **ESC**
