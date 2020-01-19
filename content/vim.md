@@ -91,10 +91,20 @@ Examples:
 - undo -\> **u**
 - redo -\> **ctrl** + **r**
 - delete character -\> **x**
+- replace character -\> **r**
 - delete character and switch to insert mode -\> **s**
 - Switch to 'Insert' mode -\> **i**
 - Exit 'Insert' mode -\> **ESC**
 - Format block of text -\> **Shift** + **v** + *text selection* + **=**
+- Indent current line -\> **<<** or **>>**
+- Indent current line plus 2 lines below -\> **3<<** or **3>>**
+
+#### Special replacement operation
+- How to replace *word1* for *word2* X number of times:
+  1. Search for *word1*: `/word1` + **enter**
+  2. `cgn` + `word2`
+  3. **ESC**
+  4. Press **.** as many times as necessary to replace as many *word1* instances as you see fit
 
 ## File Management
 
