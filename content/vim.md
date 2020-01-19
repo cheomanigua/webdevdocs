@@ -52,6 +52,7 @@ Motion specifies where the Operators operate:
 
 - **w** -\> word (forward by a "word")
 - **b** -\> back (back by a "word")
+- **_** -\> line
 - **2j** -\> down 2 lines
 - **e** -\> until the end of the word
 - **$** -\> until the end of the line
@@ -60,6 +61,7 @@ Motion specifies where the Operators operate:
   - **iw** -\> "inner word" (works from anywhere in a word)
   - **it** -\> "inner tag" (works within the contents of an HTML tag)
   - **i"** -\> "inner quotes"
+  - **i_** -\> "inner line"
   - **is** -\> "inner sentence"
   - **ip** -\> "inner paragraph"
 - **a** -\> AROUND: like INNER, but including the tag, quotes, etc
@@ -128,7 +130,6 @@ Examples:
 
 - Open a new 100 characters width window buffer explorer -\> **:100vs .** 
 - Toggle between open windows: -\> **Ctrl** + **w** + **w**
-- Close window -\> **:q**
 - Open new file in buffer -\> **:e <filename path\>**
 - Open a new file and split screen -\> **:sp**
 - List active buffers -\> **:ls**
