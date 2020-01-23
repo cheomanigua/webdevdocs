@@ -42,6 +42,14 @@ check_alt "mx-linux" "patito feo" "Debian" "stretch"
 - `sudo ./setup_13.x`
 - `sudo apt install -y nodejs`
 
+### Install the Yarn package manager (optional):
+
+```
+curl -sL https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
+echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
+sudo apt update && sudo apt install yarn
+```
+
 ## Troubleshooting
 
 ### npm ERR! code ELIFECYCLE
