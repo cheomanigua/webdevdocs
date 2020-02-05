@@ -300,7 +300,7 @@ let g:user_emmet_leader_key=','
 
 # Visual Studio Code
 
-- Toggle word wrap: `Ctrl` + `Z`
+- Toggle word wrap: `Alt` + `Z`
 - Select all ocurrences of selection: `Ctrl` + `Shift` + `L`
 - Cut line: `Ctrl` + `X`
 - Copy line: `Ctrl` + `C`
