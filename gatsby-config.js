@@ -1,17 +1,17 @@
 module.exports = {
   siteMetadata: {
     title: `GNU/Linux Reference Documentation`,
-    name: `Code Bushi`,
+    name: `WebDevDocs`,
     siteUrl: `https://linuxdocs.netlify.com`,
-    description: `Reference documentation for Linux distros, web development, React, Gatsby and several technologies`,
+    description: `Reference documentation for web development, React, Gatsby and several technologies`,
     social: [
       {
         name: `github`,
-        url: `https://github.com/codebushi/gatsby-theme-document`
+        url: `https://github.com/cheomanigua/`
       },
       {
         name: `twitter`,
-        url: `https://twitter.com/HuntaroSan`
+        url: `https://twitter.com/Luminisense`
       }
     ],
     sidebarConfig: {
