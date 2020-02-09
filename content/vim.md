@@ -315,4 +315,3 @@ let g:user_emmet_leader_key=','
 - Add line comment: `Ctrl` + `K` + `C`
 - Remove line comment: `Ctrl` + `K` + `U`
 - Select element to jump to: `Ctrl` + `Shift` + `\`
-

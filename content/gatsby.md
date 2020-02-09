@@ -82,3 +82,20 @@ exports.onClientEntry = () => {
 #### Commenting Gatsby JSX code
 
 `{/* Gatsby code comment here */}`
+
+
+### Errors
+
+<Message variant='warning'>
+Error: ENOSPC: System limit for number of file watchers reached, watch 'path/to/your/project'
+</Message>
+
+The current limit can be viewed by running:
+
+`cat /proc/sys/fs/inotify/max_user_watches`
+
+The limit can be increased to its maximum by editing `/etc/sysctl.conf` and adding this line to the end of the file:
+
+`fs.inotify.max_user_watches=524288`
+
+<a href="https://code.visualstudio.com/docs/setup/linux#_visual-studio-code-is-unable-to-watch-for-file-changes-in-this-large-workspace-error-enospc" target="_blank">Reference</a>
