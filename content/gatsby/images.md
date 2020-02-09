@@ -142,7 +142,7 @@ export {html, css, javascript}
 #### technologies.js
 ```js
 import React from "react"
-import {html, css, javascript}
+import {html, css, javascript} from '../components/images'
 
 const Technologies = () => 
     <div className="technologies">
