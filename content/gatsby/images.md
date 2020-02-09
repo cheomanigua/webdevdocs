@@ -129,7 +129,7 @@ export default MyComponent
 
 It is advised not to use GraphQL queries, as small images lose plenty of definition.
 
-#### images.js
+#### /components/images.js
 
 ```js
 import html from '../images/svg/html.svg'
