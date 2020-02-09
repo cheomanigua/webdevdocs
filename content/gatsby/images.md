@@ -123,3 +123,33 @@ export default MyComponent
 * [Image Optimization Made Easy with Gatsby.js](https://medium.com/@kyle.robert.gill/ridiculously-easy-image-optimization-with-gatsby-js-59d48e15db6e)
 
 * [An Intro to Gatsby Image](https://codebushi.com/using-gatsby-image)
+
+
+## Importing small icon images (png, svg)
+
+It is advised not to use GraphQL queries, as small images lose plenty of definition.
+
+#### images.js
+
+```js
+import html from '../images/svg/html.svg'
+import css from '../images/svg/css.svg'
+import javascript from '../images/svg/javascript.svg'
+
+export {html, css, javascript}
+```
+
+#### technologies.js
+```js
+import React from "react"
+import {html, css, javascript}
+
+const Technologies = () => 
+    <div className="technologies">
+      <img src={html} alt="css"/>
+      <img src={css} alt="html"/>
+      <img src={javascript} alt="javascript"/>
+    </div>
+
+export default Technologies;
+```
