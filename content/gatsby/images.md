@@ -146,8 +146,8 @@ import {html, css, javascript} from '../components/images'
 
 const Technologies = () => 
     <div className="technologies">
-      <img src={html} alt="css"/>
-      <img src={css} alt="html"/>
+      <img src={html} alt="html"/>
+      <img src={css} alt="css"/>
       <img src={javascript} alt="javascript"/>
     </div>
 
