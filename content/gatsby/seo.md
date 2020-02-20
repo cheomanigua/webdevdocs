@@ -16,9 +16,9 @@ description: "Adding SEO functionality to a gatsby site"
 
 ### Plugins installation
 
-`npm install --save gatsby-plugin-react-helmet react-helmet`
-`npm install --save gatsby-plugin-robots-txt`
-`npm install --save gatsby-plugin-sitemap` 
+- `npm install --save gatsby-plugin-react-helmet react-helmet`
+- `npm install --save gatsby-plugin-robots-txt`
+- `npm install --save gatsby-plugin-sitemap` 
 
 ### Plugins configuration
 
