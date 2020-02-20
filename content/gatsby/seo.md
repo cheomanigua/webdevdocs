@@ -3,7 +3,7 @@ title: "SEO"
 description: "Adding SEO functionality to a gatsby site"
 ---
 
-This page shows everything that has to be installe, configured and created to have a fully functional SEO gatsby site
+This page shows everything that has to be installed, configured and created in order to have a fully functional SEO gatsby site.
 
 ### Plugins
 
