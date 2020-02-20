@@ -3,6 +3,8 @@ title: "SEO"
 description: "Adding SEO functionality to a gatsby site"
 ---
 
+This page shows everything that has to be installe, configured and created to have a fully functional SEO gatsby site
+
 ### Plugins
 
 - *react-helmet*
@@ -98,6 +100,8 @@ References:
 
 
 ### src/components/SEO.js
+
+- Create the file SEO.js under `src/components` and add:
 
 ```js
 import React from "react"
