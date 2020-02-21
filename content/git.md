@@ -160,6 +160,8 @@ You can delete now testing branch:
 
 With SSH keys, you can connect to GitHub without supplying your username or password at each visit. You'll need to perfom the steps below for each computer you intend to use to connect to your GitHub repository.
 
+All intructions below have to be performed only once. After doing it for the first time, your terminal can use SSH in any local repository.
+
 #### Generating new SSH, adding it to SSH agent and setting SSH URL to repo
 
 1. Checking for existing SSH keys:
