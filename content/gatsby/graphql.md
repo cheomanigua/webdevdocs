@@ -41,3 +41,31 @@ export const query = graphql`
 ```
 
 Note that *relativePath* will yield the actual name of the file.
+
+
+## How to query siteMetadata from gatsby-config.js
+
+**Note**: This will work only in files under `pages/` directory.
+
+```js
+import React from "react"
+import { graphql } from 'gatsby'
+
+const IndexPage = () => {
+	return (
+		<h1>{data.site.siteMetadata.title}</h1>
+	)
+}
+
+export const query = graphql`
+  query IndexPageQuery {
+    site {
+      siteMetadata {
+        title
+      }
+    }
+  }
+`
+
+export default IndexPage
+```
