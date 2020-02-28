@@ -53,7 +53,9 @@ import { graphql } from 'gatsby'
 
 const IndexPage = () => {
 	return (
-		<h1>{data.site.siteMetadata.title}</h1>
+		<header>
+			<h1>{data.site.siteMetadata.title}</h1>
+		</header>
 	)
 }
 
