@@ -51,12 +51,12 @@ Note that *relativePath* will yield the actual name of the file.
 import React from "react"
 import { graphql } from 'gatsby'
 
-const IndexPage = () => {
-	return (
-		<header>
-			<h1>{data.site.siteMetadata.title}</h1>
-		</header>
-	)
+const IndexPage = ({data}) => {
+  return (
+    <header>
+      <h1>{data.site.siteMetadata.title}</h1>
+    </header>
+  )
 }
 
 export const query = graphql`
