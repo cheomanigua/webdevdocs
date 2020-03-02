@@ -3,6 +3,15 @@ title: "GraphQL"
 description: "Basic GraphQL code and workflow"
 ---
 
+import { Message } from '@theme-ui/components';
+
+<Message variant='important'>
+  🔔️ <b>Important</b> <br/>
+  <b>Query</b>: is used for files under <b>pages/</b> directories.<br/>.
+  <b>StaticQuery</b>: is used for files under <b>components/</b> or any other directory. <a href="https://www.gatsbyjs.org/docs/static-query/" target="_blank" rel="noopener">More info...</a><br/>
+  Instead of <b>StaticQuery</b>, you can use the hook <b>useStaticQuery</b>, which is easier. <a href="https://www.gatsbyjs.org/docs/use-static-query/" target="_blank" rel="noopener">More info...</a>
+</Message>
+
 ## How to query several images from source files
 
 **Case example**: How to get all files with extension ".webp" and ".jpeg" from directory "images"
