@@ -7,9 +7,9 @@ import { Message } from '@theme-ui/components';
 
 <Message variant='important'>
   🔔️ <b>Important</b> <br/>
-  <b>Query</b>: is used for files under <b>pages/</b> directories.<br/>.
+  <b>Query</b>: is used for files under <b>pages/</b> directories.<br/>
   <b>StaticQuery</b>: is used for files under <b>components/</b> or any other directory. <a href="https://www.gatsbyjs.org/docs/static-query/" target="_blank" rel="noopener">More info...</a><br/>
-  Instead of <b>StaticQuery</b>, you can use the hook <b>useStaticQuery</b>, which is easier. <a href="https://www.gatsbyjs.org/docs/use-static-query/" target="_blank" rel="noopener">More info...</a>
+  <b>useStaticQuery</b>: Instead of <i>StaticQuery</i>, you can use the hook <i>useStaticQuery</i>, which is easier. <a href="https://www.gatsbyjs.org/docs/use-static-query/" target="_blank" rel="noopener">More info...</a>
 </Message>
 
 With Gatsby, we can make images to load faster by optimized handling and sizing.
