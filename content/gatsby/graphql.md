@@ -12,6 +12,90 @@ import { Message } from '@theme-ui/components';
   <b>useStaticQuery</b>: Instead of <i>StaticQuery</i>, you can use the hook <i>useStaticQuery</i>, which is easier. <a href="https://www.gatsbyjs.org/docs/use-static-query/" target="_blank" rel="noopener">More info...</a>
 </Message>
 
+
+## How to query siteMetadata from gatsby-config.js
+
+### For files under pages/
+
+```js
+import React from "react"
+import { graphql } from 'gatsby'
+
+const IndexPage = ({data}) => {
+  return (
+    <header>
+      <h1>{data.site.siteMetadata.title}</h1>
+    </header>
+  )
+}
+
+export const query = graphql`
+  query IndexPageQuery {
+    site {
+      siteMetadata {
+        title
+      }
+    }
+  }
+`
+
+export default IndexPage
+```
+
+### For components under any directory (StaticQuery)
+
+```js
+import React from 'react'
+import { StaticQuery, graphql } from 'gatsby'
+
+const Header = () => (
+  <StaticQuery
+    query={graphql`
+      query HeadingQuery {
+        site {
+          siteMetadata {
+            title
+          }
+        }
+      }
+    `}
+    render={data => (
+      <header>
+        <h1>{data.site.siteMetadata.title}</h1>
+      </header>
+    )}
+  />
+)
+
+export default Header
+```
+
+### For components under any directory (useStaticQuery)
+
+```js
+import React from 'react'
+import { useStaticQuery, graphql } from 'gatsby'
+
+const Header = () => {
+  const data = useStaticQuery(graphql`
+    query HeaderQuery {
+      site {
+        siteMetadata {
+          title
+        }
+      }
+    }
+  `)
+  return (
+    <header>
+      <h1>{data.site.siteMetadata.title}</h1>
+    </header>
+  )
+}
+
+export default Header
+```
+
 ## How to query several images from source files
 
 **Case example**: How to get all files with extension ".webp" and ".jpeg" from directory "images"
@@ -50,82 +134,3 @@ export const query = graphql`
 ```
 
 Note that *relativePath* will yield the actual name of the file.
-
-
-## How to query siteMetadata from gatsby-config.js
-
-### For files under pages/
-
-```js
-import React from "react"
-import { graphql } from 'gatsby'
-
-const IndexPage = ({data}) => {
-  return (
-    <header>
-      <h1>{data.site.siteMetadata.title}</h1>
-    </header>
-  )
-}
-
-export const query = graphql`
-  query IndexPageQuery {
-    site {
-      siteMetadata {
-        title
-      }
-    }
-  }
-`
-
-export default IndexPage
-```
-
-### For components under any directory (StaticQuery)
-
-```js
-import React from "react"
-import { StaticQuery, graphql } from "gatsby"
-export default () => (
-  <StaticQuery
-    query={graphql`
-      query HeadingQuery {
-        site {
-          siteMetadata {
-            title
-          }
-        }
-      }
-    `}
-    render={data => (
-      <header>
-        <h1>{data.site.siteMetadata.title}</h1>
-      </header>
-    )}
-  />
-)
-```
-
-### For components under any directory (useStaticQuery)
-
-```js
-import React from "react"
-import { useStaticQuery, graphql } from "gatsby"
-
-export default () => {
-  const data = useStaticQuery(graphql`
-    query HeaderQuery {
-      site {
-        siteMetadata {
-          title
-        }
-      }
-    }
-  `)
-  return (
-    <header>
-      <h1>{data.site.siteMetadata.title}</h1>
-    </header>
-  )
-}
-```
