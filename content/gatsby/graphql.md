@@ -54,7 +54,7 @@ Note that *relativePath* will yield the actual name of the file.
 
 ## How to query siteMetadata from gatsby-config.js
 
-**Note**: This will work only in files under `pages/` directory.
+### For files under pages/
 
 ```js
 import React from "react"
@@ -79,4 +79,28 @@ export const query = graphql`
 `
 
 export default IndexPage
+```
+
+### For components under any directory
+
+```js
+import React from "react"
+import { useStaticQuery, graphql } from "gatsby"
+
+export default () => {
+  const data = useStaticQuery(graphql`
+    query HeaderQuery {
+      site {
+        siteMetadata {
+          title
+        }
+      }
+    }
+  `)
+  return (
+    <header>
+      <h1>{data.site.siteMetadata.title}</h1>
+    </header>
+  )
+}
 ```
