@@ -27,6 +27,7 @@ module.exports = {
       "/vim",
       "/openssh",
       "/seo",
+"/devops",
       ],
       ignoreIndex: true
     }
