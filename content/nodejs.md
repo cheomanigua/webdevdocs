@@ -103,3 +103,19 @@ Afterward, we create the `server.js` file in our Express application root direct
 As we created a `"dev":` script in the `package.json` file, we can start the server by issuing:
 
 `npm run dev`
+
+### Basic index.js/server.js file content
+
+```js
+const express = require('express')
+const path = require('path')
+
+const app = express()
+const PORT = process.env.PORT || 3000
+
+// Set static foloder
+app.use(express.static(path.join(__dirname, 'public')))
+
+// Listening port
+app.listen(PORT, () => console.log(`Server running on port ${PORT}`))
+```
