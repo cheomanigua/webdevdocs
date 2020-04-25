@@ -20,6 +20,7 @@ module.exports = {
       "/css",
       "/javascript",
       "/nodejs",
+      "/express",
       "/react",
       "/gatsby",
       "/hugo",
