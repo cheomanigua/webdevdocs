@@ -55,6 +55,7 @@ kubectl
 - **docker rm 'container_name' -f**: Remove a container 
 - **docker rm $(docker ps -aq)**: Remove all non running containers
 - **docker rm $(docker ps -aq) -f**: Remove all containers
+- **docker login -u "username"**: Access your Docker Hub repository
 
 ### Creating a nginx container
 
