@@ -92,7 +92,7 @@ for (let i = 0; i < frutas.length; i++) {
 
 Iteration B
 
-```
+```js
 for (let i of frutas) {
 	console.log(i);
 }
