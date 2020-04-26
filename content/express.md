@@ -16,10 +16,13 @@ npm init
 npm i express
 ```
 
-### Userful dependency
-- **nodemon**: Restart the server everytime we edit a file (for development)
+### Useful dependency
+- **[nodemon](https://www.npmjs.com/package/nodemon)**: Tool that helps develop node.js based applications by automatically restarting the node application when file changes in the directory are detected.
 
-`npm i -D nodemon`
+Installation: `npm i -D nodemon`
+Usage: `nodemon index.js`
+
+#### Better usage
 
 In the `package.json` created, we must modify some things. Within `"scrips":`, we remove `"test": "echo \"Error: no test specified\" && exit 1"`, and add `"start":` and `"dev":`, so the `"script":` section ends up like this:
 
@@ -30,12 +33,19 @@ In the `package.json` created, we must modify some things. Within `"scrips":`, w
   },
 ```
 
+To run the app during development, we type: `npm run dev`
+
 ### Other dependencies
 
-- **socket.io**: Framework for dealing with web sockets
-- **moment**: Format date and time
+- **[socket.io](https://www.npmjs.com/package/socket.io)**: Nodejs realtime framework server for dealing with web sockets.
+- **[moment](https://www.npmjs.com/package/moment)**: A lightweight JavaScript date library for parsing, validating, manipulating, and formatting dates.
+- **[dotenv](https://www.npmjs.com/package/dotenv)**: Module that loads environment variables from a `.env` file into [process.env](https://nodejs.org/docs/latest/api/process.html#process_process_env).
+- **[bcrypt](https://www.npmjs.com/package/bcrypt)**: Library to help you hash passwords for Node.js.
+- **[passport](https://www.npmjs.com/package/passport)**: Express-compatible authentication middleware for Node.js.
+- **[passport-local](https://www.npmjs.com/package/passport-local)**: [Passport](https://www.npmjs.com/package/passport) strategy for authenticating with a local username and password.
+- **[express-session](https://www.npmjs.com/package/express-session)**: Simple session middleware for Express in a Node.js module.
+- **[express-flash](https://www.npmjs.com/package/express-flash)**: Flash Messages for your Express Application.
 
-`npm i socket.io moment`
 
 ### Custom setup
 
