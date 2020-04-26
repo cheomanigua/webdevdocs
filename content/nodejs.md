@@ -1,6 +1,6 @@
 ---
 title: "Node.js"
-sescription: "Node.js framework reference pages"
+description: "Node.js framework reference pages"
 ---
 
 [Node.js](https://nodejs.org/en/) is an open-source, cross-platform, JavaScript runtime environment that executes JavaScript code outside of a browser.

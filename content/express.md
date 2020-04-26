@@ -1,6 +1,6 @@
 ---
 title: "Express"
-sescription: "Express framework reference pages"
+description: "Express framework reference pages"
 ---
 
 Express is a fast, unopinionated, minimalist web framework for Node.js
