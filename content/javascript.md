@@ -47,7 +47,7 @@ console.log(tags.split(', '));
 
 ```js
 const fruits = new Array('Apple', 'Banana', 'Pear');
-const frutas = ['Apple', 'Banana', 'Pear'];
+const frutas = ['Apple', 'Banana', 'Pear']; //preferred
 ```
 
 ```js
@@ -75,6 +75,22 @@ console.log(Array.isArray('Mango'));
 
 console.log(fruits.indexOf('Banana'));
 ➡️ 2
+```
+
+Iteration A
+
+```js
+for (let i = 0; i < frutas.length; i++) {
+	console.log(frutas[i]);
+}
+```
+
+Iteration B
+
+```
+for (let i of frutas) {
+	console.log(i);
+}
 ```
 
 ### Objects
