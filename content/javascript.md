@@ -57,8 +57,14 @@ console.log(fruits);
 console.log(frutas);
 ➡️ Array(3) [ "Apple", "Banana", "Pear" ]
 
+console.log(fruits.indexOf('Banana'));
+➡️ 1
+
 console.log(fruits[1]);
 ➡️ Banana
+
+console.log(Array.isArray('Mango'));
+➡️ false
 
 fruits[3] = 'Grape';
 ➡️ Array [ "Apple", "Banana", "Pear", "Grape" ]
@@ -75,11 +81,6 @@ fruits.shift();
 fruits.unshift('Apple');
 ➡️ Array [ "Apple", "Banana", "Pear", "Grape" ]
 
-console.log(Array.isArray('Mango'));
-➡️ false
-
-console.log(fruits.indexOf('Banana'));
-➡️ 1
 ```
 
 Iteration A
