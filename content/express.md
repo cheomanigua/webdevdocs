@@ -5,7 +5,7 @@ description: "Express framework reference pages"
 
 Express is a fast, unopinionated, minimalist web framework for Node.js
 
-You need Node.js installed in order to install Express. For further information on how to install Node.js, please visit [our article on Node.js](nodejs.md)
+You need Node.js installed in order to install Express. For further information on how to install Node.js, please visit [our article on Node.js](nodejs)
 
 ## Installation (basic)
 
