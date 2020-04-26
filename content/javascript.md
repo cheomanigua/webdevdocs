@@ -61,20 +61,25 @@ console.log(fruits[1]);
 ➡️ Banana
 
 fruits[3] = 'Grape';
-➡️ Array(4) [ "Apple", "Banana", "Pear", "Grape" ]
+➡️ Array [ "Apple", "Banana", "Pear", "Grape" ]
 
 fruits.push('Mango');
-fruits.unshift('Orange');
-➡️ Array(6) [ "Orange", "Apple", "Banana", "Pear", "Grape", "Mango" ]
+➡️ Array [ "Apple", "Banana", "Pear", "Grape", "Mango" ]
 
 fruits.pop();
-➡️ Array(5) [ "Orange", "Apple", "Banana", "Pear", "Grape" ]
+➡️ Array [ "Apple", "Banana", "Pear", "Grape" ]
+
+fruits.shift();
+➡️ Array [ "Banana", "Pear", "Grape" ]
+
+fruits.unshift('Apple');
+➡️ Array [ "Apple", "Banana", "Pear", "Grape" ]
 
 console.log(Array.isArray('Mango'));
 ➡️ false
 
 console.log(fruits.indexOf('Banana'));
-➡️ 2
+➡️ 1
 ```
 
 Iteration A
