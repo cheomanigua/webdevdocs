@@ -133,7 +133,7 @@ console.log(person.email);
 ```
 
 ```js
-const todos = [
+const todo = [
   {
     id: 1,
     text: 'Buy groceries',
@@ -153,13 +153,18 @@ const todos = [
 ```
 
 ```js
-console.log(todos[1].text);
+console.log(todo[1].text);
 ➡ Make dinner
 ```
 
-#### Convert Object to JSON
+#### Convert Object/Array to JSON
 ```js
-const todoJSON = JSON.stringify(todos);
+const todoJSON = JSON.stringify(todo);
+```
+
+#### Convert JSON to Object/Array
+```js
+const todo = JSON.parse(todoJSON);
 ```
 
 ### Loops
