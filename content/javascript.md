@@ -368,6 +368,22 @@ nameInput.addEventListener('input', e => {
 });
 ```
 
+### Example mouse event + DOM manipulation
+
+HTML
+```html
+<button type="button" onclick="changeKnight()">Change night</button>
+  <p>The castle belongs to <span id="knight">Percibal</span>, the greatest knight in the kingdom.</p>
+```
+
+JS
+```js
+function changeKnight() {
+  let name = "Lancelot";
+  document.getElementById("knight").innerHTML = name;
+}
+```
+
 ### USER FORM SCRIPT
 
 #### Put DOM elements into variables
