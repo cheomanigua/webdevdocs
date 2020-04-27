@@ -351,7 +351,7 @@ const btn = document.querySelector('.btn');
 
 When possible, it is better to use **event listeners** over **inline event handlers** and **event handler properties**, the main reason being the ability to set multiple event listeners on the same element when using **event listeners**.
 
-Example:
+For instance, with one button click we can change two elements (h4 and p):
 
 ```html
 </- index.html ->
@@ -405,14 +405,16 @@ nameInput.addEventListener('input', e => {
 
 ### Example mouse event + DOM manipulation
 
-HTML
 ```html
+</- index.html ->
+
 <button type="button" onclick="changeKnight()">Change night</button>
   <p>The castle belongs to <span id="knight">Percibal</span>, the greatest knight in the kingdom.</p>
 ```
 
-JS
 ```js
+// script.js
+
 function changeKnight() {
   let name = "Lancelot";
   document.getElementById("knight").innerHTML = name;
@@ -421,8 +423,9 @@ function changeKnight() {
 
 ### Full example
 
-HMTL
 ```html
+</- index.html ->
+
 <body>
 <h1>El Quijote</h1>
 <button id="toboso">El Toboso</button>
@@ -436,8 +439,9 @@ HMTL
 </body>
 ```
 
-JS
 ```js
+// script.js
+
 const toboso = document.getElementById("toboso");
 const madrid = document.getElementById("madrid");
 
