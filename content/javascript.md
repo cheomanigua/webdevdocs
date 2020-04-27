@@ -347,6 +347,41 @@ const btn = document.querySelector('.btn');
 
 ### Events
 
+#### Event handlers
+
+When possible, it is better to use **event listeners** over **inline event handlers** and **event handler properties**, the main reason being the ability to set multiple event listeners on the same element when using **event listeners**.
+
+Example:
+
+```html
+</- index.html ->
+
+<body>
+	<button id="btn">Click me</button>
+	<h4>This header will change when clicking the button</h4>
+	<p id="sentence">This </b>paragraph</b> will change when clicking the button</p>
+	
+	<script src="script.js"></script>
+</body>
+```
+
+```js
+// script.js
+
+const button = document.getElementById('btn');
+const header = document.querySelector('h4');
+const paragraph = document.getElementById('sentence');
+
+// Multiple listeners can be added to the same event and element
+button.addEventListener('click', () => {
+	header.textContent = "This is the changed header triggered by clicking on the button. Note that the very same button click changed the paragraph";
+});
+
+button.addEventListener('click', () => {
+	paragraph.textContent = "This is the changed paragraph triggered by clicking on the button. Note that the very same button click changed header";
+});
+```
+
 #### Mouse Event
 
 ```js
@@ -382,6 +417,53 @@ function changeKnight() {
   let name = "Lancelot";
   document.getElementById("knight").innerHTML = name;
 }
+```
+
+### Full example
+
+HMTL
+```html
+<body>
+<h1>El Quijote</h1>
+<button id="toboso">El Toboso</button>
+<button id="madrid">Madrid</button>
+
+<p>En algún lugar de <span id="lugar">La Mancha</span>, de cuyo nombre no puedo acordarme.</p>
+
+<p><span id="lugar2">La Mancha</span> está en <span id="region">Castilla</span> y tiene una población de <span id="poblacion">5300</span> habitantes.
+
+<script src="js/script.js"></script>
+</body>
+```
+
+JS
+```js
+const toboso = document.getElementById("toboso");
+const madrid = document.getElementById("madrid");
+
+let lugar = ""
+let region = "";
+let poblacion = 0;
+
+toboso.addEventListener("click", () => {
+	lugar = "El Toboso";
+	region = "La Meseta";
+	poblacion = 850;
+  document.getElementById("lugar").innerHTML = lugar;
+  document.getElementById("lugar2").innerHTML = lugar;
+  document.getElementById("region").innerHTML = region;
+  document.getElementById("poblacion").innerHTML = poblacion;
+});
+
+madrid.addEventListener("click", () => {
+	lugar = "Madrid";
+	region = "la región central";
+	poblacion = 25400;
+  document.getElementById("lugar").innerHTML = lugar;
+  document.getElementById("lugar2").innerHTML = lugar;
+  document.getElementById("region").innerHTML = region;
+  document.getElementById("poblacion").innerHTML = poblacion;
+});
 ```
 
 ### USER FORM SCRIPT
