@@ -203,7 +203,113 @@ Make dinner
 Reply emails
 ```
 
-#### High Order Array methods (forEach, map, filter)
+#### For...In Loop
+
+The `for...in` statement iterates over the **properties** of an **object**.
+
+```js
+const entry1 = {
+  id: 1,
+  text: 'Buy groceries',
+  isCompleted: true
+}
+
+// Print property names of object
+for (i in entry1) {
+  console.log(i);
+}
+
+➡
+id
+text
+isCompleted
+```
+
+We can also access the values of each property by using the property name as the index value of the object.
+
+```js
+// Print property values of object
+for (i in entry1) {
+  console.log(entry1[i]);
+}
+
+➡
+1
+Buy groceries
+true
+```
+
+All together:
+```js
+// Print names and values of object properties
+for (i in entry1) {
+  console.log(`${i}`.toUpperCase() + `: ${entry1[i]}`);
+}
+
+➡
+ID: 1
+TEXT: Buy groceries
+ISCOMPLETED: true
+```
+#### For...Of Loop
+
+The `for...of` statement iterates over the **properties** of **arrays** and **strings**.
+
+```js
+const fruits = ['Apple', 'Banana', 'Pear']
+
+// Loop through both index and element
+for (let i of fruits) {
+  console.log(i);
+}
+
+➡
+Apple
+Banana
+Pear
+```
+
+It is also possible to print out the index associated with the index elements using the `entries()` method:
+
+
+```js
+// Loop through both index and element
+for (let [index, i] of fruits.entries()) {
+  console.log(index, i);
+}
+
+➡
+0 Apple
+1 Banana
+2 Pear
+```
+
+## Functions
+
+### Normal and arrow functions
+
+```js
+//Normal functions
+function addNums1(num1, num2) {
+  return num1 + num2;
+}
+
+const addNums2 = function (num1, num2) {
+  return num1 + num2;
+}
+
+// Arrow function
+const addNums3 = (num1, num2) => num1 + num2;
+
+console.log(addNums1(5, 7));
+console.log(addNums2(5, 7));
+console.log(addNums3(5, 7));
+➡ 12
+➡ 12
+➡ 12
+```
+
+### High Order functions for Arrays (forEach, map, filter)
 
 ```js
 todos.forEach(function(i) {
@@ -245,19 +351,57 @@ console.log(todoCompleted);
 ➡ Array [ "Buy groceries", "Make dinner" ]
 ```
 
-### Functions
+### High Order functions for Objects (filter, map, sort, reduce)
 
+All examples of using high order functions fetch the information from this object:
+
+```
+const companies= [
+  {name: "Company One", category: "Finance", start: 1981, end: 2004},
+  {name: "Company Two", category: "Retail", start: 1992, end: 2008},
+  {name: "Company Three", category: "Auto", start: 1999, end: 2007},
+  {name: "Company Four", category: "Retail", start: 1989, end: 2010},
+  {name: "Company Five", category: "Technology", start: 2009, end: 2014},
+  {name: "Company Six", category: "Finance", start: 1987, end: 2010},
+  {name: "Company Seven", category: "Auto", start: 1986, end: 1996},
+  {name: "Company Eight", category: "Technology", start: 2011, end: 2016},
+  {name: "Company Nine", category: "Retail", start: 1981, end: 1989}
+];
+
+const ages = [33, 12, 20, 16, 5, 54, 21, 44, 61, 13, 15, 45, 25, 64, 32];
+```
+
+### filter
 ```js
-function addNums(num1, num2) {
-  return num1 + num2;
-}
+const canDrink = ages.filter(age => age >= 21);
+const retailCompanies = companies.filter(company => company.category === 'Retail');
+```
 
-const addNums2 = (num1, num2) => num1 + num2;
+### map
+```js
+const agesSquare = ages.map(age => Math.sqrt(age));
+const testMap = companies.map(company => `${company.name} [${company.start} - ${company.end}]`);
+```
 
-console.log(addNums(5, 7));
-console.log(addNums2(5, 7));
-➡ 12
-➡ 12
+### sort
+```js
+const sortAges = ages.sort((a, b) => a - b);
+const sortedCompanies = companies.sort((a, b) => (a.start > b.start ? 1 : -1));
+```
+
+### reduce
+```js
+const ageSum = ages.reduce((total, age) => total + age, 0);
+const totalYears = companies.reduce((total, company) => total + (company.end - company.start), 0);
+```
+
+### Combined methods
+```js
+const combined = ages
+  .map(age => age * 2)
+  .filter(age => age >= 40)
+  .sort((a, b) => a - b)
+  .reduce((a, b) => a + b, 0);
 ```
 
 ### Classes
@@ -475,7 +619,8 @@ madrid.addEventListener("click", () => {
 });
 ```
 
-### USER FORM SCRIPT
+
+## USER FORM SCRIPT
 
 #### Put DOM elements into variables
 
@@ -522,56 +667,6 @@ function onSubmit(e) {
 }
 ```
 
-# High Order Functions
-
-### filter
-```js
-const canDrink = ages.filter(age => age >= 21);
-const retailCompanies = companies.filter(company => company.category === 'Retail');
-```
-
-### map
-```js
-const agesSquare = ages.map(age => Math.sqrt(age));
-const testMap = companies.map(company => `${company.name} [${company.start} - ${company.end}]`);
-```
-
-### sort
-```js
-const sortAges = ages.sort((a, b) => a - b);
-const sortedCompanies = companies.sort((a, b) => (a.start > b.start ? 1 : -1));
-```
-
-### reduce
-```js
-const ageSum = ages.reduce((total, age) => total + age, 0);
-const totalYears = companies.reduce((total, company) => total + (company.end - company.start), 0);
-```
-
-### Combined methods
-```js
-const combined = ages
-  .map(age => age * 2)
-  .filter(age => age >= 40)
-  .sort((a, b) => a - b)
-  .reduce((a, b) => a + b, 0);
-```
-
-```
-const companies= [
-  {name: "Company One", category: "Finance", start: 1981, end: 2004},
-  {name: "Company Two", category: "Retail", start: 1992, end: 2008},
-  {name: "Company Three", category: "Auto", start: 1999, end: 2007},
-  {name: "Company Four", category: "Retail", start: 1989, end: 2010},
-  {name: "Company Five", category: "Technology", start: 2009, end: 2014},
-  {name: "Company Six", category: "Finance", start: 1987, end: 2010},
-  {name: "Company Seven", category: "Auto", start: 1986, end: 1996},
-  {name: "Company Eight", category: "Technology", start: 2011, end: 2016},
-  {name: "Company Nine", category: "Retail", start: 1981, end: 1989}
-];
-
-const ages = [33, 12, 20, 16, 5, 54, 21, 44, 61, 13, 15, 45, 25, 64, 32];
-```
 
 
 # Snippets
