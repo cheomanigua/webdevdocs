@@ -242,6 +242,8 @@ person.delete('age') // true
 person.clear()
 ```
 
+#### keys(), values(), entries()
+
 ```js
 console.log(person.keys())
 ➡
