@@ -99,7 +99,31 @@ for (let i of frutas) {
 }
 ```
 
+### Sets
+
+Set is a useful addition to your JavaScript toolkit, particularly for working with duplicate values in data.
+
+In a single line, we can create a new Array without duplicate values from an Array that has duplicate values.
+
+```js
+const uniqueArray = [ ...new Set([1, 1, 2, 2, 2, 3])] // (3) [1, 2, 3]
+```
+
+**Set** can be used for finding the union, intersection, and difference between two sets of data. However, **Arrays** have a significant advantage over **Sets** for additional manipulation of the data due to the `sort()`, `map()`, `filter()`, and `reduce()` methods, as well as direct compatibility with `JSON` methods.
+
+#### Convert a Set to Array
+```js
+const arr = [...set];
+```
+
+#### Convert an Array to Set
+```js
+const set = new Set([ "Apple", "Banana", "Pear" ]);
+```
+
 ### Objects
+
+Objects in JavaScript are collections of **key/value** pairs. The values can consist of **properties** and **methods**, and may contain all other JavaScript data types, such as strings, numbers, and Booleans.
 
 ```js
 const person = {
@@ -165,6 +189,102 @@ const todoJSON = JSON.stringify(todo);
 #### Convert JSON to Object/Array
 ```js
 const todo = JSON.parse(todoJSON);
+```
+
+### Maps
+
+ Maps are similar to Objects in that they hold key/value pairs, but Maps have several advantages over objects:
+
+- **Size** - Maps have a `size` property, whereas Objects do not have a built-in way to retrieve their size.
+- **Iteration** - Maps are directly iterable, whereas Objects are not.
+- **Flexibility** - Maps can have any data type (primitive or Object) as the **key** to a value, while Objects can only have strings.
+- **Ordered** - Maps retain their insertion order, whereas objects do not have a guaranteed order.
+
+Due to these factors, Maps are a powerful data structure to consider. However, Objects have some important advantages as well:
+
+- **JSON** - Objects work flawlessly with `JSON.parse()` and `JSON.stringify()`, two essential functions for working with JSON, a common data format that many REST APIs deal with.
+- **Working** with a single element - Working with a known value in an Object, you can access it directly with the key without the need to use a method, such as Map’s `get()`.
+
+#### Convert Object to Map
+```js
+const map = new Map(Object.entries(obj));
+```
+
+#### Convert Map to Object
+```js
+const obj = Object.fromEntries(map);
+```
+
+#### has(), get(), size, delete()
+
+```js
+// Initialize a new Map
+const person = new Map([
+  ['firstName', 'Pepe'],
+  ['lastName:', 'Juan'],
+  ['age', 30],
+])
+
+// Check if a key exists in a Map
+person.has('lastName') // true
+person.has('address') // false
+
+// Get an item from a Map
+person.get('firstName') // "Pepe"
+
+// Get the count of items in a Map
+person.size // 3
+
+// Delete an item from a Map by key
+person.delete('age') // true
+
+// Empty a Map
+person.clear()
+```
+
+```js
+console.log(person.keys())
+➡
+[Map Iterator] { 'firstName', 'lastName:', 'age' }
+```
+
+```js
+console.log(person.values())
+➡
+[Map Iterator] { 'Pepe', 'Juan', 30 }
+```
+
+```js
+console.log(person.entries())
+➡
+[Map Entries] {
+  [ 'firstName', 'Pepe' ],
+  [ 'lastName:', 'Juan' ],
+  [ 'age', 30 ]
+}
+```
+
+#### Iteration with Map
+
+```js
+// Log the keys and values of the Map with forEach
+person.forEach((value, key) => {
+  console.log(`${key}: ${value}`)
+})
+
+// Destructure the key and value out of the Map item
+for (const [key, value] of person) {
+  // Log the keys and values of the Map with for...of
+  console.log(`${key}: ${value}`)
+}
+```
+
+Both approaches will yield exactly the same result:
+
+```js
+firstName: Pepe
+lastName:: Juan
+age: 30
 ```
 
 ### Loops
@@ -284,9 +404,9 @@ for (let [index, i] of fruits.entries()) {
 2 Pear
 ```
 
-## Functions
+### Functions
 
-### Normal and arrow functions
+#### Normal and arrow functions
 
 ```js
 //Normal functions
@@ -309,7 +429,7 @@ console.log(addNums3(5, 7));
 ➡ 12
 ```
 
-### High Order functions for Arrays (forEach, map, filter)
+#### High Order functions for Arrays (forEach, map, filter)
 
 ```js
 todos.forEach(function(i) {
@@ -351,7 +471,7 @@ console.log(todoCompleted);
 ➡ Array [ "Buy groceries", "Make dinner" ]
 ```
 
-### High Order functions for Objects (filter, map, sort, reduce)
+#### High Order functions for Objects (filter, map, sort, reduce)
 
 All examples of using high order functions fetch the information from this object:
 
@@ -371,31 +491,31 @@ const companies= [
 const ages = [33, 12, 20, 16, 5, 54, 21, 44, 61, 13, 15, 45, 25, 64, 32];
 ```
 
-### filter
+#### filter
 ```js
 const canDrink = ages.filter(age => age >= 21);
 const retailCompanies = companies.filter(company => company.category === 'Retail');
 ```
 
-### map
+#### map
 ```js
 const agesSquare = ages.map(age => Math.sqrt(age));
 const testMap = companies.map(company => `${company.name} [${company.start} - ${company.end}]`);
 ```
 
-### sort
+#### sort
 ```js
 const sortAges = ages.sort((a, b) => a - b);
 const sortedCompanies = companies.sort((a, b) => (a.start > b.start ? 1 : -1));
 ```
 
-### reduce
+#### reduce
 ```js
 const ageSum = ages.reduce((total, age) => total + age, 0);
 const totalYears = companies.reduce((total, company) => total + (company.end - company.start), 0);
 ```
 
-### Combined methods
+#### Combined methods
 ```js
 const combined = ages
   .map(age => age * 2)
@@ -667,7 +787,32 @@ function onSubmit(e) {
 }
 ```
 
+## Create elements on the fly
+```js
+const button = document.createElement('button')
+button.textContent = 'Click me'
+document.body.append(button)
 
+const h1 = document.createElement('h1')
+const p = document.createElement('p')
+
+document.body.append(h1)
+document.body.append(p)
+
+class Display {
+  constructor() {
+    this.buttonText = 'New text'
+
+    button.addEventListener('click', event => {
+      event.target.textContent = this.buttonText;
+      h1.textContent = "About createElement()";
+      p.textContent = "In an HTML document, the document.createElement() method creates the HTML element specified by tagName, or an HTMLUnknownElement if tagName isn't recognized.";
+    })
+  }
+}
+
+new Display()
+```
 
 # Snippets
 
@@ -685,3 +830,9 @@ window.onscroll = function() {
 }
 ```
 
+# Terminology
+
+- **Template literal**: code inside backticks: `\` some code here \``
+- **Spread operator**: `...`
+- **Trailing commas**: Also referred as *dangling commas* or *final commas*. This is a JavaScript formatting practice in which the final item in a series when declaring a collection of data has a comma at the end.
+- **Promise**: is JavaScript object that will return a value at some point in the future. Asynchronous functions can return promise objects instead of concrete values. If we get a value in the future, we say that the promise was fulfilled. If we get an error in the future, we say that the promise was rejected. Otherwise, the promise is still being worked on in a pending state.
