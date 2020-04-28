@@ -741,6 +741,115 @@ madrid.addEventListener("click", () => {
 });
 ```
 
+## Callbacks, promises, async/await
+
+### Callbacks
+
+```js
+const posts = [
+	{ title: 'Post One', body: 'This is port one'},
+	{ title: 'Post Two', body: 'This is port two'}
+];
+
+function getPosts() {
+	setTimeout(() => {
+		let output = '';
+		posts.forEach((post, index) => {
+			output += `<li>${post.title}</li>`;
+		});
+		document.body.innerHTML = output;
+	}, 1000);
+}
+
+function createPost(post, callback) {
+	setTimeout(() => {
+		posts.push(post);
+		callback();
+	}, 2000);
+}
+
+createPost({ title: 'Post Three', body: 'This is port three' }, getPosts);
+```
+
+### Promises
+
+```js
+const posts = [
+	{ title: 'Post One', body: 'This is port one'},
+	{ title: 'Post Two', body: 'This is port two'}
+];
+
+function getPosts() {
+	setTimeout(() => {
+		let output = '';
+		posts.forEach((post, index) => {
+			output += `<li>${post.title}</li>`;
+		});
+		document.body.innerHTML = output;
+	}, 1000);
+}
+
+function createPost(post) {
+	return new Promise((resolve, reject) => {
+		setTimeout(() => {
+			posts.push(post);
+			const error = false;
+			if(!error) {
+				resolve();
+			} else {
+				reject('Error: something went wrong');
+			}
+		}, 2000);
+	})
+	
+}
+
+createPost({ title: 'Post Three', body: 'This is port three' })
+	.then(getPosts)
+	.catch(err => console.log(err));
+```
+
+### Async/Await
+
+```js
+const posts = [
+	{ title: 'Post One', body: 'This is port one'},
+	{ title: 'Post Two', body: 'This is port two'}
+];
+
+function getPosts() {
+	setTimeout(() => {
+		let output = '';
+		posts.forEach((post, index) => {
+			output += `<li>${post.title}</li>`;
+		});
+		document.body.innerHTML = output;
+	}, 1000);
+}
+
+function createPost(post) {
+	return new Promise((resolve, reject) => {
+		setTimeout(() => {
+			posts.push(post);
+			const error = false;
+			if(!error) {
+				resolve();
+			} else {
+				reject('Error: something went wrong');
+			}
+		}, 2000);
+	})
+	
+}
+
+async function init() {
+	await createPost({ title: 'Post Three', body: 'This is port three' });
+	
+	getPosts();
+}
+
+init();
+```
 
 ## USER FORM SCRIPT
 
