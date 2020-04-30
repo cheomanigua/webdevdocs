@@ -29,7 +29,7 @@ $ sudo dnf install -y nodejs
 
 ### How to install Node.js on MX Linux:
 
-- Copy the content of [https://deb.nodesource.com/setup_13.x](https://deb.nodesource.com/setup_13.x) (check last version [here](https://github.com/nodesource/distributions/tree/master/deb))
+- Copy the content of [https://deb.nodesource.com/setup_13.x](https://deb.nodesource.com/setup_14.x) (check last version [here](https://github.com/nodesource/distributions/tree/master/deb))
 - Create a new text file and paste the content
 - Add the following lines:
 
