@@ -38,8 +38,8 @@ check_alt "MX" "patito feo" "Debian" "stretch"
 check_alt "mx-linux" "patito feo" "Debian" "stretch"
 ```
 
-- Save the file as `setup_13.x` and make it ejecutable: `chmod +x setup_13.x`, then:
-- `sudo ./setup_13.x`
+- Save the file as `setup_14.x` and make it ejecutable: `chmod +x setup_14.x`, then:
+- `sudo ./setup_14.x`
 - `sudo apt install -y nodejs`
 
 ### Install the Yarn package manager (optional):
