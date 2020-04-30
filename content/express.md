@@ -16,11 +16,17 @@ npm init
 npm i express
 ```
 
-### Useful dependency
+### Nodemon, a useful dependency
 - **[nodemon](https://www.npmjs.com/package/nodemon)**: Tool that helps develop node.js based applications by automatically restarting the node application when file changes in the directory are detected.
 
 Installation: `npm i -D nodemon`
 Usage: `nodemon index.js`
+
+You can also install nodemon as a development dependency:
+
+`npm install --save-dev nodemon`
+
+With a local installation, nodemon will not be available in your system path. Instead, the local installation of nodemon can be run by calling it from within an npm script (such as `npm start`) or using `npx nodemon`.
 
 #### Better usage
 
