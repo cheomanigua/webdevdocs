@@ -50,6 +50,42 @@ echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/source
 sudo apt update && sudo apt install yarn
 ```
 
+### NPM
+
+#### How to generate a package.json
+
+```
+npm init
+
+or
+
+npm init -y
+```
+
+#### How to install packages
+
+```
+# As normal dependency
+npm i <package>
+
+# As development dependency
+npm i -D <package>
+
+# Globally
+npm i -g <package>
+```
+
+#### How to check for installed packages
+
+```
+# Globally installed
+npm list -g --depth 0`
+
+# Locally installed
+npm list --depth 0
+```
+
+
 ## Troubleshooting
 
 ### npm ERR! code ELIFECYCLE
