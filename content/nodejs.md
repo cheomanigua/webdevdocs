@@ -11,19 +11,19 @@ description: "Node.js framework reference pages"
 
 **Note**: For instructions on how to install *NodeJS* on [MX Linux](https://mxlinux.org/), please check further down.
 
-**Node.js v13.x** (check last version [here](https://github.com/nodesource/distributions/tree/master/deb)):
+**Node.js v14.x** (check last version [here](https://github.com/nodesource/distributions/tree/master/deb)):
 
 ```
 Ubuntu
-$ curl -sL https://deb.nodesource.com/setup_13.x | sudo -E bash -
+$ curl -sL https://deb.nodesource.com/setup_14.x | sudo -E bash -
 $ sudo apt-get install -y nodejs
 
 Debian, as root
-# curl -sL https://deb.nodesource.com/setup_13.x | bash -
+# curl -sL https://deb.nodesource.com/setup_14.x | bash -
 # apt-get install -y nodejs
 
 Fedora, as root
-# curl -sL https://rpm.nodesource.com/setup_13.x | bash -
+# curl -sL https://rpm.nodesource.com/setup_14.x | bash -
 $ sudo dnf install -y nodejs
 ```
 
