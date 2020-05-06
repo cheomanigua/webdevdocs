@@ -191,7 +191,12 @@ If there is no results, generate a new SSH key.
 
 ### Switching remote URLs from HTTPS to SSH/SSH to HTTPS
 
-`$ git remote set-url origin git@github.com:mygitaccount/myrepository.git`
+HTTPS TO SSH
+$ git remote set-url origin git@github.com:mygitaccount/myrepository.git
+
+SSH TO HTTPS
+$ git remote set-url origin https://git@github.com:mygitaccount/myrepository.git
+```
 
 Verify that the remote URL has changed: `$ git remote -v`
 
