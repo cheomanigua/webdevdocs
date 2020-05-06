@@ -162,7 +162,7 @@ With SSH keys, you can connect to GitHub without supplying your username or pass
 
 All intructions below have to be performed only once. After doing it for the first time, your terminal can use SSH in any local repository.
 
-#### Generating new SSH, adding it to SSH agent and setting SSH URL to repo
+#### Generating new SSH and adding it to SSH agent
 
 1. Checking for existing SSH keys:
 
@@ -182,15 +182,20 @@ If there is no results, generate a new SSH key.
 
 `$ ssh-add ~/.ssh/id_rsa`
 
-5. Set a SSH url for the existing repo (**Note**: This step is necessary only for SSH servers under a secure connection, https, like GitHub).
-
-`$ git remote set-url origin git@github.com:mygitaccount/myrepository.git`
 
 #### Adding a new SSH key to your GitHub account
 
 1. Open your `~/.ssh/id_rsa.pub` file and copy the content
 2. Go to GitHub ➡️ Settings ➡️ SSH and GPG keys ➡️ New SSH key
 3. Paste the SSH key into the 'Key' field. Add a descriptive label for the 'Title' field.
+
+### Switching remote URLs from HTTPS to SSH/SSH to HTTPS
+
+`$ git remote set-url origin git@github.com:mygitaccount/myrepository.git`
+
+Verify that the remote URL has changed: `$ git remote -v`
+
+More info at [GitHub](https://help.github.com/en/github/using-git/changing-a-remotes-url).
 
 ## Two-factor authentication
 
