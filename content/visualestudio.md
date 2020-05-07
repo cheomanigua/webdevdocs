@@ -17,7 +17,8 @@ description: "Visual Studio Code cheat sheet"
 - Select all ocurrences of selection: `Ctrl` + `Shift` + `L`
 - Select element to jump to: `Ctrl` + `Shift` + `\`
 - Select whole word: `Ctrl` + `Shift` + `Left`/`Right`
-- Select line above/below (cumulative): `Ctrl` + `Shift` + `Up`/`Down`
+- Select line above/below (cumulative): `Shift` + `Up`/`Down`
+- Select line above/below (cumulative both ways): `Ctrl` + `Shift` + `Up`/`Down`
 - Select all above/below cursor: `Ctrl` + `Inicio`/`Fin`
 
 #### Lines
