@@ -26,6 +26,7 @@ module.exports = {
       "/hugo",
       "/git",
       "/vim",
+      "/visualestudio",
       "/openssh",
       "/seo",
 "/devops",
