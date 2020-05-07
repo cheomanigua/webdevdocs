@@ -296,22 +296,3 @@ nmap <leader>zx :source $MYVIMRC<cr>
 "redefine trigger key (press emmet_leader key (,) twice to trigger
 let g:user_emmet_leader_key=','
 ```
-
-
-# Visual Studio Code
-
-- Toggle word wrap: `Alt` + `Z`
-- Select all ocurrences of selection: `Ctrl` + `Shift` + `L`
-- Cut line: `Ctrl` + `X`
-- Copy line: `Ctrl` + `C`
-- Delete line: `Ctrl` + `Shift` + `K`
-- Insert line below: `Ctrl` + `Enter`
-- Insert line above: `Ctrl` + `Shift` + `Enter`
-- Duplicate line above/below: `Ctrl` + `Shift` + `Alt` + `Up/Down`
-- Replace: `Ctrl` + `H`
-- Auto-format: `Ctrl` + `Shift` + `I`
-- Go to beginning/end of line: `Home`/`End`
-- Go to beginning/end of file: `Ctrl` + `Home`/`End`
-- Add line comment: `Ctrl` + `K` + `C`
-- Remove line comment: `Ctrl` + `K` + `U`
-- Select element to jump to: `Ctrl` + `Shift` + `\`
