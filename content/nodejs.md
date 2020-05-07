@@ -134,7 +134,7 @@ To run the app during development, we type: `npm run dev`
 - **[express-session](https://www.npmjs.com/package/express-session)**: Simple session middleware for Express in a Node.js module.
 - **[express-flash](https://www.npmjs.com/package/express-flash)**: Flash Messages for your Express Application.
 - **[helmet](https://www.npmjs.com/package/helmet)**: Helps secure Express/Connect apps with various HTTP headers.
-- ** [body-parser]**(https://www.npmjs.com/package/body-parser)**: Node.js body parsing middleware (included in Express by default)
+- **[body-parser](https://www.npmjs.com/package/body-parser)**: Node.js body parsing middleware (included in Express by default)
 - **[cors](https://www.npmjs.com/package/cors)**: node.js package for providing a Connect/Express middleware that can be used to enable CORS with various options.
 - **[compression](https://www.npmjs.com/package/compression)**: Node.js compression middleware.
 - **[morgan](https://www.npmjs.com/package/morgan)**: HTTP request logger middleware for node.js.
