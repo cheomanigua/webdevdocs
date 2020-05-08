@@ -36,6 +36,12 @@ description: "Visual Studio Code cheat sheet"
 - Add line comment: `Ctrl` + `K` + `C`
 - Remove line comment: `Ctrl` + `K` + `U`
 
+## Previews
+
+You can see Markdown previews of the current .md or .mdx file by pressing `Ctrl` + `Shift` + `V`.
+
+
+
 ## Extensions
 
 - **[Live Server](https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer)**: Launch a development local Server with live reload feature for static & dynamic pages
