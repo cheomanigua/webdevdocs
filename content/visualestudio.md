@@ -3,6 +3,8 @@ title: "Visual Studio Code"
 description: "Visual Studio Code cheat sheet"
 ---
 
+## Shortcut keys
+
 - Toggle word wrap: `Alt` + `Z`
 - Find: `Ctrl` + `F`
 - Find and Replace: `Ctrl` + `H`
@@ -33,3 +35,9 @@ description: "Visual Studio Code cheat sheet"
 - Go to beginning/end of line: `Inicio`/`Fin`
 - Add line comment: `Ctrl` + `K` + `C`
 - Remove line comment: `Ctrl` + `K` + `U`
+
+## Extensions
+
+- **[Live Server](https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer)**: Launch a development local Server with live reload feature for static & dynamic pages
+- **[Quokka](https://marketplace.visualstudio.com/items?itemName=WallabyJs.quokka-vscode#overview)**: Live Scratchpad for JavaScript.
+- **[Docker](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-docker#overview)**: Makes it easy to build, manage and deploy containerized applications
