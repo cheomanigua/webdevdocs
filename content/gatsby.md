@@ -99,7 +99,3 @@ The limit can be increased to its maximum by editing `/etc/sysctl.conf` and addi
 `fs.inotify.max_user_watches=524288`
 
 <a href="https://code.visualstudio.com/docs/setup/linux#_visual-studio-code-is-unable-to-watch-for-file-changes-in-this-large-workspace-error-enospc" target="_blank">Reference</a>
-
-### When to use Gatsby instead of React or Next.js
-
-![Gatsby](/src/gatsby-react-nextjs.jpg)
