@@ -102,4 +102,4 @@ The limit can be increased to its maximum by editing `/etc/sysctl.conf` and addi
 
 ### When to use Gatsby instead of React or Next.js
 
-![Gatsby](../src/gatsby-react-nextjs.jpg)
+![Gatsby](/src/gatsby-react-nextjs.jpg)
