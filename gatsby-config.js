@@ -22,6 +22,7 @@ module.exports = {
       "/nodejs",
       "/express",
       "/react",
+      "/devops",
       "/gatsby",
       "/hugo",
       "/git",
@@ -29,7 +30,6 @@ module.exports = {
       "/visualestudio",
       "/openssh",
       "/seo",
-"/devops",
       ],
       ignoreIndex: true
     }
