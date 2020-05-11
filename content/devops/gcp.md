@@ -1,5 +1,5 @@
 ---
-title: "GCP"
+title: "Google Cloud Platform"
 description: "Google Cloud Platform reference commands"
 ---
 
