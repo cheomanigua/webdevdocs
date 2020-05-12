@@ -40,8 +40,10 @@ gcloud compute --project=[PROJECT_ID] firewall-rules create default-allow-http -
 gcloud compute instances delete [INSTANCE_NAME] --zone=us-central1-a
 ```
 
-### Connect to an instance by SSH
+### Connect to a VM instance by SSH
+```
 gcloud compute ssh --project [PROJECT_ID] --zone [ZONE] [INSTANCE_NAME]
+```
 
 **Tip**: If you want to know the IP of your instance, issue:
 ```
