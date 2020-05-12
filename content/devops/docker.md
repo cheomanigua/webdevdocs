@@ -3,6 +3,15 @@ title: "Docker"
 description: "Docker main concepts and reference"
 ---
 
+### Post installation
+
+After installation, you have to make the user member of group `docker`:
+```
+sudo usermod -aG docker $USER
+```
+
+### Commands
+
 - **docker version**: Checks docker version installed
 - **docker info**: Info about the docker environment 
 - **docker images**: Lists all available images in our host
