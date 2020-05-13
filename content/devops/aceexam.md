@@ -5,10 +5,10 @@ description: "Associate Cloud Engineer exam basic concepts"
 
 ## GCP Compute
 
-* App Engine: Run applications for you (no need to configure servers or other resourses) - PaaS
-* Compute Engine: virtual machines - IaaS
-* Kubernetes Engine: orchestration platform that manages clusters and organize how containers can run efficiently on a cluster
-* Cloud Functions: serverless, event-driven computing service
+* **App Engine**: Run applications for you (no need to configure servers or other resourses) - PaaS
+* **Compute Engine**: virtual machines - IaaS
+* **Kubernetes Engine**: orchestration platform that manages clusters and organize how containers can run efficiently on a cluster
+* **Cloud Functions**: serverless, event-driven computing service
 
 ## GCP Storage
 
@@ -131,17 +131,15 @@ Features:
 
 Services wraps Deployments which consists of Pods.
 
-  + Pods:	Mecanism to encapsulate and run a container
-  + Deployment: Especification of how pods run (pod replicas, etc)
-  + Services: Mecanism for service discovery. For example, a way of assosiating a particular IP with a particular pod.
+  + **Pods**:	Mecanism to encapsulate and run a container
+  + **Deployment**: Especification of how pods run (pod replicas, etc)
+  + **Services**: Mecanism for service discovery. For example, a way of assosiating a particular IP with a particular pod.
 
 ### Kubernetes Storage Objects
 
   + Persistent Volumes
   + Persistent Volume Claims
-
-http://34.71.94.255/
-
+	
 # App Engine
 
 * Platform as a Service
@@ -170,24 +168,6 @@ http://34.71.94.255/
 * Custom health checks
 * Higher CPU and memory limits
 * Applications are run in regional managed instance groups, not zonal managed instance groups
-
-### App Engine Deploy
-
-**Note**: A deployed App Engine instance cannot be deleted. It can be disabled from the graphic console. The only way to delete the instance is to delete the whole project.
-
-``` 
-gcloud components install app-engine-python
-or
-sudo apt-get install google-cloud-sdk-app-engine-python
-```
-
-``` 
-git clone https://github.com/GoogleCloudPlatform/python-docs-samples
-cd python-docs-samples/appengine/standard/hello_world
-gcloud app deploy app.yaml
-gcloud app browse
---copy url--
-```
 
 ### App Engine Scaling
 
@@ -367,10 +347,8 @@ Transfer Appliance in the new Data Transfer section of the Cloud Console.
 
 * Q: What service allows VPCs to share resources if the VPCs are in different organizations?
 * A: VPC Peering
-
 * Q: When creating a VPC and creating default subnets, where are the subnets created?
 * A: In all regions
-
 * Q: What two resources must be created to implement a GCP VPN?
 * A: VPN Gateway and a tunnel
 
@@ -451,15 +429,12 @@ When creating a DNS zone, by default two records are greated: NS and SOA
 
 * Q: What Stackdriver service is used to monitor application and host performance metrics?
 * A: Monitor
-
 * Q: What Stackdriver service is used to search for information in the audit log?
 * A: Logging
-
 * Q: What Stackdriver service is used to monitor variables in running programs?
 * A: Debug
-
--Q: What Stackdriver service is used to analyze performance issues in distributed systems?
--A: Trace
+* Q: What Stackdriver service is used to analyze performance issues in distributed systems?
+* A: Trace
 
 # What you need to know in depth
 
