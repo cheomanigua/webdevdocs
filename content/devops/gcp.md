@@ -35,7 +35,7 @@ gcloud services enable compute.googleapis.com
 gcloud compute instances list
 gcloud compute images list
 gcloud compute machine-types list
-gcloud compute instances create [INSTANCE_NAME] --boot-disk-device-name=debian-10 --zone=us-central1-a --machine-type=f1-micro
+gcloud compute instances create [INSTANCE_NAME] --boot-disk-device-name=debian-10 --zone=us-central1-a --boot-disk-type=pd-ssd --machine-type=f1-micro
 gcloud compute --project=[PROJECT_ID] firewall-rules update default-allow-http --allow tcp:80,tcp:3000,tcp:8000
 gcloud compute instances delete [INSTANCE_NAME] --zone=us-central1-a
 ```
@@ -56,3 +56,11 @@ curl ifconfig.me
 gcloud compute firewall-rules update default-allow-http --allow tcp:80,tcp:3000,tcp:8000
 ```
 
+## Kubernetes Engine
+
+```
+gcloud services enable container
+gcloud container clusters list
+gcloud container clusters create [CLUSTER_ID]  --zone=us-central1-a
+
+```
