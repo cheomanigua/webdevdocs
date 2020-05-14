@@ -3,8 +3,21 @@ title: "Google Cloud Platform"
 description: "Google Cloud Platform reference commands"
 ---
 
+## Command utils
+- **gcloud**: primary CLI tool to create and manage Google Cloud resource. ([Info](https://cloud.google.com/sdk/gcloud/)|[Install](https://cloud.google.com/sdk/install)|[Initialize](https://cloud.google.com/sdk/docs/initializing))
+- **beta**: Beta release level of **gcloud**. Commands are functionally complete, but may still have some outstanding issues. Breaking changes to these commands may be made without notice.
+- **alpha**: Alpha release level of **gcloud**. Commands are in early release and may change without notice.
+- **kubectl**: tool for controlling Kubernetes clusters. [Info](https://cloud.google.com/kubernetes-engine/docs/quickstart) | Installation: `gcloud components install kubectl`
+- **gsutil**: Python application that lets you access *Cloud Storage* from the command line. [[info](https://cloud.google.com/storage/docs/gsutil_install)]
+- **bq**: Enables running queries and manipulating datasets, tables, and entities in *BigQuery* through the command line. [[Info](https://cloud.google.com/bigquery/docs/quickstarts/quickstart-command-line)]
+- **core**:
+
+
 ## General information
 ```
+gcloud init
+gcloud info
+
 gcloud auth list
 gcloud auth login --no-launch-browser
 gcloud config list // check active account and project

@@ -14,7 +14,7 @@ description: "Associate Cloud Engineer exam basic concepts"
 
 * NoSQL Databases
   + **Bigtable**: wide column database
-  + **Datastore**: document database
+  + **Datastore**: document database designed to store and query JSON-like documents
   + **Firestore** (next generation): document database 
 * Relational Databases
   + **SQL**: Managed database service (MySQL and PostgreSQL)
