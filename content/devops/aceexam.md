@@ -502,4 +502,3 @@ When creating a DNS zone, by default two records are greated: NS and SOA
 |                   | ⬆️ | ⬆️ | ⬆️ | ⬆️ | software licensing requierements | Firewall rules              |   |
 |                   | ⬆️ | ⬆️ | ⬆️ | ⬆️ | migrating most existing systems  | Load Balancers              |   |
 |                   | ⬆️ | ⬆️ | ⬆️ | ⬆️ |                                  | VPNs                        |   |
-|                   | ⬆️ | ⬆️ | ⬆️ | ⬆️ |                                  |                             |   |
