@@ -481,7 +481,7 @@ When creating a DNS zone, by default two records are greated: NS and SOA
 * Cloud Dataflow: stream processing and batch processing platform
 * Deployment Manager
 
-## Technical requirements pull you down the stack
+## What to use
 
 |   |   |   |   |   | Technical Requirements  | Abstraction Layer  | Team & Organization  |
 |---|---|---|---|---|---|---|---|
