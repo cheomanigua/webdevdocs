@@ -76,6 +76,14 @@ And now we issue the build command:
 
 `docker image build -t nginx-mywebsite .`
 
-### Pushing our new own created image to Docker Hub
+### Pushing our new created image to Docker Hub
 
-`docker push nginx-mywebsite`
+```
+docker tag nginx-mywebsite nginx-mywebsite:v1
+docker tag nginx-mywebsite <dockerhubusername>/<nginx-mywebsite>|<fooimage>
+docker login
+docker push <dockerhubusername>/nginx-mywebsite
+docker logout
+```
+
+**Note**: It takes 24-48 hours for Docker Hub to index the image
