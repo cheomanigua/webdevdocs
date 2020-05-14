@@ -483,19 +483,23 @@ When creating a DNS zone, by default two records are greated: NS and SOA
 
 ## Technical requirements pull you down the stack
 
-|   |   |   |   |   |   |   |   |
+|   |   |   |   |   | Technical Requirements  | Abstraction Layer  | Team & Organization  |
 |---|---|---|---|---|---|---|---|
-| Cloud Functions   | ⬆️ |   |   |   |                                  | Events                      | Team is mostly |
+| Cloud Functions   | ➡️ |   |   |   |                                  | Events                      | Team is mostly |
 |                   | ⬆️ |   |   |   |                                  | Function definitions        |  dev focused |
+|                   | ⬆️ |   |   |   |                                  |                             |   |
 | App Engine        | ⬆️ | ➡️ |   |   | Support any programing language  | Code                        | Team is mostly
 |                   | ⬆️ | ⬆️ |   |   | Runs in containers               | HTTP requests               |  dev focused |
+|                   | ⬆️ | ⬆️ |   |   |                                  |                             |   |
 | Container Engine  | ⬆️ | ⬆️ | ➡️ |   | Hybrid                           | Applications                | Team integration: |
 |                   | ⬆️ | ⬆️ | ⬆️ |   | Need specific OS                 | not computers or containers |  DevOps |
 |                   | ⬆️ | ⬆️ | ⬆️ |   | Network protocols beyond HTTP/S  | What programs?              |  Security work together |
 |                   | ⬆️ | ⬆️ | ⬆️ |   |                                  | How are they connected?     |  Org open to arch updates |
+|                   | ⬆️ | ⬆️ | ⬆️ |   |                                  |                             |   |
 | Compute Engine    | ⬆️ | ⬆️ | ⬆️ | ➡️ | GPUs                             | Your software               | Adaptable to various |
 |                   | ⬆️ | ⬆️ | ⬆️ | ⬆️ | need specific kernel             | OS / disk image             | team structures and |
 |                   | ⬆️ | ⬆️ | ⬆️ | ⬆️ | Windows                          | CPU, RAM, Disk              | tool preferences |
 |                   | ⬆️ | ⬆️ | ⬆️ | ⬆️ | software licensing requierements | Firewall rules              |   |
 |                   | ⬆️ | ⬆️ | ⬆️ | ⬆️ | migrating most existing systems  | Load Balancers              |   |
 |                   | ⬆️ | ⬆️ | ⬆️ | ⬆️ |                                  | VPNs                        |   |
+|                   | ⬆️ | ⬆️ | ⬆️ | ⬆️ |                                  |                             |   |
