@@ -13,21 +13,28 @@ sudo usermod -aG docker $USER
 ### Commands
 
 - **docker version**: Checks docker version installed
-- **docker info**: Info about the docker environment 
+- **docker info**: Info about the docker environment
+
+#### Images
 - **docker images**: Lists all available images in our host
 - **docker pull nginx**: Pull the nginx image from docker hub to our host
 - **docker rmi nginx**: Removes nginx image from our host
+
+#### Containers
 - **docker ps**: Lists all running containers
 - **docker ps -a**: Lists all containers, running or not
 - **docker run nginx**: Starts a container from the nginx image. If the image is not in our host, it will pull nginx image from docker hub and then run the nginx container
 - **docker run -d nginx**: Starts a container in the background from the nginx image. If the image is not in our host, it will pull nginx image from docker hub and then run the nginx container
 - **docker stop 'container_name'**: Stops a running container
 - **docker rm 'container_name'**: Remove a non running container 
-- **docker rm 'container_name' -f**: Remove a container 
+- **docker rm 'container_name' -f**: Remove a container, running or not 
 - **docker rm $(docker ps -aq)**: Remove all non running containers
-- **docker rm $(docker ps -aq) -f**: Remove all containers
+- **docker rm $(docker ps -aq) -f**: Remove all containers, running or not
+- **docker exec -it 'container name' bash**: Access container file system command prompt
+- **docker create nginx top**: Creates a writeable container layer over the specified image and prepares it for running the specified command.
+
+#### Miscelaneus
 - **docker login -u "username"**: Access your Docker Hub repository
-- **docker exec -it 'container name' bash**: Access container file system command prompt 
 
 ### Creating a nginx container
 
@@ -87,3 +94,7 @@ docker logout
 ```
 
 **Note**: It takes 24-48 hours for Docker Hub to index the image
+
+# Tips and Hints
+
+-  If there's a need to run Docker containers in production without Kubernetes, use the `--init` flag upon `docker run`. This injects a `PID 1` process, which handles its terminated children correctly, into the container to run.
