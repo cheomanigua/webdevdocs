@@ -76,8 +76,8 @@ The above command does the following:
 
 * Create a **nginx** container in the background called **mywebsite**
 * Use port 8080 to access the website
-* Mount the container directory `/usr/share/nginx/html` on to local directory `/home/user/mywebsite/src/` where the source code of the site is held. 
-* We can now create **index.html** and other files and directories directly in `/usr/share/nginx/html`, and it will update automatically.
+* Mount the container directory `/var/www/html/` on to local directory `/home/user/mywebsite/src/` where the source code of the site is held. 
+* We can now create and edit **index.php** and other files and directories directly in `/home/user/mywebsite/src/`, and it will update automatically.
 * We can visit the website on **localhost:8080**
 
 ### Volumes for persistent storage
