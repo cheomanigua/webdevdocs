@@ -40,15 +40,24 @@ gcloud services enable SERVICE_NAME
 
 ## Compute Engine VM instance
 
-In order to create a Compute Engine VM instance we must enable the service **compute.googleapis.com**
+In order to create a Compute Engine VM instance we must enable the service **compute.googleapis.com**. Also, be sure your account is set into the project.
 
 ```
+gcloud config set project [PROJECT_ID]
 gcloud services enable compute.googleapis.com
+
 gcloud compute instances list
 gcloud compute images list
 gcloud compute machine-types list
+
 gcloud compute instances create [INSTANCE_NAME] --boot-disk-device-name=debian-10 --zone=us-central1-a --boot-disk-type=pd-ssd --machine-type=f1-micro
-gcloud compute --project=[PROJECT_ID] firewall-rules update default-allow-http --allow tcp:80,tcp:3000,tcp:8000
+
+gcloud compute instances add-tags [INSTANCE_NAME] --tags http-server,https-server --zone=us-central1-a
+
+gcloud compute --project=[PROJECT_ID] firewall-rules create default-allow-http --allow tcp:80,tcp:3000,tcp:8000
+
+gcloud compute --project=[PROJECT_ID] firewall-rules create default-allow-https --allow tcp:80,tcp:3000,tcp:8000
+
 gcloud compute instances delete [INSTANCE_NAME] --zone=us-central1-a
 ```
 
@@ -60,6 +69,23 @@ gcloud compute ssh --project [PROJECT_ID] --zone [ZONE] [INSTANCE_NAME]
 **Tip**: If you want to know the IP of your instance, issue:
 ```
 curl ifconfig.me
+```
+
+### Creating swap partition for VM micro instance
+```
+sudo fallocate -l 1G /swapfile
+sudo dd if=/dev/zero of=/swapfile bs=1024 count=1048576
+sudo chmod 600 /swapfile
+sudo mkswap /swapfile
+sudo swapon /swapfile
+```
+Edit `/etc/fstab` and append this line:
+```
+/swapfile swap swap defaults 0 0
+```
+Now issue:
+```
+sudo mount -a
 ```
 
 ## Firewall rules
