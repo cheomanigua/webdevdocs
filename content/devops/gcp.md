@@ -88,6 +88,18 @@ Now issue:
 sudo mount -a
 ```
 
+## Managed Kubernetes
+
+```
+gcloud services enable container.googleapis.com
+gcloud config set compute/zone us-central1-a
+gcloud container clusters create [CLUSTER_NAME]
+gcloud container clusters get-credentials [CLUSTER_NAME] //configure kubectl
+kubectl create deployment [DEPLOYMENT_NAME] --image=gcr.io/google-sample/hello-app:1.0
+kubectl expose deployment [DEPLOYMENT_NAME] --type LoadBalancer --port 80 --target-port 8080
+kubectl get service [DEPLOYMENT_NAME]
+```
+
 ## Firewall rules
 
 ```
