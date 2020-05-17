@@ -11,6 +11,7 @@ description: "Google Cloud Platform reference commands"
 - **gsutil**: Python application that lets you access **Cloud Storage** from the command line. [[info](https://cloud.google.com/storage/docs/gsutil_install)]
 - **bq**: Enables running queries and manipulating datasets, tables, and entities in **BigQuery** through the command line. [[Info](https://cloud.google.com/bigquery/docs/quickstarts/quickstart-command-line)]
 
+**Note**: To manage your gcloud installation, you can see the commands available by typing `gcloud components`.
 
 ## General information
 ```
