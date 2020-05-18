@@ -23,6 +23,7 @@ gcloud auth login --no-launch-browser
 gcloud config list // check active account and project
 gcloud config set account john@doe.com // switch to specified account
 gcloud config set project [PROJECT_ID] // switch to specified project
+gcloud config set compute/zone [ZONE] // set default zone for gcloud
 
 gcloud projects list
 gcloud projects describe [PROJECT_ID]
@@ -89,16 +90,46 @@ Now issue:
 sudo mount -a
 ```
 
-## Managed Kubernetes
+## Kubernetes Engine
+
+### Set default project and zone
+
+To work more confortably, we can set the default project and zone so we don't need to intruduce them every time we issue a command:
 
 ```
-gcloud services enable container.googleapis.com
+gcloud config set project [PROJECT_ID]
 gcloud config set compute/zone us-central1-a
-gcloud container clusters create [CLUSTER_NAME]
-gcloud container clusters get-credentials [CLUSTER_NAME] //configure kubectl
-kubectl create deployment [DEPLOYMENT_NAME] --image=gcr.io/google-sample/hello-app:1.0
+```
+
+### Create cluster
+```
+gcloud container clusters list
+gcloud container clusters create [CLUSTER_ID]
+gcloud container clusters get-credentials [CLUSTER_NAME] //configure kubectl so we can interact directly with the cluster
+```
+
+**Note**: By default, GKE creates 3 nodes. You can specify the number of nodes by adding the flag `--num-nodes=NUM_NODES`
+
+### Deploy image
+
+```
+kubectl get nodes
+kubectl create deployment [DEPLOYMENT_NAME] --image=httpd:latest
+kubectl get pods
 kubectl expose deployment [DEPLOYMENT_NAME] --type LoadBalancer --port 80 --target-port 8080
-kubectl get service [DEPLOYMENT_NAME]
+kubectl get services
+```
+
+`kubectl create deployoment` command will get the Apache image from Docker Hub. If we don't specify a registry, by default GKE search in Docker Hub. You can use a diffent registry, like in this example:
+```
+kubectl create deployment [DEPLOYMENT_NAME] --image=gcr.io/google-sample/hello-app:1.0
+```
+
+### Scale the deployment
+
+```
+kubectl scale deployment --replicas=3 [DEPLOYMENT_NAME]
+kubectl get pods
 ```
 
 ## Firewall rules
@@ -107,12 +138,6 @@ kubectl get service [DEPLOYMENT_NAME]
 gcloud compute firewall-rules update default-allow-http --allow tcp:80,tcp:3000,tcp:8000
 ```
 
-## Kubernetes Engine
-
-```
-gcloud services enable container
-gcloud container clusters list
-gcloud container clusters create [CLUSTER_ID]  --zone=us-central1-a
 
 ```
 
