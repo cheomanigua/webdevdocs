@@ -30,9 +30,9 @@ OpenSSH can install a client and also a server.
 
 `$ ssh-keygen`
 
-- Copy the Public Key to remote machine:
+- Copy the Public Key to remote machine(example: id_rsa.pub):
 
-`$ ssh-copy-id`
+`$ ssh-copy-id -i id_rsa.pub user@remote_machine_ip`
 
 - How to copy a file from local to remote (from local shell):
 
