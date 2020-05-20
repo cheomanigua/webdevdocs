@@ -477,8 +477,8 @@ When creating a DNS zone, by default two records are greated: NS and SOA
 
 ## Know when to use
 
-* Cloud Datproc: managed Hadoop and Spark service
-* Cloud Dataflow: stream processing and batch processing platform
+* Cloud Datproc: managed Hadoop (Apache Pig, Hive and Spark)
+* Cloud Dataflow: stream processing and batch processing platform (Apache Beam)
 * Deployment Manager
 
 ## What to use

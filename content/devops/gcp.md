@@ -36,6 +36,7 @@ gcloud projects get-iam-policy [PROJECT_ID]
 gcloud projects create [PROJECT_ID] --name="My Project"
 gcloud beta billing accounts list
 gcloud beta billing projects link [PROJECT_ID] --billing-account=0X0X0X-0X0X0X-0X0X0X
+gcloud config set project [PROJECT_ID]
 gcloud services list --available
 gcloud services enable SERVICE_NAME
 ```
@@ -136,30 +137,83 @@ kubectl scale deployment --replicas=3 [DEPLOYMENT_NAME]
 kubectl get pods
 ```
 
+
+## App Engine 
+
+### App Engine Deploy
+
+**Note**: A deployed App Engine instance cannot be deleted. It can be disabled from the console. The only way to delete the instance is to delete the whole project.
+
+``` 
+gcloud services enable appengine.googleapis.com
+git clone https://github.com/cheomanigua/express-chat.git
+cd express-chat
+touch app.yaml
+echo "runtime: nodejs12" > app.yaml
+gcloud app deploy app.yaml
+gcloud app browse
+--copy url--
+```
+
+
 ## Firewall rules
 
 ```
 gcloud compute firewall-rules update default-allow-http --allow tcp:80,tcp:3000,tcp:8000
 ```
 
+## Build a Custom Network
 
-## App Engine 
+### Create the Custom Network and Subnets
 
-### App Engine Deploy
-
-**Note**: A deployed App Engine instance cannot be deleted. It can be disabled from the graphic console. The only way to delete the instance is to delete the whole project.
-
-``` 
-gcloud components install app-engine-python
-or
-sudo apt-get install google-cloud-sdk-app-engine-python
+1. Create the network:
+```
+gcloud compute networks create [MY-NETWORK] --subnet-mode custom
 ```
 
-``` 
-gcloud services enable appengine.googleapis.com
-git clone https://github.com/GoogleCloudPlatform/python-docs-samples
-cd python-docs-samples/appengine/standard/hello_world
-gcloud app deploy app.yaml
-gcloud app browse
---copy url--
+2. Create the subnet:
+```
+gcloud compute networks subnets create [MY-SUBNET-A] --network [MY-NETWORK] --region us-central1 --range 10.0.1.0/24
+ 
+gcloud compute networks subnets create [MY-SUBNET-B] --network [MY-NETWORK] --region europe-west1 --range 10.0.2.0/24
+ ```
+ 
+3. List the created network:
+```
+gcloud compute networks subnets list --network [MY-NETWORK]
+```
+
+### Define the Firewall Rule
+```
+gcloud compute firewall-rules create [MY-ALLOW-SSH] --allow tcp:22,icmp --network [MY-NETWORK]
+```
+
+### Spin Up the VM Instances
+
+1. Create the Compute Engine instances by running the following commands:
+```
+gcloud compute instances create [MY-VM-A] --subnet [MY-SUBNET-A] --zone us-central1-a
+
+gcloud compute instances create [MY-VM-B] --subnet [MY-SUBNET-B] --zone europe-west1-b
+```
+
+### Test Via SSH
+
+1. From the Compute Engine VM console page, click the SSH button for the `[MY-VM-A]` instance to open its SSH terminal.
+2. In the SSH terminal, run the following command to ping the VM instance in Europe:
+```
+ping -c 3 [MY-VM-B_EXTERNAL_IP]
+```
+
+## Pub/Sub
+
+1. Create a **topic**
+2. Create a **suscription** and during creation select a **topic** to subscribe
+4. Publish a message from the **topic**
+```
+gcloud pubsub topics publish [TOPIC] --message "this is a message"
+```
+5. Pull the message from the **subscription**
+```
+gcloud pubsub subscriptions pull [SUBSCRIPTION]
 ```
