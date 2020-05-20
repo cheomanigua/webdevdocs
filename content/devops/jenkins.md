@@ -62,7 +62,7 @@ Use these credentials to follow along the tutorial
 
   | CI Server | Production Webserver | Staging Webserver |
   | :---: | :---: | :---: |
-  | [3.87.83.22](3.87.83.22) | [34.224.31.157](34.224.31.157) | [54.147.220.55](54.147.220.55) |
+  | [3.87.83.22](http://3.87.83.22) | [34.224.31.157](http://34.224.31.157) | [54.147.220.55](http://54.147.220.55) |
   | cloud_user | cloud_user | cloud_user |
   | NNjnuLHDKi | NNjnuLHDKi | NNjnuLHDKi |
   | 10.0.1.97 | 10.0.1.86 | 10.0.1.141 |
