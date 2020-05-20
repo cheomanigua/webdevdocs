@@ -50,13 +50,13 @@ Then, click the **branches**, where we’ll see there are four branches listed.
 
 #### Roll Back the Broken Deployment
 
-  1.  Back on the Jenkins page, click on build **#2**.
-  2.  Click **Replay** and then **Run**.
-  3.  While that is building, check the *staging webserver* IP tab. It should revert back to the correct text.
-  4.  On the Jenkins page, hover over the *DeployToProd* section, and select **Proceed**.
-  5.  Once updated, our *production webserver* IP tab will show the correct text, meaning we have performed a successful rollback.
+  1. Back on the Jenkins page, click on build **#2**.
+  2. Click **Replay** and then **Run**.
+  3. While that is building, check the *staging webserver* IP tab. It should revert back to the correct text.
+  4. On the Jenkins page, hover over the *DeployToProd* section, and select **Proceed**.
+  5. Once updated, our *production webserver* IP tab will show the correct text, meaning we have performed a successful rollback.
 
-  ## Credentials
+## Credentials
 
 Use these credentials to follow along the tutorial
 
