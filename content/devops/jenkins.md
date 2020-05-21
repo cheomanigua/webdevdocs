@@ -37,7 +37,7 @@ Then, click the **branches**, where we’ll see there are four branches listed.
   12.  Back in the Jenkins window, hover over the *DeployToProd* section and select **Proceed**.
   13.  Refresh our tab for the *production webserver* IP. We should see the updated text.
 
-#### Run the “Broken” Deployment
+### Run the “Broken” Deployment
 
   1.  Back on GitHub, in the **branches** tab, click **New pull request** for the *broken-feature* branch.
   2.  Set the *base fork* dropdown to your personal fork.
@@ -48,7 +48,7 @@ Then, click the **branches**, where we’ll see there are four branches listed.
   7.  Once it gets to the *DeployToProd* stage, hover over that section and select **Proceed**.
   8.  Refresh the tab with the *production webserver* IP address. We should see a misspelled word.
 
-#### Roll Back the Broken Deployment
+### Roll Back the Broken Deployment
 
   1. Back on the Jenkins page, click on build **#2**.
   2. Click **Replay** and then **Run**.
