@@ -2,7 +2,7 @@
 
 1. Download the fonts from your preferred website. For this example, we download the fonts **futura-pt-book.otf**
 2. Move the fonts to your preferred directory in your site. For this example: `/resources`
-3. Add these lines on `index.html`. Note that `<style>` block is placed before the `<link>``tag for the css file.
+3. Add these lines on `index.html`. Note that `style` block is placed before the `lin>``tag for the css file.
 ```
 <style>
   @font-face {
