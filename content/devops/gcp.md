@@ -239,3 +239,5 @@ gcloud pubsub subscriptions pull [SUBSCRIPTION]
 
 That's it. You have now your static website hosted in Cloud Store.
 
+Further information at [Codelabs](https://codelabs.developers.google.com/codelabs/cloud-webapp-hosting-gcs/index.html#0).
+
