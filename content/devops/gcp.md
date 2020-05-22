@@ -229,7 +229,7 @@ gcloud pubsub subscriptions pull [SUBSCRIPTION]
 5. After verifying the domain ownerhips, continue with the bucket creation. You can leave the rest of steps with the default options.
 6. Once the bucket is created, go to the tab **Permissions**.
 7. Click on **Add members** button.
-8. In the **New members** text field, type `allUsers`.
+8. In the **New members** text field, type `allUsers`
 9. In the **Select a role** drop down menu, select *Cloud Storage - Storage Object Viewer*.
 10. Click on **Save button**.
 11. Upload your local site files and folders by clicking on the buttons **Upload files** and **Upload folder**. Note that the index page has to be in the root, not in a folder.
