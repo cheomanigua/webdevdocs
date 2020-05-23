@@ -117,6 +117,15 @@ docker logout
 
 **Note**: It takes 24-48 hours for Docker Hub to index the image
 
+
+## Docker compose
+
+```
+docker-compose up -d
+docker-compose down
+docker-compose down --volumes
+```
+
 # Tips and Hints
 
 * If there's a need to run Docker containers in production without Kubernetes, use the `--init` flag upon `docker run` . This injects a `PID 1` process, which handles its terminated children correctly, into the container to run.
