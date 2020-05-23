@@ -95,3 +95,30 @@ services:
 ```
 
 We can now access *Traefik* dashboard on [traefik.com](traefik.com) and the *Apache* server at [apache.com](apache.com).
+
+### Enable authentication to access Traefik dashboard
+
+Anybody can access your *Traefik* dashboard unless you enable authentication.
+
+In the **traefik.toml** file, edit the [entry.Points.dashboard] and add [entryPoints.dashboard.auth.basic]:
+
+**traefik.toml**
+```
+...
+
+[entryPoints]
+  [entryPoints.http]
+  address = ":80"
+
+  [entryPoints.dashboard]
+  address = ":8080"
+
+    [entryPoints.dashboard.auth.basic]
+    # user/password
+    users =["user:password"]
+```
+
+You **HAVE** to generate the user and password by issuing:
+```
+htpasswd -n -B myusername
+```
