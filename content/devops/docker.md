@@ -126,6 +126,14 @@ docker-compose down
 docker-compose down --volumes
 ```
 
+### Scaling
+
+Scaling services with *docker-compose* is as simple as:
+
+```
+docker-compose up -d --scale myservice=3
+```
+
 # Tips and Hints
 
 * If there's a need to run Docker containers in production without Kubernetes, use the `--init` flag upon `docker run` . This injects a `PID 1` process, which handles its terminated children correctly, into the container to run.

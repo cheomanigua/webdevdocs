@@ -1,3 +1,5 @@
+import { Message } from '@theme-ui/components';
+
 ### Set up docker-compose file
 
 **Note**: Don't name any service if you want to scale them.
@@ -125,4 +127,13 @@ htpasswd -n -B myusername
 
 ### Scaling with Traefik
 
-When using *Traefik* DO NOT assign ports to other services. Otherwise service scaling will fail. In the *docker-compose* file only assign ports for *Traefik* service.
+<Message variant='important'>
+  🔔️ <b>Important</b> <br/>
+  When using <i>Traefik</i> <strong>DO NOT</strong> assign ports to other services. Otherwise service scaling will fail. In the <i>docker-compose</i> file only assign ports for <i>Traefik</i> service.
+</Message>
+
+Scaling with *docker-compose* and *Traefik* is as simple as:
+
+```
+docker-compose up -d --scale myservice=3
+```
