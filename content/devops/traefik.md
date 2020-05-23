@@ -122,3 +122,7 @@ You **HAVE** to generate the user and password by issuing:
 ```
 htpasswd -n -B myusername
 ```
+
+### Scaling with Traefik
+
+When using *Traefik* DO NOT assign ports to other services. Otherwise service scaling will fail. In the *docker-compose* file only assign ports for *Traefik* service.
