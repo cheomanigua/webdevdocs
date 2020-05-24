@@ -241,3 +241,18 @@ That's it. You have now your static website hosted in Cloud Store.
 
 Further information at [Codelabs](https://codelabs.developers.google.com/codelabs/cloud-webapp-hosting-gcs/index.html#0).
 
+### LAMP + Wordpres
+```
+sudo apt install apache2 mariadb-server php-fpm libapache2-mod-php php-mysql
+sudo apt install php-curl php-gd php-mbstring php-mcrypt php-xml php-xmlrpc
+sudo mysql_secure_installation
+```
+
+To enable PHP 7.3 FPM in Apache2 do:
+```
+a2enmod proxy_fcgi setenvif
+a2enconf php7.3-fpm
+```
+
+Edit /var/www/html/.htaccess and add:
+`DirectoryIndex index.php`
