@@ -80,7 +80,11 @@ The above command does the following:
 * We can now create and edit **index.php** and other files and directories directly in `/home/user/mywebsite/src/`, and it will update automatically.
 * We can visit the website on **localhost:8080**
 
-### Volumes for persistent storage
+### Delete unused or lost volumes
+```
+$ docker volume rm $(docker volume ls -qf dangling=true)
+$ docker volume ls -qf dangling=true | xargs -r docker volume rm
+```
 
 ## Building our own image
 
