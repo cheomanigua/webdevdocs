@@ -91,6 +91,18 @@ Now issue:
 sudo mount -a
 ```
 
+### Copy files/directorys from local to VM instance
+
+#### Files
+```
+gcloud compute scp index.html [INSTANCE_NAME]:/home/myuser/
+```
+
+#### Directories
+```
+gcloud compute scp --recurse css/ [INSTANCE_NAME]:/home/myuser/
+```
+
 ## Kubernetes Engine
 
 In GCP, you can deploy a single container, or you can deploy a cluster. By default a cluster is created with three nodes, being one of the nodes the master node.
@@ -222,7 +234,7 @@ gcloud pubsub subscriptions pull [SUBSCRIPTION]
 
 1. Start bucket creation by clicking **Create a bucket**.
 2. Name the bucket with the domain name of your static site.
-3. Verify domain ownership by adding the TXT to your domain host.
+3. Verify domain ownership by adding the TXT to your domain host. If the option to verify the domain does not appear, open a new tab an go to [https://search.google.com](https://search.google.com) and add a new property by clicking on the drop down menu of the upper left corner with the domain name.
 4. After verifiying the domain, create the following CNAME in your domain host: 
   - `yourdomain.com` pointing to `c.storage.googleapis.com`
   - `www.yourdomain.com` pointing to `c.storage.googleapis.com`
@@ -232,16 +244,25 @@ gcloud pubsub subscriptions pull [SUBSCRIPTION]
 8. In the **New members** text field, type `allUsers`
 9. In the **Select a role** drop down menu, select *Cloud Storage - Storage Object Viewer*.
 10. Click on **Save button**.
-11. Upload your local site files and folders by clicking on the buttons **Upload files** and **Upload folder**. Note that the index page has to be in the root, not in a folder.
-12. Go back to previous page by clicking on the arrow besides **Bucket details**.
-13. On the right of the list of buckets, there are 3 vertical dots for each bucket. Click on the three dots for your bucket and select **Edit website configuration**.
-14. Select the index page for your static site and click **Save**.
+11. Go back to the **Objects** tab.
+12. Upload your local site files and folders by clicking on the buttons **Upload files** and **Upload folder**. Note that the index page has to be in the root, not in a folder.
+13. Go back to previous page by clicking on the arrow next to **Bucket details**.
+14. On the right of the list of buckets, there are 3 vertical dots for each bucket. Click on the three dots for your bucket and select **Edit website configuration**.
+15. Select the index page for your static site and click **Save**.
 
 That's it. You have now your static website hosted in Cloud Store.
 
 Further information at [Codelabs](https://codelabs.developers.google.com/codelabs/cloud-webapp-hosting-gcs/index.html#0).
 
-### LAMP + Wordpres
+### Setting up a load balancer with backend buckets for CDN purposes
+
+**Note**: The external HTTP(S) load balancer doesn't automatically balance traffic across backend buckets based on the user's region. Requests to /static/us/object always go to your US bucket, and requests to /static/eu/object always go to your EU bucket. The point of setting up the load balancer with buckets is to add a CDN.
+
+You can set up a load balancer for your bucket static site in order to add a CDN. Follow instructions at [Setting up a load balancer with backend buckets](https://cloud.google.com/load-balancing/docs/https/ext-load-balancer-backend-buckets)
+
+
+
+## LAMP + Wordpres
 ```
 sudo apt install apache2 mariadb-server php-fpm libapache2-mod-php php-mysql
 sudo apt install php-curl php-gd php-mbstring php-mcrypt php-xml php-xmlrpc
