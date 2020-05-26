@@ -254,13 +254,35 @@ That's it. You have now your static website hosted in Cloud Store.
 
 Further information at [Codelabs](https://codelabs.developers.google.com/codelabs/cloud-webapp-hosting-gcs/index.html#0).
 
-### Setting up a load balancer with backend buckets for CDN purposes
+### Setting up a load balancer for backend buckets for CDN and SSL purposes
 
-**Note**: The external HTTP(S) load balancer doesn't automatically balance traffic across backend buckets based on the user's region. Requests to /static/us/object always go to your US bucket, and requests to /static/eu/object always go to your EU bucket. The point of setting up the load balancer with buckets is to add a CDN.
+**Note**: The external HTTP(S) load balancer doesn't automatically balance traffic across backend buckets based on the user's region. Requests to /static/us/object always go to your US bucket, and requests to /static/eu/object always go to your EU bucket.
 
+The purpose of setting up a load balancer with buckets is to add a CDN and/or SSL certificates.
+
+#### CDN 
 You can set up a load balancer for your bucket static site in order to add a CDN. Follow instructions at [Setting up a load balancer with backend buckets](https://cloud.google.com/load-balancing/docs/https/ext-load-balancer-backend-buckets)
 
+#### SSL Certificate
 
+You cannot add SSL certificates directly to your bucket, but you can add a SSL certificates in your external HTTPS load balancer IP address. For this example, we are going to use Google-managed SSL certificates. Follow the instructions at: [Using Google-managed SSL certificates](https://cloud.google.com/load-balancing/docs/ssl-certificates/google-managed-certs)
+
+**IMPORTANT**: Don't forget to add an **A record** in your domain host pointing to the load balancer IP address.
+
+### Set up automatic builds from GitHub
+
+If you don't feel like uploading manually a file to your bucket everytime you make a change, you can setup automatic builds with *Google Build*.
+
+You will attach your *GitHub* repository to a trigger setup in *Google Build*. Everyting you update your GitHub repository, Google Build with update the bucket.
+
+Follow the instructions at [Automated static website publishing with Cloud Build](https://cloud.google.com/community/tutorials/automated-publishing-cloud-build)
+
+The `cloudbuild.yaml` file shoud be like this:
+```
+steps:
+  - name: gcr.io/cloud-builders/gsutil
+  args: ["-m", "rsync", "-r", "-c", "-d", ".", "gs://your.bucket.url"]
+```
 
 ## LAMP + Wordpres
 ```
