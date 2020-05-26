@@ -258,7 +258,7 @@ Further information at [Codelabs](https://codelabs.developers.google.com/codelab
 
 **Note**: The external HTTP(S) load balancer doesn't automatically balance traffic across backend buckets based on the user's region. Requests to /static/us/object always go to your US bucket, and requests to /static/eu/object always go to your EU bucket.
 
-The purpose of setting up a load balancer with buckets is to add a CDN and/or SSL certificates.
+The purpose of setting up a load balancer with buckets is to add a *CDN* and/or *SSL certificates*. Also, note that adding a load balancer to a bucket eliminates the need to use a CNAME to access the bucket as we saw in the step 4 of section *Host a static site in Cloud Storage*.
 
 #### CDN 
 You can set up a load balancer for your bucket static site in order to add a CDN. Follow instructions at [Setting up a load balancer with backend buckets](https://cloud.google.com/load-balancing/docs/https/ext-load-balancer-backend-buckets)
