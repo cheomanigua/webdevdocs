@@ -25,8 +25,8 @@ import { Message } from '@theme-ui/components';
 - Jump forward/backward one paragraph -\> **}** / **{**
 - Jump to the top/middle/bottom of the page -\> **Shift** + **h** / **m** / **l**
 - Jump forward/backward one page -\> **Ctrl** + **f**  / **b**
-- Move line where cursor is to the /top/middle/bottom of the page -\> **zt** / **zz** / **zb**
-- Move to the beginning/end of document -\> **gg** / **shift** + **g**
+- Move cursor to the /top/middle/bottom of the page -\> **zt** / **zz** / **zb**
+- Move cursor to the beginning/end of document -\> **gg** / **shift** + **g**
 
 ### Line numbers
 - Activate absolute line numbers -\> **:set nu**
@@ -88,6 +88,8 @@ Examples:
 - paste line above -\> **shift** + **p**
 - create new line below -\> **o**
 - create a new line above -\> **shift** + **o**
+- Move line above -\> **:m -1**
+- Move line below -\> **:m +1**
 - undo -\> **u**
 - redo -\> **ctrl** + **r**
 - delete character -\> **x**
