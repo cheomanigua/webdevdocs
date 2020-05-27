@@ -100,6 +100,8 @@ Examples:
 - Format block of text -\> **Shift** + **v** + *text selection* + **=**
 - Indent current line -\> **<<** or **>>**
 - Indent current line plus 2 lines below -\> **3<<** or **3>>**
+- Select a range of lines and indent -\> **:4,17<**
+- Repeat command mode last command -\> **@:**
 
 #### Special replacement operation
 How to replace *word1* for *word2* X number of times:
