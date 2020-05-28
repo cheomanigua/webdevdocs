@@ -4,12 +4,12 @@ description: "Google Cloud Platform reference commands"
 ---
 
 ## Command utils
-- **gcloud**: primary CLI tool to create and manage Google Cloud resource. [[Info](https://cloud.google.com/sdk/gcloud/) | [Install](https://cloud.google.com/sdk/install) | [Initialize](https://cloud.google.com/sdk/docs/initializing)]
+- **gcloud**: primary CLI tool to create and manage Google Cloud resource. [Info](https://cloud.google.com/sdk/gcloud/) | [Install](https://cloud.google.com/sdk/install) | [Initialize](https://cloud.google.com/sdk/docs/initializing)
 - **beta**: Beta release level of **gcloud**. Commands are functionally complete, but may still have some outstanding issues. Breaking changes to these commands may be made without notice.
 - **alpha**: Alpha release level of **gcloud**. Commands are in early release and may change without notice.
 - **kubectl**: tool for controlling Kubernetes clusters. [[Info]](https://cloud.google.com/kubernetes-engine/docs/quickstart) | Installation: `gcloud components install kubectl`
-- **gsutil**: Python application that lets you access **Cloud Storage** from the command line. [[info](https://cloud.google.com/storage/docs/gsutil_install)]
-- **bq**: Enables running queries and manipulating datasets, tables, and entities in **BigQuery** through the command line. [[Info](https://cloud.google.com/bigquery/docs/quickstarts/quickstart-command-line)]
+- **gsutil**: Python application that lets you access **Cloud Storage** from the command line. [info](https://cloud.google.com/storage/docs/gsutil_install)
+- **bq**: Enables running queries and manipulating datasets, tables, and entities in **BigQuery** through the command line. [Info](https://cloud.google.com/bigquery/docs/quickstarts/quickstart-command-line)
 
 **Note**: To manage your gcloud installation, you can see the commands available by typing `gcloud components`.
 
@@ -40,6 +40,13 @@ gcloud config set project [PROJECT_ID]
 gcloud services list --available
 gcloud services enable SERVICE_NAME
 ```
+## Tip
+After creating a project, set the created project as default so you don't need to specify the project in every command. Also, specify the zone or region for the same reason:
+```
+gcloud config set project [PROJECT_ID] // switch to specified project
+gcloud config set compute/zone [ZONE] // set default zone for gcloud
+```
+
 
 ## Compute Engine VM instance
 
