@@ -82,8 +82,10 @@ Examples:
 #### Common commands
 - repeat last operation -\> **.**
 - copy selection -\> **y**
-- copy line -\> **yy**
 - copy character-\> **yl**
+- copy word -\> **yiw**
+- copy line -\> **yy**
+- copy paragraph -\> **yap**
 - delete/cut selection -\> **d** 
 - delete/cut word -\> **dw** 
 - delete/cut line -\> **dd**
