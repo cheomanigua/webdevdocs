@@ -74,13 +74,16 @@ Motion specifies where the Operators operate:
 
 Examples:
 
-- Delete everything between a tag, type: `dit`
+- Delete everything between a tag\*, type: `dit`
 - Delete everything until it finds a dot: `df.`
+
+\* *It will apply inside a tag or to the nearest tag*
 
 #### Common commands
 - repeat last operation -\> **.**
 - copy selection -\> **y**
 - copy line -\> **yy**
+- copy character-\> **yl**
 - delete/cut selection -\> **d** 
 - delete/cut word -\> **dw** 
 - delete/cut line -\> **dd**
@@ -97,6 +100,7 @@ Examples:
 - delete character and switch to insert mode -\> **s**
 - Switch to 'Insert' mode -\> **i**
 - Exit 'Insert' mode -\> **ESC**
+- Increase/Decrease the first number in a line: **Ctrl** + **a**/**x**
 - Format block of text -\> **Shift** + **v** + *text selection* + **=**
 - Indent current line -\> **<<** or **>>**
 - Indent current line plus 2 lines below -\> **3<<** or **3>>**
