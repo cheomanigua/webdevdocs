@@ -109,14 +109,7 @@ gcloud compute scp index.html [INSTANCE_NAME]:/home/myuser/
 ```
 gcloud compute scp --recurse css/ [INSTANCE_NAME]:/home/myuser/
 ```
-
-## Kubernetes Engine
-
-In GCP, you can deploy a single container, or you can deploy a cluster. By default a cluster is created with three nodes, being one of the nodes the master node.
-
-Cluster - Node - Pod - Container
-
-### Set default project and zone
+### Pro Tip: Set default project and zone
 
 To work more confortably, we can set the default project and zone so we don't need to intruduce them every time we issue a command:
 
@@ -124,6 +117,13 @@ To work more confortably, we can set the default project and zone so we don't ne
 gcloud config set project [PROJECT_ID]
 gcloud config set compute/zone us-central1-a
 ```
+
+## Kubernetes Engine
+
+In GCP, you can deploy a single container, or you can deploy a cluster. By default a cluster is created with three nodes, being one of the nodes the master node.
+
+Cluster - Node - Pod - Container
+
 
 ### Create cluster
 ```
