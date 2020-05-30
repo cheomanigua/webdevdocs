@@ -29,3 +29,8 @@ vagrant ssh [VM]
 If you get an UID error where the UID of the machine does not match with the UID of the current user, edit this file for each VM and add your UID:
 
 - `.vagrant/machines/[VM_NAME]/virtualbox/creator_uid`
+
+To find out the UID of your user, type:
+```
+id -u $USER
+```
