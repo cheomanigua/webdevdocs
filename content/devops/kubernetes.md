@@ -3,9 +3,9 @@ title: "Kubernetes"
 description: "Kubernetes installation and configuration"
 ---
 
-For this tutorial, you need to install in your local machine **Vagrant** and **Virtual Box**
+For this tutorial you need to install **Vagrant** and **Virtual Box** in your local machine.
 
-We'll generate three virtual machines using a *Vagrantfile* which will instantiatte the VMs with *Docker* installed, and *selinux* and *firewalld* disabled. Another file will be need for the *Vagrantfile* to succeed: *playbook_centos_install_docker.yaml*
+We'll generate three virtual machines using a *Vagrantfile* which will instantiate the VMs with *Docker* installed, and *selinux* and *firewalld* disabled. Another file will be need for the *Vagrantfile* to succeed: *playbook_centos_install_docker.yaml*
 
 1. Get config files:
 
@@ -33,7 +33,8 @@ or
 vagrant ssh worker2
 ```
 
-4. Login as root user in the VMs:
+4. Login as root user once inside the VM:
+
 ```
 su -
 ```
@@ -44,6 +45,9 @@ The password is **vagrant** for all the three VMs.
 The next steps have to be performed logged as root in all the three VMs
 
 1. Configure Kubernetes repository
+
+Copy the whole text and paste it in the command line:
+
 ```
 cat <<EOF > /etc/yum.repos.d/kubernetes.repo
 [kubernetes]
@@ -56,7 +60,7 @@ gpgkey=https://packages.cloud.google.com/yum/doc/yum-key.gpg https://packages.cl
 EOF
 ```
 
-2. Install kubelet, kubeadm and kubectl
+2. Install **kubelet**, **kubeadm** and **kubectl**
 ```
 yum install -y kubelet kubeadm kubectl
 systemctl enable kubelet
@@ -105,7 +109,7 @@ curl -Lo kube-flannel.yml https://raw.githubusercontent.com/coreos/flannel/maste
 sed -i.bak -e "s/ip-masq/ip-masq\\n - --iface=eth1/g" kube-flannel.yml
 ```
 
- **IMPORTANT**: Edit **kube-flannel.yml** and find all the lines with `- --iface=eth1`. These lines have tab indentation, which will yield an error when running `kubectl create`. Remove the tab indentation and add space indentation instead.
+ **IMPORTANT**: Edit **kube-flannel.yml** and find all the lines with '`- --iface=eth1`'. These lines have tab indentation, which will yield an error when running `kubectl create`. Remove the tab indentation and add space indentation instead.
 
  Finally:
  ```
@@ -120,14 +124,14 @@ kubectl get nodes
 
 ## Adding a Worker Node to Cluster
 
-1. Login as root in **worker1** VM
+1. Login as root in **worker1** node
 
 ```
 vagrant ssh worker1
 su -
 ```
 
-The password if *vagrant*
+The password is *vagrant*
 
 2. Join worker1 node to cluster
 ```
@@ -149,7 +153,7 @@ kubectl get nodes
 kubectl drain worker2 --delete-local-data --ignoredaemonsets
 ```
 
-### Delete Worker Node defenitely from Cluster
+### Delete Worker Node definitely from Cluster
 ```
 kubectl delete node worker2
 ```
@@ -167,14 +171,16 @@ kubeadm token list
 ```
 
 ## Deploying an application to the Cluster
+
+From the **master** node as root, issue:
 ```
-[root@master ~]# kubectl run my-nginx --image=nbrown/nginxhello:1.12.1 --port=80
+kubectl run my-nginx --image=nbrown/nginxhello:1.12.1 --port=80
 
-[root@master ~]# kubectl get pod
+kubectl get pod
 
-[root@master ~]# kubectl expose pod my-nginx --type=NodePort --name my-nginx-service
+kubectl expose pod my-nginx --type=NodePort --name my-nginx-service
 
-[root@master ~]# kubectl get service
+kubectl get service
 
 NAME TYPE CLUSTER-IP EXTERNAL-IP PORT(S) AGE
 kubernetes ClusterIP 10.96.0.1 <none> 443/TCP 21m
