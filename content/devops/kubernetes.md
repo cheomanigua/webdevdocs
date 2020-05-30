@@ -5,9 +5,11 @@ description: "Kubernetes installation and configuration"
 
 For this tutorial you need to install **Vagrant** and **Virtual Box** in your local machine.
 
-We'll generate three virtual machines using a *Vagrantfile* which will instantiate the VMs with *Docker* installed, and *selinux* and *firewalld* disabled. Another file will be need for the *Vagrantfile* to succeed: *playbook_centos_install_docker.yaml*
+We'll generate three virtual machines with Centos 7.6 installed using a *Vagrantfile*. 
 
-1. Get config files:
+Also, in the three VMs, will install *Docker*, and disable *selinux* and *firewalld* using this file: *playbook_centos_install_docker.yaml*
+
+1. Get the files:
 
 ```
 mkdir MyCluster && cd MyCluster
