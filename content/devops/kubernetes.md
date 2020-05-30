@@ -105,7 +105,7 @@ curl -Lo kube-flannel.yml https://raw.githubusercontent.com/coreos/flannel/maste
 sed -i.bak -e "s/ip-masq/ip-masq\\n - --iface=eth1/g" kube-flannel.yml
 ```
 
- Edit **kube-flannel.yml** and find all the lines with `- --iface=eth1`. These lines have tab indentation, which will yield an error when running `kubectl create`. Remove the tab indentation and add space indentation instead.
+ **IMPORTANT**: Edit **kube-flannel.yml** and find all the lines with `- --iface=eth1`. These lines have tab indentation, which will yield an error when running `kubectl create`. Remove the tab indentation and add space indentation instead.
 
  Finally:
  ```
