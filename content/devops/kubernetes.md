@@ -7,16 +7,16 @@ For this tutorial you need to install **Vagrant** and **Virtual Box** in your lo
 
 We'll generate three virtual machines with Centos 7.6 installed using a *Vagrantfile*. 
 
-Also, in the three VMs, will install *Docker*, and disable *selinux* and *firewalld* using this file: *playbook_centos_install_docker.yaml*
+Also, in the three VMs, we will install *Docker*, and disable *selinux* and *firewalld* using this file: *playbook_centos_install_docker.yaml*
 
 1. Get the files:
 
 ```
 mkdir MyCluster && cd MyCluster
 
-curl -Lo Vagrantfile https://raw.githubusercontent.com/cheomanigua/webdevdocs/master/aux/Vagrantfile
+wget https://raw.githubusercontent.com/cheomanigua/webdevdocs/master/aux/Vagrantfile
 
-curl -Lo playbook_centos_install_docker.yaml https://raw.githubusercontent.com/cheomanigua/webdevdocs/master/aux/playbook_centos_install_docker.yaml
+wget https://raw.githubusercontent.com/cheomanigua/webdevdocs/master/aux/playbook_centos_install_docker.yaml
 ```
 
 2. Create the VMs:
