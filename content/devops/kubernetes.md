@@ -118,6 +118,8 @@ sed -i.bak -e "s/ip-masq/ip-masq\\n - --iface=eth1/g" kube-flannel.yml
 kubectl create -f kube-flannel.yml
 ```
 
+It will take a minute or so for the pods and nodes to be ready.
+
 4. Check status of cluster
 ```
 kubectl get pods --all-namespaces
@@ -146,6 +148,7 @@ You can repeat the steps for the **worker2** node.
 
 Once finished, you can check the status of the cluster from the master node:
 ```
+su -
 kubectl get pods --all-namespaces
 kubectl get nodes
 ```
