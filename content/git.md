@@ -19,13 +19,17 @@ Create a new **git** repository in the curren directory.
 
 Checks which files have changed and are ready to be added to the staging area.
 
-#### git add
+#### git add [file_name]
 
 Adds the selected changed files or all changed files (`git add .`) to the staging area.
 
+#### git rm --cached [file_name]
+
+Removes the selected changed files from the staging area.
+
 #### git commit
 
-Makes a snapshot of the of the current state of the directory as per files added in the staging area.
+Add files to the local respository by making a snapshot of the of the current state of the directory as per files added in the staging area.
 
 #### git push
 
@@ -92,6 +96,8 @@ If there are several machines working with local respositories from a common rem
 
 `$ git diff master origin/master`
 
+#### See commits historical
+`$ git log`
 
 ### Useful commands
 
@@ -160,9 +166,7 @@ You can delete now testing branch:
 
 With SSH keys, you can connect to GitHub without supplying your username or password at each visit. You'll need to perfom the steps below for each computer you intend to use to connect to your GitHub repository.
 
-All intructions below have to be performed only once for each computer and GitHub account.
-
-#### Generating new SSH and adding it to SSH agent
+#### Generating new SSH, adding it to SSH agent and setting SSH URL to repo
 
 1. Checking for existing SSH keys:
 
@@ -181,7 +185,6 @@ If there is no results, generate a new SSH key.
 4. Add key to ssh-agent:
 
 `$ ssh-add ~/.ssh/id_rsa`
-
 
 #### Adding a new SSH key to your GitHub account
 
@@ -214,3 +217,33 @@ If you have enabled two-factor authentication in your GitHub account, you must c
 6. When prompted to type the password, leave it blank and press `Enter`
 7. From that point on, you will operate without adding any credential. 
 
+# Bare Git repository
+
+Bare Git repositorys are great to keep all your *dotfiles* aka *config files* in a repository. This way, if you reinstall the operating system again, you can clone the bare repository and have all the config files ready.
+
+```
+git init --bare $HOME/.cfg
+alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
+config config --local status.showUntrackedFiles no
+echo "alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'" >> $HOME/.bashrc
+```
+
+- The first line creates a folder `~/.cfg` which is a Git bare repository that will track our files.
+- Then we create an alias config which we will use instead of the regular git when we want to interact with our configuration repository.
+- We set a flag - local to the repository - to hide files we are not explicitly tracking yet. This is so that when you type config status and other commands later, files you are not interested in tracking will not show up as untracked.
+- Also you can add the alias definition by hand to your `.bashrc` or use the the fourth line provided for convenience.
+
+### Usage
+
+For this bare repository, instead of using the command `git`, we use the command `config`.
+```
+config add .bashrc
+config commit -m 'created .bashrc'
+config remote add origin https://github.com/mygitaccount/myrepository.git
+config push -u origin master
+```
+
+<Message variant='important'>
+  🔔️ <b>Important</b> <br/>
+  Don't use <strong>config add .</strong> Always specify the files/directories you want to add
+</Message>
