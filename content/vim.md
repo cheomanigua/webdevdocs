@@ -86,6 +86,7 @@ Examples:
 - copy word -\> **yiw**
 - copy line -\> **yy**
 - copy paragraph -\> **yap**
+- Select paragraph -\> **vip**
 - delete/cut selection -\> **d** 
 - delete/cut word -\> **dw** 
 - delete/cut line -\> **dd**
@@ -118,6 +119,12 @@ How to replace *word1* for *word2* X number of times:
   4. Iterate through the results:
     - Press **.** to replace next *word1* instance for *word2*
     - Press **n** to skip next *word1* instance
+
+#### Special operations
+
+Move all lines that start with specific character/s to the end of the document. In this example, the specific characers is `static`:
+
+:g/^static/m$`
 
 ## File Management
 
@@ -306,3 +313,22 @@ nmap <leader>zx :source $MYVIMRC<cr>
 "redefine trigger key (press emmet_leader key (,) twice to trigger
 let g:user_emmet_leader_key=','
 ```
+
+
+# Visual Studio Code
+
+- Toggle word wrap: `Alt` + `Z`
+- Select all ocurrences of selection: `Ctrl` + `Shift` + `L`
+- Cut line: `Ctrl` + `X`
+- Copy line: `Ctrl` + `C`
+- Delete line: `Ctrl` + `Shift` + `K`
+- Insert line below: `Ctrl` + `Enter`
+- Insert line above: `Ctrl` + `Shift` + `Enter`
+- Duplicate line above/below: `Ctrl` + `Shift` + `Alt` + `Up/Down`
+- Replace: `Ctrl` + `H`
+- Auto-format: `Ctrl` + `Shift` + `I`
+- Go to beginning/end of line: `Home`/`End`
+- Go to beginning/end of file: `Ctrl` + `Home`/`End`
+- Add line comment: `Ctrl` + `K` + `C`
+- Remove line comment: `Ctrl` + `K` + `U`
+- Select element to jump to: `Ctrl` + `Shift` + `\`
