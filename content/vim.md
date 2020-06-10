@@ -132,7 +132,10 @@ Move all lines that start with specific character/s to the end of the document. 
 
 - Open file explorer -\> **:Explore**
 - List files in current directory -\> **:e** then press **Space** and **Ctrl**+**d**
-- Open file in new window -\> **vsplit filename**
+- Open file in new window horizontally -\> **split filename**
+- Open file in new window vertically -\> **vsplit filename**
+- Open file in new window horizontally -\> **:sp filename**
+- Open file in new window vertically -\> **:vsp filename**
 - Cycle through windows -\> **Ctrl** + **w** twice
 - Close current window -\> **:hide**
 - Close all windows except current one: -\> **:only**
