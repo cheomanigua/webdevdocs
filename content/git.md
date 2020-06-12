@@ -23,6 +23,10 @@ Checks which files have changed and are ready to be added to the staging area.
 
 Adds the selected changed files or all changed files (`git add .`) to the staging area.
 
+#### git reset HEAD [file_name]
+
+Removes the selected changed files from the staging area.
+
 #### git rm --cached [file_name]
 
 Removes the selected changed files from the staging area.
