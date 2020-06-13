@@ -16,6 +16,7 @@ import { Message } from '@theme-ui/components';
 
 - Search forward and backward (up to next match) -\> **/** and **?**
 - On search: (next hit -\> **n**, previous hit -\> **N**)
+- Search for next/previous match currently under cursor -\> **asterisk** / **#**
 - Find an replace all occurrences of *foo* with *bar* -\> **:%s/foo/bar/g**
 - Move to the beginning/end of a word (forward) -\> **w** / **e**
 - Move to the beginning/end of a word (backward) -\> **b** / **ge**
