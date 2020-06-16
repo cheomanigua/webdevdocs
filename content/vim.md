@@ -20,14 +20,14 @@ import { Message } from '@theme-ui/components';
 - Find an replace all occurrences of *foo* with *bar* -\> **:%s/foo/bar/g**
 - Move to the beginning/end of a word (forward) -\> **w** / **e**
 - Move to the beginning/end of a word (backward) -\> **b** / **ge**
-- Move to beginning/end of line and start editing -\> **shift** + **i** / **a**
+- Move to beginning/end of line and start editing -\> **I** / **A**
 - Move to the beginning/end of line -\> **0** / **$**
 - Jump forward/backward one line -\> **j** / **k**
 - Jump forward/backward one paragraph -\> **}** / **{**
-- Jump to the top/middle/bottom of the page -\> **Shift** + **h** / **m** / **l**
+- Jump to the top/middle/bottom of the page -\> **H** / **M** / **L**
 - Jump forward/backward one page -\> **Ctrl** + **f**  / **b**
 - Move cursor to the /top/middle/bottom of the page -\> **zt** / **zz** / **zb**
-- Move cursor to the beginning/end of document -\> **gg** / **shift** + **g**
+- Move cursor to the beginning/end of document -\> **gg** / **G**
 
 ### Line numbers
 - Activate absolute line numbers -\> **:set nu**
@@ -90,22 +90,26 @@ Examples:
 - Select paragraph -\> **vip**
 - delete/cut selection -\> **d** 
 - delete/cut word -\> **dw** 
+- delete/cut word and insert mode -\> **cw** 
 - delete/cut line -\> **dd**
+- delete the rest of the line -\> **D**
+- delete the rest of the line and insert mode -\> **C**
+- delete the whole line and insert mode -\> **S**
 - paste -\> **p**
-- paste line above -\> **shift** + **p**
+- paste line above -\> **P**
 - create new line below -\> **o**
-- create a new line above -\> **shift** + **o**
+- create a new line above -\> **O**
 - Move line above -\> **:m -1**
 - Move line below -\> **:m +1**
 - undo -\> **u**
 - redo -\> **ctrl** + **r**
 - delete character -\> **x**
 - replace character -\> **r**
-- delete character and switch to insert mode -\> **s**
+- delete character and insert mode -\> **s**
 - Switch to 'Insert' mode -\> **i**
 - Exit 'Insert' mode -\> **ESC**
 - Increase/Decrease the first number in a line: **Ctrl** + **a**/**x**
-- Format block of text -\> **Shift** + **v** + *text selection* + **=**
+- Format block of text -\> **V** + *text selection* + **=**
 - Indent current line -\> **<<** or **>>**
 - Indent current line plus 2 lines below -\> **3<<** or **3>>**
 - Select a range of lines and indent -\> **:4,17<**
@@ -124,8 +128,9 @@ How to replace *word1* for *word2* X number of times:
 #### Special operations
 
 Move all lines that start with specific character/s to the end of the document. In this example, the specific characers is `static`:
-
+```
 :g/^static/m$`
+```
 
 ## File Management
 
