@@ -6,7 +6,7 @@ import { Message } from '@theme-ui/components';
 
 ### Modes
 
-- Normal -\> **ESC**
+- Normal -\> **ESC**, **Ctrl** + **c**
 - Insert -\> **i**, **I**, **a**, **A**
 - Visual -\> **v**, **V**, **Ctrl** + **v**
 - Command -\> **:**
@@ -14,8 +14,10 @@ import { Message } from '@theme-ui/components';
 
 ### Moving around
 
-- Search forward and backward (up to next match) -\> **/** and **?**
+- Search forward and backward once -\> **/** and **?**
 - On search: (next hit -\> **n**, previous hit -\> **N**)
+- **f**, **F** -\> "find" the next character, including the character
+- **t**, **T** -\> "find" the next character, up to that character
 - Search for next/previous match currently under cursor -\> **asterisk** / **#**
 - Find an replace all occurrences of *foo* with *bar* -\> **:%s/foo/bar/g**
 - Move to the beginning/end of a word (forward) -\> **w** / **e**
@@ -41,22 +43,23 @@ import { Message } from '@theme-ui/components';
 Operators specify which operation to perfom:
 
 - **d** -\> Delete/Cut
+- **y** -\> Yank (copy)
 - **c** -\> Change (delete and enter insert mode)
 - **r** -\> Replace
 - **v** -\> Visually select
-- **y** -\> Yank (copy)
 - **<** -\> Indent to the left
 - **>** -\> Indent to the right
 
 #### Motion
-Motion specifies where the Operators operate:
+Motion specifies where the Operators operate in relation to the cursor position:
 
-- **w** -\> word (forward by a "word")
-- **b** -\> back (back by a "word")
+- **w** -\> word 
+- **p** -\> paragraph 
 - **_** -\> line
 - **2j** -\> down 2 lines
 - **e** -\> until the end of the word
 - **$** -\> until the end of the line
+- **0** -\> from the beginning of the line
 - **Ctrl** + **v** -\> Select block
 - **i** -\> INNER: inside/between something
   - **iw** -\> "inner word" (works from anywhere in a word)
@@ -70,8 +73,6 @@ Motion specifies where the Operators operate:
   - **a"** -\> "around quotes" (works within the content of including the quotes)
   - **as** -\> "around sentence"
   - **ap** -\> "around paragraph"
-- **f**, **F** -\> "find" the next character, including the character
-- **t**, **T** -\> "find" the next character, up to that character
 
 Examples:
 
@@ -79,6 +80,7 @@ Examples:
 - Delete everything until it finds a dot: `df.`
 
 \* *It will apply inside a tag or to the nearest tag*
+
 
 #### Common commands
 - repeat last operation -\> **.**
@@ -127,7 +129,7 @@ How to replace *word1* for *word2* X number of times:
 
 #### Special operations
 
-Move all lines that start with specific character/s to the end of the document. In this example, the specific characers is `static`:
+Move all lines that start with specific character/s to the end of the document. In this example, the specific characters is `static`:
 ```
 :g/^static/m$`
 ```
@@ -138,10 +140,8 @@ Move all lines that start with specific character/s to the end of the document. 
 
 - Open file explorer -\> **:Explore**
 - List files in current directory -\> **:e** then press **Space** and **Ctrl**+**d**
-- Open file in new window horizontally -\> **split filename**
-- Open file in new window vertically -\> **vsplit filename**
-- Open file in new window horizontally -\> **:sp filename**
-- Open file in new window vertically -\> **:vsp filename**
+- Open file in new window horizontally -\> **split filename** or **sp: filename** 
+- Open file in new window vertically -\> **vsplit filename** or **vsp: filename**
 - Cycle through windows -\> **Ctrl** + **w** twice
 - Close current window -\> **:hide**
 - Close all windows except current one: -\> **:only**
