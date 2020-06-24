@@ -151,7 +151,9 @@ Move all lines that start with specific character/s to the end of the document. 
 - Open file in new window horizontally -\> **split filename** or **sp: filename** 
 - Open file in new window vertically -\> **vsplit filename** or **vsp: filename**
 - Cycle through windows -\> **Ctrl** + **w** twice
-- Close current window -\> **:hide**
+- Swap windows positions -\> **Ctrl** + **w** + **r**
+- Move windows directionally -\> **Ctrl** + **w** + **H/J/K/L**
+- Close current window -\> **Ctrl + q** or **:hide**
 - Close all windows except current one: -\> **:only**
 
 ### Save/Quit
