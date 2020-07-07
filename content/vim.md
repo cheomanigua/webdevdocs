@@ -64,6 +64,8 @@ Motion specifies where the Operators operate in relation to the cursor position:
 - **e** -\> until the end of the word
 - **$** -\> until the end of the line
 - **0** -\> from the beginning of the line
+- **t/T** -> until a specific character
+- **f/F** -> until a specific character, including the specific character
 - **Ctrl** + **v** -\> Select block
 - **i** -\> INNER: inside/between something
   - **iw** -\> "inner word" (works from anywhere in a word)
@@ -81,7 +83,8 @@ Motion specifies where the Operators operate in relation to the cursor position:
 Examples:
 
 - Delete everything between a tag\*, type: `dit`
-- Delete everything until it finds a dot: `df.`
+- Delete everything until it finds a dot: `dt.`
+- Delete everything until it finds a dot, including the dot: `df.`
 
 \* *It will apply inside a tag or to the nearest tag*
 
