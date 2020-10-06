@@ -1,3 +1,8 @@
+---
+title: "Vagrant"
+description: "Vagrant main concepts and reference"
+---
+
 Vagrant is the Docker equivalent for VMs. Instead of instantiating containers, it instantiates VMs.
 
 Vagrant by default use **Virtual Box** as a provider, so you need to have **Virtual Box** installed in your local machine. You can use other providers by using plugins.

@@ -1,3 +1,8 @@
+---
+title: "Traefik"
+description: "Traefik main concepts and reference"
+---
+
 import { Message } from '@theme-ui/components';
 
 ### Set up docker-compose file
