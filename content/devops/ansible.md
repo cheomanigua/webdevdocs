@@ -27,7 +27,7 @@ pip install requests google-auth
 
 ### Creating a GCE instance
 
-- First you need to access your [GCP Project](https://console.cloud.google.com) and download the JSON credentials file of your **Compute Engine default service account**, or create a new Compute Engine service account and download the JSON credentials file: `IAM & Admin -\> Service Accounts -\> Click on the service account -\> ADD KEY`. This file is the one used in the next step under variable `gcp_cred_file`.
+- First you need to access your [GCP Project](https://console.cloud.google.com) and download the JSON credentials file of your **Compute Engine default service account**, or create a new Compute Engine service account and download the JSON credentials file: `IAM & Admin - Service Accounts - Click on the service account - ADD KEY`. This file is the one used in the next step under variable `gcp_cred_file`.
 
 - Create the following playbook, and name it, for example, `myplaybook.yml`:
 
