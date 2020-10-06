@@ -1,7 +1,7 @@
- ---
- title: "Ansible"
- description: "Ansible main concepts and reference"
- ---
+---
+title: "Ansible"
+description: "Ansible main concepts and reference"
+---
 
 ## Installation on Ubuntu
 
