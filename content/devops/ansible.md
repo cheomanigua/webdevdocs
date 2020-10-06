@@ -105,5 +105,6 @@ ansible-playbook myplaybook.yml
 ```
 
 TODO:
-1. How to select a standard SDD disk
-2. How to select IP Network Tier (Premium, Standard, etc)
+1. How to select a standard SDD disk and source image boot disk
+2. Allow http and https traffic
+3. How to select IP Network Tier (Premium, Standard, etc)
