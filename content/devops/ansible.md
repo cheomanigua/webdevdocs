@@ -108,3 +108,5 @@ TODO:
 1. How to select a standard SDD disk and source image boot disk
 2. Allow http and https traffic
 3. How to select IP Network Tier (Premium, Standard, etc)
+
+Reference: [https://docs.ansible.com/ansible/latest/scenario_guides/guide_gce.html](https://docs.ansible.com/ansible/latest/scenario_guides/guide_gce.html)
