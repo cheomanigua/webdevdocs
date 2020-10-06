@@ -99,10 +99,11 @@ pip install requests google-auth
      add_host: hostname={{ address.address }} groupname=new_instances
 ```
 
-Issue the command:
+- Issue the command:
 ```
 ansible-playbook myplaybook.yml
 ```
 
-
-
+TODO:
+1. How to select a standard SDD disk
+2. How to select IP Network Tier (Premium, Standard, etc)
