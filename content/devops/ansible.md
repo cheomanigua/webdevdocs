@@ -49,6 +49,66 @@ pip install requests google-auth
      gcp_compute_disk:
          name: 'disk-instance'
          size_gb: 10
+         source_image: 'projects/ubuntu-os-cloud/global/images/family/ubuntu-1604-lts'
+         type: 'pd-ssd'  
+         zone: "{{ zone }}"
+         project: "{{ gcp_project }}"
+         auth_kind: "{{ gcp_cred_kind }}"
+         service_account_file: "{{ gcp_cred_file }}"
+         scopes:
+           - https://www.googleapis.com/auth/compute
+         state: present
+     register: disk
+   - name: create a instance
+     gcp_compute_instance:
+         state: present
+         name: test-vm
+         machine_type: f1-micro
+         disks:
+           - auto_delete: true
+             boot: true
+             source: "{{ disk }}"
+         network_interfaces:
+             - network: null # use default
+               access_configs:
+                 - name: 'External NAT'
+                   type: 'ONE_TO_ONE_NAT'
+         zone: "{{ zone }}"
+         project: "{{ gcp_project }}"
+         auth_kind: "{{ gcp_cred_kind }}"
+         service_account_file: "{{ gcp_cred_file }}"
+         scopes:
+           - https://www.googleapis.com/auth/compute
+     register: instance
+```
+
+- Issue the command:
+```
+ansible-playbook myplaybook.yml
+```
+
+That's it. You've just created a GCE Instance.
+
+If you want to use a *static IP* instead of an *Ephemeral IP*, use this playbook:
+
+```
+---
+
+- name: Create an instance
+  hosts: localhost
+  gather_facts: no
+  vars:
+      gcp_project: vpn-server-sasp
+      gcp_cred_kind: serviceaccount
+      gcp_cred_file: /home/cheo/sergio/ansible-gce/vpn-server-sasp-d5e0d0f06446.json
+      zone: "us-central1-a"
+      region: "us-central1"
+
+  tasks:
+   - name: create a disk
+     gcp_compute_disk:
+         name: 'disk-instance'
+         size_gb: 10
          type: 'pd-ssd'
          source_image: 'projects/ubuntu-os-cloud/global/images/family/ubuntu-1604-lts'
          zone: "{{ zone }}"
@@ -100,15 +160,10 @@ pip install requests google-auth
      add_host: hostname={{ address.address }} groupname=new_instances
 ```
 
-- Issue the command:
-```
-ansible-playbook myplaybook.yml
-```
-
 TODO:
 
 1. How to select a source image boot disk
 2. Allow http and https traffic
-3. How to select IP Network Tier (Premium, Standard, etc)
+3. How to select IP Network Tier (Premium, Standard, etc). EDIT: Ansible only allow Premium.
 
 Reference: [https://docs.ansible.com/ansible/latest/scenario_guides/guide_gce.html](https://docs.ansible.com/ansible/latest/scenario_guides/guide_gce.html)
