@@ -49,6 +49,7 @@ pip install requests google-auth
      gcp_compute_disk:
          name: 'disk-instance'
          size_gb: 10
+         type: 'pd-ssd'
          source_image: 'projects/ubuntu-os-cloud/global/images/family/ubuntu-1604-lts'
          zone: "{{ zone }}"
          project: "{{ gcp_project }}"
@@ -105,7 +106,8 @@ ansible-playbook myplaybook.yml
 ```
 
 TODO:
-1. How to select a standard SDD disk and source image boot disk
+
+1. How to select a source image boot disk
 2. Allow http and https traffic
 3. How to select IP Network Tier (Premium, Standard, etc)
 
