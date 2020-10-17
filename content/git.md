@@ -19,21 +19,21 @@ Create a new **git** repository in the curren directory.
 
 Checks which files have changed and are ready to be added to the staging area.
 
-#### git add [file_name]
+#### git add [filename]
 
 Adds the selected changed files or all changed files (`git add .`) to the staging area.
 
-#### git reset HEAD [file_name]
+#### git rm --cached [filename]
 
-Removes the selected changed files from the staging area.
-
-#### git rm --cached [file_name]
-
-Removes the selected changed files from the staging area.
+Removes file from the staging area.
 
 #### git commit
 
 Add files to the local respository by making a snapshot of the of the current state of the directory as per files added in the staging area.
+
+#### git reset HEAD [filename]
+
+Removes file from the commit area.
 
 #### git push
 
@@ -80,17 +80,17 @@ If there are several machines working with local respositories from a common rem
 
 ### Other operations
 
-#### Removing file from git commit
-
-`$ git reset HEAD <file>`
-
-#### Removing file from staging area
-
-`$ git rm --cached <file>`
-
 #### Cloning a remote repository
 
 `git clone https://github.com/mygitaccount/myrepository.git`
+
+#### See what you haven't git added yet:
+
+`$ git diff [filename]
+
+#### See what you have git added already:
+
+`$ git diff --cached [filename]
 
 #### See list of files ready to be pushed
 
