@@ -86,11 +86,11 @@ If there are several machines working with local respositories from a common rem
 
 #### See what you haven't git added yet:
 
-`$ git diff [filename]
+`$ git diff [filename]`
 
 #### See what you have git added already:
 
-`$ git diff --cached [filename]
+`$ git diff --cached [filename]`
 
 #### See list of files ready to be pushed
 
