@@ -2,6 +2,7 @@
 title: "Kubernetes"
 description: "Kubernetes installation and configuration"
 ---
+Cluster -\> Node -\> Pod -\> Container
 
 For this tutorial you need to install **Vagrant** and **Virtual Box** in your local machine.
 

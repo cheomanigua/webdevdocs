@@ -15,7 +15,7 @@ Installation [Official documentation](https://docs.ansible.com/ansible/latest/in
 
 
 ## Google Cloud Platform
-You can provision and configure GCE instances, GC apps, load balancers, etc with Ansible.
+Ansible contains modules for managing Google Cloud Platform resources, including creating instances, controlling network access, working with persistent disks, managing load balancers, and a lot more.
 
 The Ansible GCP modules require both the `requests` and the `google-auth` libraries to be installed:
 
@@ -50,7 +50,7 @@ pip install requests google-auth
          name: 'disk-instance'
          size_gb: 10
          source_image: 'projects/ubuntu-os-cloud/global/images/family/ubuntu-1604-lts'
-         type: 'pd-ssd'  
+         #type: 'pd-ssd' // Default disk is HDD. Uncomment if you want SSD 
          zone: "{{ zone }}"
          project: "{{ gcp_project }}"
          auth_kind: "{{ gcp_cred_kind }}"
@@ -109,7 +109,7 @@ If you want to use a *static IP* instead of an *Ephemeral IP*, use this playbook
      gcp_compute_disk:
          name: 'disk-instance'
          size_gb: 10
-         type: 'pd-ssd'
+         #type: 'pd-ssd' // Default disk is HDD. Uncomment if you want SSD 
          source_image: 'projects/ubuntu-os-cloud/global/images/family/ubuntu-1604-lts'
          zone: "{{ zone }}"
          project: "{{ gcp_project }}"
@@ -158,6 +158,13 @@ If you want to use a *static IP* instead of an *Ephemeral IP*, use this playbook
 
    - name: Add host to groupname
      add_host: hostname={{ address.address }} groupname=new_instances
+```
+### Inventary file
+
+- Edit /etc/ansible/ansible.cfg
+- Uncomment this line under `[inventory]`:
+```
+#enable_plugins = host_list, virtualbox, yaml, constructed
 ```
 
 TODO:
