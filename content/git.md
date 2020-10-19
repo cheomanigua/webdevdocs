@@ -160,10 +160,28 @@ You can delete now testing branch:
 
 `$ git branch -d testing`
 
+#### See merged branches
+
+`git branch --merged`
+
 #### Deleting branches
 
 - Local: `$ git branch -d testing`
 - Remote: `$ git push origin --delete testing`
+
+### Branches Workflow
+
+```
+git branch newbranch
+git checkout newbranch
+[edit existing file/s or create new file/s]
+git push -u origin newbranch
+[edit, add, commit and push to origin newbranch as needed]
+git checkout master
+git pull origin master
+git merge newbranch
+git push origin master
+```
 
 
 # SSH to GitHub
