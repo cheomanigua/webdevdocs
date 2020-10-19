@@ -86,26 +86,29 @@ If there are several machines working with local respositories from a common rem
 
 #### See what you haven't git added yet:
 
-`$ git diff [filename]`
+`git diff [filename]`
 
 #### See what you have git added already:
 
-`$ git diff --cached [filename]`
+`git diff --cached [filename]`
 
 #### See list of files commited and ready to be pushed 
 
-`$ git diff --cached --stat origin/master`
+`git diff --cached --stat origin/master`
 
 #### See differences between local repository and remote repository
 
-`$ git diff master origin/master`
+`git diff master origin/master`
 
 #### See commits historical
-`$ git log`
+`git log`
 
+#### See modified files in each commit
+`git log --stat`
 ### Useful commands
 
-- Don't update a file: `git checkout file.txt`
+- Don't update a file (remove last edits on file on working directory): `git checkout file.txt`
+- Edit last commit (edit or add new file to last commit): `git commit --amend`
 - Setting your Git username for every repository in your computer:
 `$ git config --global user.name "John Doe"`
 - Set your commit email address in Git:
