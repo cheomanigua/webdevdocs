@@ -33,7 +33,7 @@ Add files to the local respository by making a snapshot of the of the current st
 
 #### git reset HEAD [filename]
 
-Removes file from the commit area.
+Removes file from the local repository.
 
 #### git push
 
@@ -92,9 +92,9 @@ If there are several machines working with local respositories from a common rem
 
 `$ git diff --cached [filename]`
 
-#### See list of files ready to be pushed
+#### See list of files commited and ready to be pushed 
 
-`$ git diff --stat --cached origin/master`
+`$ git diff --cached --stat origin/master`
 
 #### See differences between local repository and remote repository
 
