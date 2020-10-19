@@ -175,6 +175,7 @@ You can delete now testing branch:
 git branch newbranch
 git checkout newbranch
 [edit existing file/s or create new file/s]
+[git add and git commit]
 git push -u origin newbranch
 [edit, add, commit and push to origin newbranch as needed]
 git checkout master
