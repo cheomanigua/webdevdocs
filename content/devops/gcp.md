@@ -324,8 +324,8 @@ Once you finished, in order to copy the `.ovpn` file over ssh to your local mach
 1. Edit `/etc/ssh/sshd_config`
 
 2. Change the following lines:
-`PermitRootLogin prohibit-password` to `PermitRootLogin yes`
-`PasswordAuthentication no` to `PasswordAuthentication yes`
+- `PermitRootLogin prohibit-password` to `PermitRootLogin yes`
+- `PasswordAuthentication no` to `PasswordAuthentication yes`
 
 3. Restart **ssh** service:
 ```
