@@ -23,14 +23,14 @@ sudo usermod -aG docker $USER
 
 * **docker images**: Lists all available images in our host
 * **docker pull nginx**: Pull the nginx image from docker hub to our host
+* **docker run nginx**: Creates a new container from the nginx image. If the image is not in our host, it will pull nginx image from docker hub and then start the nginx container
+* **docker run -d nginx**: Creates a new container in the background from the nginx image. If the image is not in our host, it will pull nginx image from docker hub and then start the nginx container
 * **docker rmi nginx**: Removes nginx image from our host
 
 #### Containers
 
 * **docker ps**: Lists all running containers
 * **docker ps -a**: Lists all containers, running or not
-* **docker run nginx**: Creates a new container from the nginx image. If the image is not in our host, it will pull nginx image from docker hub and then start the nginx container
-* **docker run -d nginx**: Creates a new container in the background from the nginx image. If the image is not in our host, it will pull nginx image from docker hub and then start the nginx container
 * **docker stop 'container_name'**: Stops a running container
 * **docker start 'container_name'**: Starts a stopped container
 * **docker rm 'container_name'**: Remove a non running container 
