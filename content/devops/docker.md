@@ -32,6 +32,7 @@ sudo usermod -aG docker $USER
 * **docker run nginx**: Starts a container from the nginx image. If the image is not in our host, it will pull nginx image from docker hub and then run the nginx container
 * **docker run -d nginx**: Starts a container in the background from the nginx image. If the image is not in our host, it will pull nginx image from docker hub and then run the nginx container
 * **docker stop 'container_name'**: Stops a running container
+* **docker start 'container_name'**: Starts a stopped container
 * **docker rm 'container_name'**: Remove a non running container 
 * **docker rm 'container_name' -f**: Remove a container, running or not 
 * **docker rm $(docker ps -aq)**: Remove all non running containers
