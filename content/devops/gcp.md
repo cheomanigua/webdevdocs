@@ -306,3 +306,39 @@ a2enconf php7.3-fpm
 
 Edit /var/www/html/.htaccess and add:
 `DirectoryIndex index.php`
+
+## OpenVPN
+
+You can install an OpenVPN server in your GCE instance by using the script `openvpn-install.sh` on [this Github repository](https://github.com/angristan/openvpn-install.git)
+
+```
+git clone https://github.com/angristan/openvpn-install.git
+cd openvpn-install
+sudo ./openvpn-install.sh
+```
+
+Most of the default answers will be fine. Be sure to check that the IP address is the same as the external IP address of your VM.
+
+Once you finished, in order to copy the `.ovpn` file over ssh to your local machine, you must follow these steps:
+
+1. Edit `/etc/ssh/sshd_config`
+
+2. Change the following lines:
+`PermitRootLogin prohibit-password` to `PermitRootLogin yes`
+`PasswordAuthentication no` to `PasswordAuthentication yes`
+
+3. Restart **ssh** service:
+```
+sudo service ssh restart
+```
+
+4. From your local machine, issue this command:
+```
+scp root@ip.of.your.gceinstance:/path/to/file.ovpn /home/user/file.ovpn
+```
+**Note**: If you have not setup a root password in your remote VM, do it so now prior to following step above:
+```
+sudo passwd
+```
+
+5. (Optional). Revert the ssh permissions by reverting the changes made on step 2, so you cannot ssh to your remote VM.
