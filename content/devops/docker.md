@@ -5,49 +5,14 @@ description: "Docker main concepts and reference"
 
 ### Installation
 
-[https://docs.docker.com/engine/install/](https://docs.docker.com/engine/install/)
+You can follow the Docker installation instructions in the following Linux distributions:
 
-The instructions below are for **Ubuntu**:
+- Centos: [https://docs.docker.com/engine/install/centos/](https://docs.docker.com/engine/install/centos/)
+- Debian: [https://docs.docker.com/engine/install/debian/](https://docs.docker.com/engine/install/debian/)
+- Fedora: [https://docs.docker.com/engine/install/fedora/](https://docs.docker.com/engine/install/fedora/)
+- Ubuntu: [https://docs.docker.com/engine/install/ubuntu/](https://docs.docker.com/engine/install/ubuntu/)
 
-#### Uninstall old versions of Docker
 
-```
-$ sudo apt-get remove docker docker-engine docker.io containerd runc
-```
-
-#### Set up de repository
-
-1. Update the `apt` package index and install packages to allow `apt` to use a repository over HTTPS:
-```
-$ sudo apt-get update
-
-$ sudo apt-get install \
-    apt-transport-https \
-    ca-certificates \
-    curl \
-    gnupg-agent \
-    software-properties-common
-```
-
-2. Add Docker’s official GPG key:
-```
-curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
-```
-
-3. Use the following command to set up the **stable** repository. To add the **nightly** or **test** repository, add the word `nightly` or `test` (or both) after the word `stable` in the commands below:
-```
-$ sudo add-apt-repository \
-    "deb [arch=amd64] https://download.docker.com/linux/ubuntu \
-    $(lsb_release -cs) \
-    stable"
-```
-
-#### Install Docker Engine
-```
-$ sudo apt-get update
-$ sudo apt-get install docker-ce docker-ce-cli containerd.io
-
-```
 ### Post installation
 
 After installation, you have to make the user member of group `docker` :
