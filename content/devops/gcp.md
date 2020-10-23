@@ -78,7 +78,7 @@ gcloud compute ssh --project [PROJECT_ID] --zone [ZONE] [INSTANCE_NAME]
 
 **Tip**: If you want to know the IP of your instance, issue:
 ```
-curl ifconfig.me
+curl ifconfig.io
 ```
 
 ### Creating swap partition for VM micro instance
