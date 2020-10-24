@@ -342,3 +342,43 @@ sudo passwd
 ```
 
 5. (Optional). Revert the ssh permissions by reverting the changes made on step 2, so you cannot ssh to your remote VM.
+
+
+## OS Login
+
+OS Login lets you SSH to instances securely.
+
+1. Enable OS Login in project-wide metadata so that it applies to all of the instances in your project
+```
+gcloud compute project-info add-metadata \
+    --metadata enable-oslogin=TRUE
+```
+
+2. Configuring OS Login roles on user accounts
+```
+gcloud compute instances add-iam-policy-binding [MY_INSTANCE] --member='user=[USER]' --role='roles/compute.osAdminLogin'
+gcloud compute instances add-iam-policy-binding [MY_INSTANCE] --member='user=[USER]' --role='roles/compute.iam.serviceAccountUser'
+```
+
+3. Generating Service Account Key file
+```
+gcloud iam service-accounts keys create --iam-account [USER] key.json
+```
+
+4. Activate service account 
+```
+gcloud auth activate-service-account --key-file=key.json
+```
+Copy the `username` value that appears when running:
+```
+gcloud compute os-login describe-profile
+```
+
+5. Adding SSH keys to a user account
+```
+gcloud compute os-login ssh-keys add --key-file .ssh/id_rsa.pub
+```
+
+6. SSH to an instance
+```
+ssh -i .ssh/id_rsa [username]@[INSTANCE_IP]
