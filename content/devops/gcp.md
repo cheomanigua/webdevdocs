@@ -367,7 +367,7 @@ gcloud iam service-accounts keys create --iam-account [SERVICE_ACCOUNT] [FILE].j
 
 4. Activate service account 
 ```
-gcloud auth activate-service-account --key-file=[FILE].json
+gcloud auth activate-service-account --key-file=Downloads/[FILE].json
 ```
 
 5. Adding SSH keys to a user account
