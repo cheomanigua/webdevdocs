@@ -346,7 +346,7 @@ sudo passwd
 
 ## OS Login
 
-OS Login lets you SSH to instances securely using a service account
+OS Login lets you securely SSH into GCE instances when using a service account
 
 1. Enable OS Login in project-wide metadata so that it applies to all of the instances in your project
 ```
@@ -362,12 +362,12 @@ gcloud compute instances add-iam-policy-binding [MY_INSTANCE] --member='user=[SE
 
 3. Generating Service Account Key file
 ```
-gcloud iam service-accounts keys create --iam-account [SERVICE_ACCOUNT] key.json
+gcloud iam service-accounts keys create --iam-account [SERVICE_ACCOUNT] [FILE].json
 ```
 
 4. Activate service account 
 ```
-gcloud auth activate-service-account --key-file=key.json
+gcloud auth activate-service-account --key-file=[FILE].json
 ```
 
 5. Adding SSH keys to a user account
@@ -380,16 +380,16 @@ gcloud compute os-login ssh-keys add --key-file .ssh/id_rsa.pub
 gcloud config set account your@gmail.com
 ```
 
-7. Gather service account uniqueId
+7. Gather service account `uniqueId`
 ```
 gcloud iam service-accounts describe \
-    ansible-sa@my-gcp-project.iam.gserviceaccount.com \
+    [SERVICE_ACCOUNT] \
         --format='value(uniqueId)'
 ```
 
-8. SSH to an instance using a service account
+8. SSH into an instance using a service account
 ```
-ssh -i .ssh/id_rsa [sa_\<uniqueId\>]@[INSTANCE_IP]
+ssh -i .ssh/id_rsa [sa_<uniqueId>]@[INSTANCE_IP]
 ```
 
 Note that we prefixed the `uniqueId` with `sa_`
