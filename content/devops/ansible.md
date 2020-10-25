@@ -38,7 +38,7 @@ These are the steps:
 
 ### 1. Create a Service Account
 
-We are going to create a Service Account for creating and managing GCE instances.
+We are going to create a Service Account for creating and managing GCE instances via Ansible using specific roles for that purpose. For that run this command in your terminal:
 
 ```
 for role in \
@@ -64,40 +64,36 @@ gcloud compute project-info add-metadata \
     --metadata enable-oslogin=TRUE
 ```
 
-2. Configuring OS Login roles on a service account
-```
-gcloud compute instances add-iam-policy-binding [MY_INSTANCE] --member='user=[SERVICE_ACCOUNT]' --role='roles/compute.osAdminLogin'
-gcloud compute instances add-iam-policy-binding [MY_INSTANCE] --member='user=[SERVICE_ACCOUNT]' --role='roles/compute.iam.serviceAccountUser'
-```
-
-3. Generating Service Account Key file
+2. Generating Service Account Key file
 ```
 gcloud iam service-accounts keys create --iam-account [SERVICE_ACCOUNT] [FILE].json
 ```
 
-4. Activate service account 
+The [FILE].json file will be downloaded into the path directory you run the command.
+
+3. Activate service account 
 ```
 gcloud auth activate-service-account --key-file=Downloads/[FILE].json
 ```
 
-5. Adding SSH keys to a user account
+4. Adding SSH keys to a user account
 ```
 gcloud compute os-login ssh-keys add --key-file .ssh/id_rsa.pub
 ```
 
-6. Switch back from service account
+5. Switch back from service account
 ```
 gcloud config set account your@gmail.com
 ```
 
-7. Gather service account `uniqueId`
+6. Gather service account `uniqueId`
 ```
 gcloud iam service-accounts describe \
     [SERVICE_ACCOUNT] \
         --format='value(uniqueId)'
 ```
 
-8. (Optional) SSH into an instance using a service account
+7. (Optional) SSH into an instance using a service account
 
 If you have previous instances created, you can SSH into them:
 
