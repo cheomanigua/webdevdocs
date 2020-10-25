@@ -25,152 +25,102 @@ pip install requests google-auth
 ```
 
 
-### Creating a GCE instance
+## Google Cloud Platform - GCE instance
 
-- First you need to access your [GCP Project](https://console.cloud.google.com) and download the JSON credentials file of your **Compute Engine default service account**, or create a new Compute Engine service account and download the JSON credentials file: `IAM & Admin - Service Accounts - Click on the service account - ADD KEY`. This file is the one used in the next step under variable `gcp_cred_file`.
+In this example we are going to create a Playbook to provision and configure a GCE instance in a Debian 10 Buster disk, installing a Python Flask web server application.
 
-- Create the following playbook, and name it, for example, `myplaybook.yml`:
+These are the steps:
 
-```
----
+1. Create a service account
+2. Set up OS Login
+3. (Conditional) Set user permission to `~/.ansible/cp/`
+4. Create Playbook
 
-- name: Create an instance
-  hosts: localhost
-  gather_facts: no
-  vars:
-      gcp_project: vpn-server-sasp
-      gcp_cred_kind: serviceaccount
-      gcp_cred_file: /home/cheo/sergio/ansible-gce/vpn-server-sasp-d5e0d0f06446.json
-      zone: "us-central1-a"
-      region: "us-central1"
+### 1. Create a Service Account
 
-  tasks:
-   - name: create a disk
-     gcp_compute_disk:
-         name: 'disk-instance'
-         size_gb: 10
-         source_image: 'projects/ubuntu-os-cloud/global/images/family/ubuntu-1604-lts'
-         #type: 'pd-ssd' // Default disk is HDD. Uncomment if you want SSD 
-         zone: "{{ zone }}"
-         project: "{{ gcp_project }}"
-         auth_kind: "{{ gcp_cred_kind }}"
-         service_account_file: "{{ gcp_cred_file }}"
-         scopes:
-           - https://www.googleapis.com/auth/compute
-         state: present
-     register: disk
-   - name: create a instance
-     gcp_compute_instance:
-         state: present
-         name: test-vm
-         machine_type: f1-micro
-         disks:
-           - auto_delete: true
-             boot: true
-             source: "{{ disk }}"
-         network_interfaces:
-             - network: null # use default
-               access_configs:
-                 - name: 'External NAT'
-                   type: 'ONE_TO_ONE_NAT'
-         zone: "{{ zone }}"
-         project: "{{ gcp_project }}"
-         auth_kind: "{{ gcp_cred_kind }}"
-         service_account_file: "{{ gcp_cred_file }}"
-         scopes:
-           - https://www.googleapis.com/auth/compute
-     register: instance
-```
-
-- Issue the command:
-```
-ansible-playbook myplaybook.yml
-```
-
-That's it. You've just created a GCE Instance.
-
-If you want to use a *static IP* instead of an *Ephemeral IP*, use this playbook:
+We are going to create a Service Account for creating and managing GCE instances.
 
 ```
----
-
-- name: Create an instance
-  hosts: localhost
-  gather_facts: no
-  vars:
-      gcp_project: vpn-server-sasp
-      gcp_cred_kind: serviceaccount
-      gcp_cred_file: /home/cheo/sergio/ansible-gce/vpn-server-sasp-d5e0d0f06446.json
-      zone: "us-central1-a"
-      region: "us-central1"
-
-  tasks:
-   - name: create a disk
-     gcp_compute_disk:
-         name: 'disk-instance'
-         size_gb: 10
-         #type: 'pd-ssd' // Default disk is HDD. Uncomment if you want SSD 
-         source_image: 'projects/ubuntu-os-cloud/global/images/family/ubuntu-1604-lts'
-         zone: "{{ zone }}"
-         project: "{{ gcp_project }}"
-         auth_kind: "{{ gcp_cred_kind }}"
-         service_account_file: "{{ gcp_cred_file }}"
-         scopes:
-           - https://www.googleapis.com/auth/compute
-         state: present
-     register: disk
-   - name: create a address
-     gcp_compute_address:
-         name: 'address-instance'
-         region: "{{ region }}"
-         project: "{{ gcp_project }}"
-         auth_kind: "{{ gcp_cred_kind }}"
-         service_account_file: "{{ gcp_cred_file }}"
-         scopes:
-           - https://www.googleapis.com/auth/compute
-         state: present
-     register: address
-   - name: create a instance
-     gcp_compute_instance:
-         state: present
-         name: ubuntu-sasp-test
-         machine_type: f1-micro
-         disks:
-           - auto_delete: true
-             boot: true
-             source: "{{ disk }}"
-         network_interfaces:
-             - network: null # use default
-               access_configs:
-                 - name: 'External NAT'
-                   nat_ip: "{{ address }}"
-                   type: 'ONE_TO_ONE_NAT'
-         zone: "{{ zone }}"
-         project: "{{ gcp_project }}"
-         auth_kind: "{{ gcp_cred_kind }}"
-         service_account_file: "{{ gcp_cred_file }}"
-         scopes:
-           - https://www.googleapis.com/auth/compute
-     register: instance
-
-   - name: Wait for SSH to come up
-     wait_for: host={{ address.address }} port=22 delay=10 timeout=60
-
-   - name: Add host to groupname
-     add_host: hostname={{ address.address }} groupname=new_instances
-```
-### Inventary file
-
-- Edit /etc/ansible/ansible.cfg
-- Uncomment this line under `[inventory]`:
-```
-#enable_plugins = host_list, virtualbox, yaml, constructed
+for role in \
+  'roles/compute.instanceAdmin' \
+  'roles/compute.instanceAdmin.v1' \
+  'roles/compute.osAdminLogin' \
+  'roles/iam.serviceAccountUser'
+do \
+  gcloud projects add-iam-policy-binding \
+    [PROJECT_ID]\
+    --member='serviceAccount:[SERVICE_ACCOUNT]' \
+    --role="${role}"
+done
 ```
 
-TODO:
+### 2. Set up OS Login
 
-1. How to select a source image boot disk
-2. Allow http and https traffic
-3. How to select IP Network Tier (Premium, Standard, etc). EDIT: Ansible only allow Premium.
+OS Login lets you securely SSH into GCE instances when using a service account
 
-Reference: [https://docs.ansible.com/ansible/latest/scenario_guides/guide_gce.html](https://docs.ansible.com/ansible/latest/scenario_guides/guide_gce.html)
+1. Enable OS Login in project-wide metadata so that it applies to all of the instances in your project
+```
+gcloud compute project-info add-metadata \
+    --metadata enable-oslogin=TRUE
+```
+
+2. Configuring OS Login roles on a service account
+```
+gcloud compute instances add-iam-policy-binding [MY_INSTANCE] --member='user=[SERVICE_ACCOUNT]' --role='roles/compute.osAdminLogin'
+gcloud compute instances add-iam-policy-binding [MY_INSTANCE] --member='user=[SERVICE_ACCOUNT]' --role='roles/compute.iam.serviceAccountUser'
+```
+
+3. Generating Service Account Key file
+```
+gcloud iam service-accounts keys create --iam-account [SERVICE_ACCOUNT] [FILE].json
+```
+
+4. Activate service account 
+```
+gcloud auth activate-service-account --key-file=Downloads/[FILE].json
+```
+
+5. Adding SSH keys to a user account
+```
+gcloud compute os-login ssh-keys add --key-file .ssh/id_rsa.pub
+```
+
+6. Switch back from service account
+```
+gcloud config set account your@gmail.com
+```
+
+7. Gather service account `uniqueId`
+```
+gcloud iam service-accounts describe \
+    [SERVICE_ACCOUNT] \
+        --format='value(uniqueId)'
+```
+
+8. (Optional) SSH into an instance using a service account
+
+If you have previous instances created, you can SSH into them:
+
+```
+ssh -i .ssh/id_rsa [sa_<uniqueId>]@[INSTANCE_IP]
+```
+
+Note that we prefixed the `uniqueId` with `sa_`
+
+### 3. (Conditional) Set user permissions to .ansible/cp/ 
+
+If you are using a Playbook with `add_host` module, you must give user permissions to `~/.ansible/cp/` directory:
+
+```
+sudo chown -R $USER:$USER ~/.ansible/cp
+```
+
+### 4. Create Playbook
+
+You can download the git repository at [git repository](git repository)
+
+`cd` into the downloaded directory and run:
+
+```
+ansible-playbook [FILE].yml -u [sa_<uniqueId>] 
+```
