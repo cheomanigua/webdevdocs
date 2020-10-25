@@ -346,7 +346,7 @@ sudo passwd
 
 ## OS Login
 
-OS Login lets you SSH to instances securely.
+OS Login lets you SSH to instances securely using a service account
 
 1. Enable OS Login in project-wide metadata so that it applies to all of the instances in your project
 ```
@@ -354,24 +354,20 @@ gcloud compute project-info add-metadata \
     --metadata enable-oslogin=TRUE
 ```
 
-2. Configuring OS Login roles on user accounts
+2. Configuring OS Login roles on a service account
 ```
-gcloud compute instances add-iam-policy-binding [MY_INSTANCE] --member='user=[USER]' --role='roles/compute.osAdminLogin'
-gcloud compute instances add-iam-policy-binding [MY_INSTANCE] --member='user=[USER]' --role='roles/compute.iam.serviceAccountUser'
+gcloud compute instances add-iam-policy-binding [MY_INSTANCE] --member='user=[SERVICE_ACCOUNT]' --role='roles/compute.osAdminLogin'
+gcloud compute instances add-iam-policy-binding [MY_INSTANCE] --member='user=[SERVICE_ACCOUNT]' --role='roles/compute.iam.serviceAccountUser'
 ```
 
 3. Generating Service Account Key file
 ```
-gcloud iam service-accounts keys create --iam-account [USER] key.json
+gcloud iam service-accounts keys create --iam-account [SERVICE_ACCOUNT] key.json
 ```
 
 4. Activate service account 
 ```
 gcloud auth activate-service-account --key-file=key.json
-```
-Copy the `username` value that appears when running:
-```
-gcloud compute os-login describe-profile
 ```
 
 5. Adding SSH keys to a user account
@@ -379,6 +375,21 @@ gcloud compute os-login describe-profile
 gcloud compute os-login ssh-keys add --key-file .ssh/id_rsa.pub
 ```
 
-6. SSH to an instance
+6. Switch back from service account
 ```
-ssh -i .ssh/id_rsa [username]@[INSTANCE_IP]
+gcloud config set account your@gmail.com
+```
+
+7. Gather service account uniqueId
+```
+gcloud iam service-accounts describe \
+    ansible-sa@my-gcp-project.iam.gserviceaccount.com \
+        --format='value(uniqueId)'
+```
+
+8. SSH to an instance using a service account
+```
+ssh -i .ssh/id_rsa [sa_\<uniqueId\>]@[INSTANCE_IP]
+```
+
+Note that we prefixed the `uniqueId` with `sa_`
