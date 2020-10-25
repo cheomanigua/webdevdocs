@@ -38,8 +38,20 @@ These are the steps:
 
 ### 1. Create a Service Account
 
-We are going to create a Service Account for creating and managing GCE instances via Ansible using specific roles for that purpose. For that run this command in your terminal:
+We are going to create a Service Account for provisioning and managing GCE instances via Ansible using specific roles for that purpose. 
 
+- Create service account:
+```
+gcloud iam service-accounts create [NAME] \
+     --display-name "Service account for Ansible"
+```
+
+- Check the full account address created:
+```
+gcloud iam service-accounts list
+```
+
+- Assign roles:
 ```
 for role in \
   'roles/compute.instanceAdmin' \
@@ -49,7 +61,7 @@ for role in \
 do \
   gcloud projects add-iam-policy-binding \
     [PROJECT_ID]\
-    --member='serviceAccount:[ACCOUNT]' \
+    --member='serviceAccount:[NAME]@[PROJECT_ID].iam.gserviceaccount.com' \
     --role="${role}"
 done
 ```
@@ -79,7 +91,7 @@ gcloud auth activate-service-account --key-file=[FILE].json
 4. Adding SSH keys to a user account
 ```
 gcloud config set account [ACCOUNT]
-gcloud compute os-login ssh-keys add --key-file .ssh/id_rsa.pub
+gcloud compute os-login ssh-keys add --key-file ~/.ssh/id_rsa.pub
 ```
 
 5. Switch back from service account
