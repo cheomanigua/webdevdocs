@@ -393,3 +393,18 @@ ssh -i .ssh/id_rsa [sa_<uniqueId>]@[INSTANCE_IP]
 ```
 
 Note that we prefixed the `uniqueId` with `sa_`
+
+
+## Creating GCE instances with Ansible
+
+1.First you must give user permissions to `~/.ansible/cp/` directory:
+```
+sudo chown -R $USER:$USER ~/.ansible/cp
+```
+
+2. If you are using the default Compute service account, you must generate the **Service Account key** and add the **SSH keys** as per [OS Login](#Os Login) prior to proceeding to next step.
+
+3. If you followed the steps to setup [OS Login](#Os Login), you can now run the command:
+```
+ansible-playbook main.yml --user 'sa_<unique_Id>'
+```
