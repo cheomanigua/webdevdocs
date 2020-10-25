@@ -397,7 +397,7 @@ Note that we prefixed the `uniqueId` with `sa_`
 
 ## Creating GCE instances with Ansible
 
-1.First you must give user permissions to `~/.ansible/cp/` directory:
+1. First you must give user permissions to `~/.ansible/cp/` directory:
 ```
 sudo chown -R $USER:$USER ~/.ansible/cp
 ```
