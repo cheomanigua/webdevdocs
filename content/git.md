@@ -23,7 +23,7 @@ Checks which files have changed and are ready to be added to the staging area.
 
 Adds the selected changed files or all changed files (`git add .`) to the staging area.
 
-#### git rm --cached [filename]
+#### git reset HEAD [filename]
 
 Removes file from the staging area.
 
@@ -31,13 +31,13 @@ Removes file from the staging area.
 
 Add files to the local respository by making a snapshot of the of the current state of the directory as per files added in the staging area.
 
-#### git reset HEAD [filename]
+#### git reset --soft HEAD^
 
-Removes file from the local repository.
+Removes file from the local repository and puts it again in the staging area.
 
 #### git push
 
-Pushes the new commits to the remote repository.
+Pushes the new commits in the local repository to the remote repository.
 
 #### git pull
 
