@@ -42,14 +42,13 @@ We are going to create a Service Account for creating and managing GCE instances
 
 ```
 for role in \
-  'roles/compute.instanceAdmin' \
   'roles/compute.instanceAdmin.v1' \
   'roles/compute.osAdminLogin' \
   'roles/iam.serviceAccountUser'
 do \
   gcloud projects add-iam-policy-binding \
     [PROJECT_ID]\
-    --member='serviceAccount:[SERVICE_ACCOUNT]' \
+    --member='serviceAccount:[ACCOUNT]' \
     --role="${role}"
 done
 ```
@@ -66,18 +65,19 @@ gcloud compute project-info add-metadata \
 
 2. Generating Service Account Key file
 ```
-gcloud iam service-accounts keys create --iam-account [SERVICE_ACCOUNT] [FILE].json
+gcloud iam service-accounts keys create --iam-account [ACCOUNT] [FILE].json
 ```
 
-The [FILE].json file will be downloaded into the path directory you run the command.
+The [FILE].json file will be downloaded into the path directory where you ran the command.
 
 3. Activate service account 
 ```
-gcloud auth activate-service-account --key-file=Downloads/[FILE].json
+gcloud auth activate-service-account --key-file=[FILE].json
 ```
 
 4. Adding SSH keys to a user account
 ```
+gcloud config set account [ACCOUNT]
 gcloud compute os-login ssh-keys add --key-file .ssh/id_rsa.pub
 ```
 
@@ -89,7 +89,7 @@ gcloud config set account your@gmail.com
 6. Gather service account `uniqueId`
 ```
 gcloud iam service-accounts describe \
-    [SERVICE_ACCOUNT] \
+    [ACCOUNT] \
         --format='value(uniqueId)'
 ```
 
@@ -119,4 +119,17 @@ You can download the git repository at [git repository](git repository)
 
 ```
 ansible-playbook [FILE].yml -u [sa_<uniqueId>] 
+```
+
+### Useful commands for managing accounts
+
+```
+gcloud auth list
+gcloud config list
+gcloud config configurations list
+gcloud config set account [your@gmail.com] or [ACCOUNT]
+gcloud iam service-accounts list
+gcloud iam service-accounts describe [ACCOUNT]
+gcloud iam service-accounts keys list --iam-account=[ACCOUNT]
+gcloud projects get-iam-policy [PROJECT_ID]
 ```
