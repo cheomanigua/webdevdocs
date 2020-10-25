@@ -42,6 +42,7 @@ We are going to create a Service Account for creating and managing GCE instances
 
 ```
 for role in \
+  'roles/compute.instanceAdmin' \
   'roles/compute.instanceAdmin.v1' \
   'roles/compute.osAdminLogin' \
   'roles/iam.serviceAccountUser'
