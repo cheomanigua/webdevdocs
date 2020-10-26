@@ -1,4 +1,4 @@
----
+--
 title: "Git"
 description: "This is the meta description for this page"
 ---
@@ -17,11 +17,15 @@ Create a new **git** repository in the curren directory.
 
 #### git status
 
-Checks which files have changed and are ready to be added to the staging area.
+Checks which files have changed in the working directory and are ready to be added to the staging area.
+
+#### git checkout [filename]
+
+Remove last edits on the file in the working directory so the file does not appear when running `git status`
 
 #### git add [filename]
 
-Adds the selected changed files or all changed files (`git add .`) to the staging area.
+Adds the selected changed files or all changed files (`git add .`) from the working directory to the staging area.
 
 #### git reset HEAD [filename]
 
@@ -107,7 +111,6 @@ If there are several machines working with local respositories from a common rem
 `git log --stat`
 ### Useful commands
 
-- Don't update a file (remove last edits on file on working directory): `git checkout file.txt`
 - Edit last commit (edit or add new file to last commit): `git commit --amend`
 - Setting your Git username for every repository in your computer:
 `$ git config --global user.name "John Doe"`
