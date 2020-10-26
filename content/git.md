@@ -1,7 +1,8 @@
---
-title: "Git"
-description: "This is the meta description for this page"
 ---
+title: 'Git'
+description: 'This is the meta description for this page'
+---
+
 import { Message } from '@theme-ui/components';
 
 <Message variant='important'>
