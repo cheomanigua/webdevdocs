@@ -146,3 +146,14 @@ gcloud iam service-accounts describe [ACCOUNT]
 gcloud iam service-accounts keys list --iam-account=[ACCOUNT]
 gcloud projects get-iam-policy [PROJECT_ID]
 ```
+
+
+## Docker
+
+If you want to install **Docker** via **Ansible** in a remote machine, you first must install the **python docker** module and the **Ansible Galaxy** plugin in your local machine:
+```
+sudo apt install python-docker
+ansible-galaxy collection install community.general
+```
+
+You can check a whole Playbook project that provisions a GCE instance, install docker, creates an image and run a container: [https://github.com/cheomanigua/ansible/tree/main/nginx](https://github.com/cheomanigua/ansible/tree/main/nginx)
