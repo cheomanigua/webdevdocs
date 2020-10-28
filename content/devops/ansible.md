@@ -157,3 +157,14 @@ ansible-galaxy collection install community.general
 ```
 
 You can check a whole Playbook project that provisions a GCE instance, install docker, creates an image and run a container: [https://github.com/cheomanigua/ansible/tree/main/nginx](https://github.com/cheomanigua/ansible/tree/main/nginx)
+
+
+### TODO
+
+1. **Solve issue when becoming an unprivilegded user and trying to run docker command**
+
+`FAILED! => {"msg": "Failed to set permissions on the temporary files Ansible needs to create when becoming an unprivileged user (rc: 1, err: chown: changing ownership of '/var/tmp/ansible-tmp-1603916306.07-23747-73946564034153/': Operation not permitted`
+
+- Check POSIX acl at [Understanding privilege escalation: become](https://docs.ansible.com/ansible/latest/user_guide/become.html#risks-of-becoming-an-unprivileged-user)
+- Check [ansible.posix.authorized_key](https://docs.ansible.com/ansible/latest/collections/ansible/posix/authorized_key_module.html) module.
+- Check [ansible.posix.acl](https://docs.ansible.com/ansible/latest/collections/ansible/posix/acl_module.html#ansible-collections-ansible-posix-acl-module) module.
