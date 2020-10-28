@@ -208,13 +208,15 @@ If there is no results, generate a new SSH key.
 
 `$ ssh-keygen -t rsa -b 4096 -C "your_email@example.com"`
 
-3. Start the ssh-agent in the background:
+3. (Optional) Start the ssh-agent in the background:
 
 `eval "$(ssh-agent -s)"`
 
-4. Add key to ssh-agent:
+4. (Optional) Add key to ssh-agent:
 
 `$ ssh-add ~/.ssh/id_rsa`
+
+**Note**: Steps 3 and 4 are optional, because the **ssh-agent** is used to store passphrase if you choose to create a passphrase while creating the SSH key. This way you only need to enter the passphrase once.
 
 #### Adding a new SSH key to your GitHub account
 
