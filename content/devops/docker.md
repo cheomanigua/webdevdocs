@@ -31,23 +31,24 @@ sudo usermod -aG docker $USER
 
 #### Images
 
-* **docker images**: Lists all available images in our host
+* **docker images**: List all available images in our host
 * **docker pull nginx**: Pull the nginx image from docker hub to our host
-* **docker run -d nginx**: Creates a new container in the background from the nginx image. If the image is not in our host, it will pull nginx image from docker hub and then start the nginx container
+* **docker run -d nginx**: Pull and start a new container based on nginx image (Pull only if image not present in local)
 * **docker rmi nginx**: Removes nginx image from our host
 
 #### Containers
 
-* **docker ps**: Lists all running containers
-* **docker ps -a**: Lists all containers, running or not
+* **docker ps**: List all running containers
+* **docker ps -a**: List all containers, running or not
 * **docker stop 'container_name'**: Stops a running container
-* **docker start 'container_name'**: Starts a stopped container
+* **docker start 'container_name'**: Start a stopped container
 * **docker rm 'container_name'**: Remove a non running container 
 * **docker rm 'container_name' -f**: Remove a container, running or not 
 * **docker rm $(docker ps -aq)**: Remove all non running containers
 * **docker rm $(docker ps -aq) -f**: Remove all containers, running or not
-* **docker exec -it 'container name' bash**: Access container file system command prompt
-* **docker create nginx top**: Creates a writeable container layer over the specified image and prepares it for running the specified command.
+* **docker exec -it 'container name' [BASH]**: Access container file system command prompt. [BASH] can be `/bin/bash` or `/bin/sh`
+* **docker create nginx top**: Create a writeable container layer over the specified image and prepares it for running the specified command.
+* **docker logs 'container_name'**: Fetch the logs of the container.
 
 ### Creating a nginx container
 
