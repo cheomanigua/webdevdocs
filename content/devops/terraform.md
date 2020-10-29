@@ -78,12 +78,21 @@ terraform init
 3. Generate a plan 
 You can generate a plan to check if there is any error in your `main.tf` by running:
 ```
+terraform plan 
+```
+
+When you fix all the errors, you can send the plan to a file:
+```
 terraform plan -out=<filename>
+```
+You can also see the plan by running:
+```
+terraform show <filename>
 ```
 
 4. Create the GCE instance
 
-Once you have cleared up the errors, run:
+You can create the instance now by running:
 ```
 terraform apply <filename>
 ```
