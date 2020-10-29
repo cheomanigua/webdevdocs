@@ -169,3 +169,55 @@ You can check a whole Playbook project that provisions a GCE instance, install d
 - Check POSIX acl at [Understanding privilege escalation: become](https://docs.ansible.com/ansible/latest/user_guide/become.html#risks-of-becoming-an-unprivileged-user)
 - Check [ansible.posix.authorized_key](https://docs.ansible.com/ansible/latest/collections/ansible/posix/authorized_key_module.html) module.
 - Check [ansible.posix.acl](https://docs.ansible.com/ansible/latest/collections/ansible/posix/acl_module.html#ansible-collections-ansible-posix-acl-module) module.
+
+
+## GCE Dynamic Inventory
+
+The best way to interact with your hosts is to use the **gcp_compute** inventory plugin, which dynamically queries GCE and tells Ansible what nodes can be managed.
+
+To be able to use this GCE dynamic inventory plugin, you need to enable it first by adding `gcp_compute` in the **[inventory] section of the **ansible.cfg** file:
+
+```
+[inventory]
+enable_plugins = gcp_compute
+```
+
+Then, create a file that ends in `.gcp.yml` in your root directory.
+
+The gcp_compute inventory script takes in the same authentication information as any module.
+
+Here’s an example of a valid inventory file:
+
+```
+plugin: gcp_compute
+zones: # populate inventory with instances in these regions
+  - us-central1-a
+projects:
+  - vpn-server-sasp
+# filters:
+#   - machineType = n1-standard-1
+#   - scheduling.automaticRestart = true AND machineType = n1-standard-1
+service_account_file: /home/cheo/sergio/gce_sa_keys/ansible-sa.json
+  #service_account_email: ansible-sa@vpn-server-sasp.iam.gserviceaccount.com
+auth_kind: serviceaccount
+scopes:
+ - 'https://www.googleapis.com/auth/cloud-platform'
+ - 'https://www.googleapis.com/auth/compute.readonly'
+keyed_groups:
+  # Create groups from GCE labels
+  - prefix: gcp
+    key: labels
+hostnames:
+  # List host by name instead of the default public ip
+  - name
+compose:
+  # Set an inventory parameter to use the Public IP address to connect to the host
+  # For Private ip use "networkInterfaces[0].networkIP"
+  ansible_host: networkInterfaces[0].accessConfigs[0].natIP
+```
+Executing `ansible-inventory --list -i <filename>.gcp.yml` will create a list of GCP instances that are ready to be configured using Ansible.
+
+You can also execute ad hoc commands:
+```
+ansible -i <filename>.gcp.yml all -m ping -u [sa_<uniqueId>] 
+```
