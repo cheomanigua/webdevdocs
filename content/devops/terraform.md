@@ -82,7 +82,7 @@ You can generate a plan to check if there is any error in your `main.tf` by runn
 terraform plan 
 ```
 
-When you fix all the errors, you can send the plan to a file:
+When you fix all the errors, you have to send the plan to a file:
 ```
 terraform plan -out=<filename>
 ```
@@ -93,7 +93,7 @@ terraform show <filename>
 
 4. Create the GCE instance
 
-You can create the instance now by running:
+You can now create the instance by running:
 ```
 terraform apply <filename>
 ```
