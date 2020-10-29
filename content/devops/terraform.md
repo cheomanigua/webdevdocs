@@ -76,6 +76,7 @@ terraform init
 ```
 
 3. Generate a plan 
+
 You can generate a plan to check if there is any error in your `main.tf` by running:
 ```
 terraform plan 
