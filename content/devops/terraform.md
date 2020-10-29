@@ -86,7 +86,7 @@ When you fix all the errors, you can send the plan to a file:
 ```
 terraform plan -out=<filename>
 ```
-You can also see the plan by running:
+You can then see the plan by running:
 ```
 terraform show <filename>
 ```
