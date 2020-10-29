@@ -175,11 +175,11 @@ You can check a whole Playbook project that provisions a GCE instance, install d
 
 The best way to interact with your hosts is to use the **gcp_compute** inventory plugin, which dynamically queries GCE and tells Ansible what nodes can be managed.
 
-To be able to use this GCE dynamic inventory plugin, you need to enable it first by adding `gcp_compute` in the **[inventory] section of the **ansible.cfg** file:
+To be able to use this GCE dynamic inventory plugin, you need to enable it first by adding `gcp_compute` in the **[inventory]** section of the **ansible.cfg** file:
 
 ```
 [inventory]
-enable_plugins = gcp_compute
+enable_plugins = host_list, virtualbox, yaml, constructed, gcp_compute
 ```
 
 Then, create a file that ends in `.gcp.yml` in your root directory.
