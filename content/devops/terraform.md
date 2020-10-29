@@ -70,15 +70,14 @@ resource "google_compute_network" "vpc_network" {
 }
 ```
 
-2. Initialize the project directory to let Terraform find out which modules to use by checing your `main.tf`:
+2. Initialize the project directory to let Terraform find out which modules to use by checking your `main.tf`:
 ```
 terraform init
 ```
 
 3. Generate a plan 
-```
 You can generate a plan to check if there is any error in your `main.tf` by running:
-
+```
 terraform plan -out=<filename>
 ```
 
@@ -93,4 +92,5 @@ Your instance will be created and a new file will be created: `terraform.tfstate
 
 `terraform.tfstate` keeps the state of your infrastructure. This state is required to modify and destroy your infrastructure, so keep it safe. To inspect the complete state run:
 ```
-terraform show`
+terraform show
+```
