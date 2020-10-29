@@ -104,3 +104,15 @@ Your instance will be created and a new file will be created: `terraform.tfstate
 ```
 terraform show
 ```
+
+### Delete GCE instance
+
+You can check what is going to be deleted by running:
+```
+terraform plan -destroy
+```
+
+Once you are sure that you want to destroy a infrastructure managed by Terraform, issue:
+```
+terrafrom destroy
+```
