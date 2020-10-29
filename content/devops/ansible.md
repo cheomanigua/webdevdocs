@@ -65,6 +65,7 @@ do \
     --role="${role}"
 done
 ```
+**Note**: If you want to use **Terraform** to provision GCE instances, you must also add the role `--role='roles/compute.networkAdmin'`
 
 ### 2. Set up OS Login
 
