@@ -190,29 +190,31 @@ Here’s an example of a valid inventory file:
 
 ```
 plugin: gcp_compute
-zones: # populate inventory with instances in these regions
-  - us-central1-a
 projects:
   - vpn-server-sasp
-# filters:
-#   - machineType = n1-standard-1
-#   - scheduling.automaticRestart = true AND machineType = n1-standard-1
 service_account_file: /home/cheo/sergio/gce_sa_keys/ansible-sa.json
-  #service_account_email: ansible-sa@vpn-server-sasp.iam.gserviceaccount.com
 auth_kind: serviceaccount
 scopes:
  - 'https://www.googleapis.com/auth/cloud-platform'
  - 'https://www.googleapis.com/auth/compute.readonly'
+
+
+
+zones: # populate inventory with instances in these regions
+  #- us-central1-a
+filters:
+#   - machineType = n1-standard-1
+#   - scheduling.automaticRestart = true AND machineType = n1-standard-1
 keyed_groups:
   # Create groups from GCE labels
   - prefix: gcp
     key: labels
-  - prefix: zone 
-    key: zone 
-  # Create groups by filtering key-values on labels and lists
-  - groups:
-    cms: "'server' in (labels|list)"
-    development: "'python' in name"
+  - prefix: zone
+    key: zone
+  # Create groups by filtering key-values on lables and lists
+groups:
+  cms: "'server' in (labels|list)"
+  development: "'python' in name"
 hostnames:
   # List host by name instead of the default public ip
   - name
