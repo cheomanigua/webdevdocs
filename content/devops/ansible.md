@@ -160,7 +160,7 @@ ansible-galaxy collection install community.general
 You can check a whole Playbook project that provisions a GCE instance, install docker, creates an image and run a container: [https://github.com/cheomanigua/ansible/tree/main/nginx](https://github.com/cheomanigua/ansible/tree/main/nginx)
 
 
-### TODO
+### ERRORS 
 
 1. **Solve issue when becoming an unprivilegded user and trying to run docker command**
 
@@ -170,6 +170,9 @@ You can check a whole Playbook project that provisions a GCE instance, install d
 - Check [ansible.posix.authorized_key](https://docs.ansible.com/ansible/latest/collections/ansible/posix/authorized_key_module.html) module.
 - Check [ansible.posix.acl](https://docs.ansible.com/ansible/latest/collections/ansible/posix/acl_module.html#ansible-collections-ansible-posix-acl-module) module.
 
+2. **FAILED! => {"changed": false, "msg": "Failed to lock apt for exclusive operation"}**
+
+**Solution**: Be sure that `become: yes` is present in your Playbook
 
 ## GCE Dynamic Inventory
 
