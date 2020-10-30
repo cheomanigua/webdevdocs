@@ -182,7 +182,7 @@ To be able to use this GCE dynamic inventory plugin, you need to enable it first
 enable_plugins = host_list, virtualbox, yaml, constructed, gcp_compute
 ```
 
-Then, create a file that ends in `.gcp.yml` in your root directory.
+Then, create a file that ends in `.gcp.yml` in your root directory: `<filename>.gcp.yml`
 
 The gcp_compute inventory script takes in the same authentication information as any module.
 
@@ -207,6 +207,10 @@ keyed_groups:
   # Create groups from GCE labels
   - prefix: gcp
     key: labels
+  # Create groups by filtering key-values on labels and lists
+  - groups:
+    cms: "'server' in (labels|list)"
+    development: "'python' in name"
 hostnames:
   # List host by name instead of the default public ip
   - name
@@ -215,7 +219,7 @@ compose:
   # For Private ip use "networkInterfaces[0].networkIP"
   ansible_host: networkInterfaces[0].accessConfigs[0].natIP
 ```
-Executing `ansible-inventory --list -i <filename>.gcp.yml` will create a list of GCP instances that are ready to be configured using Ansible. For a more inventory formatting style, use the `--graph` parameter instead of `--list`.
+Executing `ansible-inventory --list -i <filename>.gcp.yml --graph` will show a list of GCP instances based on filters, labels, zones, etc populated in the inventory file. 
 
 You can also execute ad hoc commands:
 ```
