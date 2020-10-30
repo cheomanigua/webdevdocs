@@ -239,3 +239,5 @@ enable_plugins = host_list, virtualbox, yaml, constructed, gcp_compute
 [defaults]
 inventory = <filename>.gcp.yml
 ```
+
+Ref: [Google Cloud Compute Engine inventory source](https://docs.ansible.com/ansible/latest/collections/google/cloud/gcp_compute_inventory.html#ansible-collections-google-cloud-gcp-compute-inventory)
