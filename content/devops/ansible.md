@@ -207,6 +207,8 @@ keyed_groups:
   # Create groups from GCE labels
   - prefix: gcp
     key: labels
+  - prefix: zone 
+    key: zone 
   # Create groups by filtering key-values on labels and lists
   - groups:
     cms: "'server' in (labels|list)"
