@@ -215,9 +215,19 @@ compose:
   # For Private ip use "networkInterfaces[0].networkIP"
   ansible_host: networkInterfaces[0].accessConfigs[0].natIP
 ```
-Executing `ansible-inventory --list -i <filename>.gcp.yml` will create a list of GCP instances that are ready to be configured using Ansible.
+Executing `ansible-inventory --list -i <filename>.gcp.yml` will create a list of GCP instances that are ready to be configured using Ansible. For a more inventory formatting style, use the `--graph` parameter instead of `--list`.
 
 You can also execute ad hoc commands:
 ```
-ansible -i <filename>.gcp.yml all -m ping -u [sa_<uniqueId>] 
+ansible -i <filename>.gcp.yml all -m ping -u [sa_<uniqueId>]
+ansible -i <filename>.gcp.yml all -m shell -a 'uname -a' -u [sa_<uniqueId>]
+```
+
+You can add `<filename>.gcp.yml` under `[defaults]` in the `ansible.cfg` to avoid typing `-i <filename>.gcp.yml` each time:
+```
+[inventory]
+enable_plugins = host_list, virtualbox, yaml, constructed, gcp_compute
+
+[defaults]
+inventory = <filename>.gcp.yml
 ```
