@@ -65,7 +65,7 @@ do \
     --role="${role}"
 done
 ```
-**Note**: If you want to use **Terraform** to provision GCE instances, you must also add the role `--role='roles/compute.networkAdmin'`
+**Note**: If you want to use **Terraform** to provision GCE instances, you must also add the role `'roles/compute.networkAdmin'`
 
 ### 2. Set up OS Login
 
@@ -162,15 +162,15 @@ You can check a whole Playbook project that provisions a GCE instance, install d
 
 ### ERRORS 
 
-1. **Solve issue when becoming an unprivilegded user and trying to run docker command**
+1. `FAILED! => {"msg": "Failed to set permissions on the temporary files Ansible needs to create when becoming an unprivileged user (rc: 1, err: chown: changing ownership of '/var/tmp/ansible-tmp-1603916306.07-23747-73946564034153/': Operation not permitted`
 
-`FAILED! => {"msg": "Failed to set permissions on the temporary files Ansible needs to create when becoming an unprivileged user (rc: 1, err: chown: changing ownership of '/var/tmp/ansible-tmp-1603916306.07-23747-73946564034153/': Operation not permitted`
+This error occurs when  becoming an unprivilegded user and trying to run docker command.
 
 - Check POSIX acl at [Understanding privilege escalation: become](https://docs.ansible.com/ansible/latest/user_guide/become.html#risks-of-becoming-an-unprivileged-user)
 - Check [ansible.posix.authorized_key](https://docs.ansible.com/ansible/latest/collections/ansible/posix/authorized_key_module.html) module.
 - Check [ansible.posix.acl](https://docs.ansible.com/ansible/latest/collections/ansible/posix/acl_module.html#ansible-collections-ansible-posix-acl-module) module.
 
-2. **FAILED! => {"changed": false, "msg": "Failed to lock apt for exclusive operation"}**
+2. `FAILED! => {"changed": false, "msg": "Failed to lock apt for exclusive operation"}`
 
 **Solution**: Be sure that `become: yes` is present in your Playbook
 
@@ -185,13 +185,13 @@ To be able to use this GCE dynamic inventory plugin, you need to enable it first
 enable_plugins = host_list, virtualbox, yaml, constructed, gcp_compute
 ```
 
-Then, create a file that ends in `.gcp.yml` in your root directory: `<filename>.gcp.yml`
+Then, create a file in the root of your project's working directory with the suffix `.gcp.yml`: `<filename>.gcp.yml`
 
 The gcp_compute inventory script takes in the same authentication information as any module.
 
 Here’s an example of a valid inventory file:
 
-```
+```ini
 plugin: gcp_compute
 projects:
   - vpn-server-sasp

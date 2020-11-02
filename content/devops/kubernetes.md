@@ -2,7 +2,49 @@
 title: "Kubernetes"
 description: "Kubernetes installation and configuration"
 ---
-Cluster -\> Node -\> Pod -\> Container
+
+Kubernetes is an open source container orchestration tool designed for automating the deployment, scaling, and handling of containerized applications. If offers high availability (no downtime), scalability (high performance) and disaster recovery (backup and restore).
+
+
+### Hierarchy of Kubernetes system
+
+A Kubernetes system is composed by a **cluster**, which contains one or more **nodes**. A **node** is a physical server or virtual machine which can allocate one or more **pods**. Each **pod** can manage one or more **containers**, but normally it is only one. Note that Kubernetes does not manage containers. The smallest element Kubernetes manages is a **pod**.
+
+> Cluster -\> Node -\> Pod -\> Container
+
+### Main Kubernetes components
+
+- **Pod**:
+- **Service**: It sits in front of a pod and talks to another services. It has to main functions: hold a permanent IP address and act as load balancer.
+- **Ingress**:
+- **Volumes**:
+- **ConfigMap**:
+- **Secrets**:
+- **Deployment**:
+- **StatefulSet**:
+
+### Kubernetes architecture
+
+A simple Kubernetes cluster is composed of one **master** node and one or several **workers** nodes.
+
+A **worker** node is composed of three processes:
+- **Container runtime**: Like Docker.
+- **Kubelet**: Executer of ther orders received by the master **scheduler**.
+- **Kubeproxy**:
+
+A **master** node is responsible of: schedule, re-schedule/re-restart, monitor pods and join new nodes. A **master** node is composed of four processes:
+- **API Server**:
+- **Scheduler**:
+- **Controller Manager**:
+- **etcd**:
+
+### Layers of abstraction
+
+**Deployment** manages a **ReplicaSet**. A **ReplicaSet** manages a **Pod**. A **Pod** is an abstraction of a **Container**.
+The nodes communicates between them via **services**
+
+
+## Tutorial
 
 For this tutorial you need to install **Vagrant** and **Virtual Box** in your local machine.
 

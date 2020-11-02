@@ -99,3 +99,50 @@ The limit can be increased to its maximum by editing `/etc/sysctl.conf` and addi
 `fs.inotify.max_user_watches=524288`
 
 <a href="https://code.visualstudio.com/docs/setup/linux#_visual-studio-code-is-unable-to-watch-for-file-changes-in-this-large-workspace-error-enospc" target="_blank">Reference</a>
+
+## BooGi
+
+
+### Prereqs
+BooGi is an awesome GatsbyJS documentation 📖 starter. It generates modern documentation pages, which can serve as product docs, tutorials, API docs and, especially, knowledge-bases.
+
+More info at [https://boogi.netlify.app/](https://boogi.netlify.app/)
+
+
+```
+npm i -g gatsby-cli
+npm i -g yarn
+npm i -g boogi-cli
+```
+
+### First time
+
+```
+mkdir test && cd test
+boogi init
+[create content]
+boogi develop
+[check localhost:8000]
+[correct content]
+[stop development server]
+boogi build
+git add
+git commit
+git remote add origin https://github.com/mygitaccount/myrepository.git
+git push -u origin master
+```
+
+### Rest of the time
+
+```
+cd test
+[create and edit content]
+boogi develop
+[check localhost:8000]
+[correct content]
+[stop development server]
+boogi build
+git add
+git commit
+git push
+```

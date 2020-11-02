@@ -7,10 +7,10 @@ description: "Docker main concepts and reference"
 
 You can follow the Docker installation instructions in the following Linux distributions:
 
-- Centos: [https://docs.docker.com/engine/install/centos/](https://docs.docker.com/engine/install/centos/)
-- Debian: [https://docs.docker.com/engine/install/debian/](https://docs.docker.com/engine/install/debian/)
-- Fedora: [https://docs.docker.com/engine/install/fedora/](https://docs.docker.com/engine/install/fedora/)
-- Ubuntu: [https://docs.docker.com/engine/install/ubuntu/](https://docs.docker.com/engine/install/ubuntu/)
+- **Centos**: [https://docs.docker.com/engine/install/centos/](https://docs.docker.com/engine/install/centos/)
+- **Debian**: [https://docs.docker.com/engine/install/debian/](https://docs.docker.com/engine/install/debian/)
+- **Fedora**: [https://docs.docker.com/engine/install/fedora/](https://docs.docker.com/engine/install/fedora/)
+- **Ubuntu**: [https://docs.docker.com/engine/install/ubuntu/](https://docs.docker.com/engine/install/ubuntu/)
 
 
 ### Post installation
@@ -54,11 +54,11 @@ sudo usermod -aG docker $USER
 
 `docker run -d -p 8080:80 --name mynginx nginx` 
 
-To run the server, we go to **localhost:8080**
+To browse, visit **localhost:8080** on a web browser
 
-To bash access the container, we issue:
+To access the container's shell, issue:
 
-`docker exec -it mynginx bash` 
+`docker exec -it mynginx bash` or `sh`
 
 Pages are served from `/usr/share/nginx/html` 
 
@@ -67,7 +67,7 @@ Pages are served from `/usr/share/nginx/html`
 ### Volumes for development use
 
 * Dockerfile:
-```
+```dockerfile
 FROM php:7.2-apache
 COPY src/ /var/www/html/
 EXPOSE 80
@@ -108,11 +108,9 @@ Providing we have these files in the directory where we are going to issue the b
 
 We create and edit the following file: `Dockerfile` 
 
-``` 
+```dockerfile 
 FROM nginx:latest
-
 WORKDIR /usr/share/nginx/html
-
 COPY . .
 ```
 

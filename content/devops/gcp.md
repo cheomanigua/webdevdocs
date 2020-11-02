@@ -161,7 +161,10 @@ kubectl get pods
 
 ### App Engine Deploy
 
-**Note**: A deployed App Engine instance cannot be deleted. It can be disabled from the console. The only way to delete the instance is to delete the whole project.
+<Warning >
+
+A **deployed** App Engine instance cannot be deleted. It can be disabled from the console. The only way to delete the instance is to delete the whole project.
+</Warning >
 
 ``` 
 gcloud services enable appengine.googleapis.com
@@ -285,7 +288,7 @@ You will attach your *GitHub* repository to a trigger setup in *Google Build*. E
 Follow the instructions at [Automated static website publishing with Cloud Build](https://cloud.google.com/community/tutorials/automated-publishing-cloud-build)
 
 The `cloudbuild.yaml` file shoud be like this:
-```
+```yml
 steps:
   - name: gcr.io/cloud-builders/gsutil
   args: ["-m", "rsync", "-r", "-c", "-d", ".", "gs://your.bucket.url"]
