@@ -62,23 +62,30 @@ Pulls the remote repository commits into the local repository. It's a way to upd
 #### Creating a new local repository
 
 ```
-$ git init
-$ git add .
-$ git commit -m 'first commit'
-$ git remote add origin https://github.com/mygitaccount/myrepository.git
-$ git push -u origin master
+git init
+git add .
+git commit -m 'first commit'
+git remote add origin https://github.com/mygitaccount/myrepository.git
+git push -u origin master
 ```
 
 #### Updating remote repository
 ```
-$ git add . # or git add -A
-$ git commit -m 'changed some stuff'
-$ git push
+git add . # or git add -A
+git commit -m 'changed some stuff'
+git push
 ```
 
 #### Updating local repository from remote repository
 ```
 $ git pull
+```
+
+#### Get information about the remote repository
+
+```
+git remote show origin
+git config --get remote.origin.url
 ```
 
 If there are several machines working with local respositories from a common remote repositories, before pushing to the remote repository from one of the local repositories, we must pull the information from the remote repository, as it may have changed due to another machine pushing changes to it.

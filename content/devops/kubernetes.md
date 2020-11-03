@@ -15,7 +15,7 @@ A Kubernetes system is composed by a **cluster**, which contains one or more **n
 ### Main Kubernetes components
 
 - **Pod**:
-- **Service**: It sits in front of a pod and talks to another services. It has to main functions: hold a permanent IP address and act as load balancer.
+- **Service**: It sits in front of a pod and talks to another services. It has to main functions: hold a permanent IP address and act as load balancer. The nodes communicates between them via **services**
 - **Ingress**:
 - **Volumes**:
 - **ConfigMap**:
@@ -36,15 +36,54 @@ A **master** node is responsible of: schedule, re-schedule/re-restart, monitor p
 - **API Server**:
 - **Scheduler**:
 - **Controller Manager**:
-- **etcd**:
+- **etcd**: is the cluster brain. It contains the status of the whole cluster. Cluster changes are stored in the key value store.
 
-### Layers of abstraction
+### Deployment and layers of abstraction
 
 **Deployment** manages a **ReplicaSet**. A **ReplicaSet** manages a **Pod**. A **Pod** is an abstraction of a **Container**.
-The nodes communicates between them via **services**
+
+**Deployment** is the way to launch **Pods**. Everthing below **Deployment** is handled automatically by Kubernetes. This means that once you launch a **Deployment** there is no further configuration you can do to **ReplicaSets** and **Pods** directly.
+
+- CRUD commands:
+```
+kubectl create deployment [NAME]
+kubectl edit deployment [NAME]
+kubectl delete deployment [NAME]
+```
+
+- Status of different k8s components:
+```
+kubectl get nodes | pod | services | replicaset | deployment
+```
+
+- Debugging pods:
+```
+kubectl logs [pod name]
+kubectl exec -it [pod name] --/bin/bash
+kubectl describe pod [pod name]
+```
+
+- Configuration file for CRUD:
+```
+kubectl apply -f [filename]
+kubectl delete -f [filename]
+```
+
+### Configuration file
+
+Each configuration file has 3 parts:
+- Metadata
+- Specification
+- Status
+
+Each configuration file can be written for one of the k8s components:
+- Deployment
+- Service
 
 
-## Tutorial
+# Tutorial
+
+## Launch three VMs with Vagrant
 
 For this tutorial you need to install **Vagrant** and **Virtual Box** in your local machine.
 

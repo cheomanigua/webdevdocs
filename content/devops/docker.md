@@ -81,7 +81,7 @@ The above command does the following:
 
 Next we run:
 
-`docker run -d -p 8080:80 -v /home/user/mywebsite/src/:/usr/share/nginx/html --name mywebsite myimage` 
+`docker run -d -p 8080:80 -v /home/user/mywebsite/src/:/var/www/html --name mywebsite myimage` 
 
 The above command does the following:
 
