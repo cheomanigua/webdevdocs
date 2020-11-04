@@ -38,20 +38,23 @@ These are the steps:
 
 ### 1. Create a Service Account
 
-We are going to create a Service Account for provisioning and managing GCE instances via Ansible using specific roles for that purpose. 
+We are going to create a Service Account for provisioning and managing GCE instances via Ansible using specific roles for that purpose. It's important to make a distintion here regarding the type of authorization that is necessary for the next tasks:
 
-- Create service account:
+- **Creating resources**: It is necessary the **service account** key JSON file.
+- **Managing instances**: It is necessary the **service account**'s unique id adquired when OS Login is activated.
+
+1. Create service account:
 ```
 gcloud iam service-accounts create [NAME] \
      --display-name "Service account for Ansible"
 ```
 
-- Check the full account address created:
+2. Check the full account address created:
 ```
 gcloud iam service-accounts list
 ```
 
-- Assign roles:
+3. Assign roles:
 ```
 for role in \
   'roles/compute.instanceAdmin' \
@@ -65,11 +68,14 @@ do \
     --role="${role}"
 done
 ```
-**Note**: If you want to use **Terraform** to provision GCE instances, you must also add the role `'roles/compute.networkAdmin'`
 
 ### 2. Set up OS Login
 
-OS Login lets you securely SSH into GCE instances when using a service account
+OS Login lets you securely SSH into GCE instances when using a **service account**. The benefit compared to traditional SSH is that it lets you interact with any host in a project without previously having to provision a Linux user and adding the SSH public key file in every instance. This means that a new **service account** created and with OS Login setup can interact inmediatly with all instances in a project.
+
+Note that by default, all GCE instances created had SSH blocked, so OS Login comes handy in these situations also because it is not necessary to manually access via GCP SSH console or gcloud to enable SSH connections. We are looking for fully automatitation, so we don't want  manual interactions with the instance.
+
+The **service account** will be the user of the instances, and as the **service account** has the `compute/instanceAdmin` role and it is already authenticated via **service account** key file and **SSH keys** as you will see in the next steps, it doesn't need to `become` root when using **Playbooks**. This means that we will never need to manually SSH into an instance, and as a result, we can keep the secure blocked default SSH configuration of GCE instances.
 
 1. Enable OS Login in project-wide metadata so that it applies to all of the instances in your project
 ```
@@ -90,24 +96,27 @@ gcloud auth activate-service-account --key-file=[FILE].json
 ```
 
 4. Adding SSH keys to a user account
+- Swich to **service account**
 ```
 gcloud config set account [ACCOUNT]
+```
+- Add SSH key
+```
 gcloud compute os-login ssh-keys add --key-file ~/.ssh/id_rsa.pub
 ```
-
-5. Switch back from service account
+- Switch back from service account
 ```
 gcloud config set account your@gmail.com
 ```
 
-6. Gather service account `uniqueId`
+5. Gather service account `uniqueId`
 ```
 gcloud iam service-accounts describe \
     [ACCOUNT] \
         --format='value(uniqueId)'
 ```
 
-7. (Optional) SSH into an instance using a service account
+6. (Optional) SSH into an instance using a service account
 
 If you have previous instances created, you can SSH into them:
 
@@ -226,12 +235,37 @@ compose:
   # For Private ip use "networkInterfaces[0].networkIP"
   ansible_host: networkInterfaces[0].accessConfigs[0].natIP
 ```
-Executing `ansible-inventory --list -i <filename>.gcp.yml --graph` will show a list of GCP instances based on filters, labels, zones, etc populated in the inventory file. 
 
-You can also execute ad hoc commands:
+To show a list of GCP instances based on filters, labels, zones, etc configured in the inventory file `<filename>.gcp.yml`, run:
+
+```
+ansible-inventory -i <filename>.gcp.yml --graph
+```
+
+- Result (example):
+
+```
+@all:
+  |--@cms:
+  |  |--terraform-instance
+  |--@development:
+  |  |--python-test
+  |--@gcp_server_wordpress:
+  |  |--terraform-instance
+  |--@ungrouped:
+  |--@zone_us_central1_a:
+  |  |--python-test
+  |  |--terraform-instance
+  |  |--test-vm
+```
+
+With this information, you can execute **Ad-Hoc** commands or **Playbooks** targeting **all** hosts, a specific **group** host or a specific **instance** host.
+
+### Ad-Hoc commands and GCE Dynamic Inventory
 ```
 ansible -i <filename>.gcp.yml all -m ping -u [sa_<uniqueId>]
-ansible -i <filename>.gcp.yml all -m shell -a 'uname -a' -u [sa_<uniqueId>]
+ansible -i <filename>.gcp.yml cms -m shell -a 'uname -a' -u [sa_<uniqueId>]
+ansible -i <filename>.gcp.yml terraform-instance -m shell -a 'uname -a' -u [sa_<uniqueId>]
 ```
 
 You can add `<filename>.gcp.yml` under `[defaults]` in the `ansible.cfg` to avoid typing `-i <filename>.gcp.yml` each time:
@@ -243,4 +277,23 @@ enable_plugins = host_list, virtualbox, yaml, constructed, gcp_compute
 inventory = <filename>.gcp.yml
 ```
 
-Ref: [Google Cloud Compute Engine inventory source](https://docs.ansible.com/ansible/latest/collections/google/cloud/gcp_compute_inventory.html#ansible-collections-google-cloud-gcp-compute-inventory)
+### Playbooks and GCE Dynamic Inventory
+
+- **example-playbook.yml**
+
+```
+- name: Update the repositories
+  gather_facts: no
+  hosts: development # targetting development group host
+  become: yes
+  roles:
+    - update-repositories
+```
+
+- Run:
+```
+ansible-playbook example-playbook.yml -u [sa_<uniqueId>]
+```
+
+
+Re: [Google Cloud Compute Engine inventory source](https://docs.ansible.com/ansible/latest/collections/google/cloud/gcp_compute_inventory.html#ansible-collections-google-cloud-gcp-compute-inventory)

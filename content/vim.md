@@ -30,6 +30,7 @@ import { Message } from '@theme-ui/components';
 - Jump to the top/middle/bottom of the page -\> **H** / **M** / **L**
 - Jump forward/backward one page -\> **Ctrl** + **f**  / **Ctrl** + **b**
 - Jump up/down half page -\> **Ctrl** + **u**  / **Ctrl** + **d**
+- Jump to next line with same content -\> **Right Alt** + **3**
 - Move cursor to the /top/middle/bottom of the page -\> **zt** / **zz** / **zb**
 - Move cursor to the beginning/end of document -\> **gg** / **G**
 - Move cursor to a specific line number -\> **:10**
@@ -95,6 +96,7 @@ Examples:
 - copy character-\> **yl**
 - copy word -\> **yiw**
 - copy line -\> **yy**
+- copy all lines under the cursor -\> **:+,$y**
 - copy paragraph -\> **yap**
 - Select paragraph -\> **vip**
 - delete/cut selection -\> **d** 
@@ -103,9 +105,11 @@ Examples:
 - delete/cut word and insert mode -\> **cw** 
 - delete/cut paragraph -\> **dap**
 - delete/cut line -\> **dd**
-- delete the rest of the line -\> **D** or **d$**
-- delete the rest of the line and insert mode -\> **C**
-- delete the whole line and insert mode -\> **S**
+- delete/cut everything from the beginning of the line up to the cursor -\> **d0**
+- delete/cut everthing from the cursor to the end of the line -\> **D** or **d$**
+- delete/cut the rest of the line and insert mode -\> **C**
+- delete/cut the whole line and insert mode -\> **S**
+- delete/cut all lines under the cursor -\> **:+,$d**
 - paste -\> **p**
 - paste line above -\> **P**
 - create new line below -\> **o**

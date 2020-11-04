@@ -20,19 +20,32 @@ OpenSSH can install a client and also a server.
 
 - Connect to remote machine:
 
-`ssh user@remote_machine_ip`
+`$ ssh user@remote_machine_ip`
 
-- Note: if the remote machine you used to ssh has been deleted and a new system has been installed in the same remote machine with the same user and IP address, issue this command:
+Upon issuing the above command, you will need to authenticate to the remote server. There are two methods for authentication:
 
-`ssh-keygen -R 34.122.142.165 -f ~/.ssh/known_hosts`
+1. User and password of remote user (you need to enter user and password everytime you ssh)
+2. Public and private keys (you don't need to enter user and password)
 
-- Generate a Key Pair:
 
-`ssh-keygen`
+### Public and private keys
+
+- Generate a public and private key:
+
+`$ ssh-keygen`
+
+By default it will generate the file `~/.ssh/id_rsa`, but you can edit the name.
+
+You can also select to generate a passphrase for the private key, which you will need to enter everytime you ssh. However, if you want to avoid entering the passphrase, you can add the private key to the **ssh-agent**, and you will only need to enter the passphrase once:
+
+`$ ssh-add ~/.ssh/id_rsa`
 
 - Copy the Public Key to remote machine(example: id_rsa.pub):
 
-`ssh-copy-id -i id_rsa.pub user@remote_machine_ip`
+`$ ssh-copy-id -i id_rsa.pub user@remote_machine_ip`
+
+
+### Copying files
 
 - How to copy a file from local to remote (from local shell):
 
@@ -42,7 +55,13 @@ OpenSSH can install a client and also a server.
 
 `scp user@remote_machine_ip:file_name /home/localuser/`
 
-### Advanced usage
+### Connection error when using public and private keys
+
+If the remote machine you used to ssh has been deleted and a new system has been installed with the same user and IP address, you will get an error when trying to ssh again.
+
+To solve this issue, you must delete the remote host from the known_hosts file:
+
+`ssh-keygen -R 192.168.1.43 -f ~/.ssh/known_hosts`
 
 #### How to connect over the internet
 

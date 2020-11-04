@@ -84,6 +84,7 @@ $ git pull
 #### Get information about the remote repository
 
 ```
+git remote -v
 git remote show origin
 git config --get remote.origin.url
 ```
@@ -107,6 +108,9 @@ If there are several machines working with local respositories from a common rem
 #### See list of files commited and ready to be pushed 
 
 `git diff --cached --stat origin/master`
+
+#### See differences between working directory and local repository
+`git diff HEAD`
 
 #### See differences between local repository and remote repository
 
@@ -257,9 +261,10 @@ If you have enabled two-factor authentication in your GitHub account, you must c
 6. When prompted to type the password, leave it blank and press `Enter`
 7. From that point on, you will operate without adding any credential. 
 
+
 # Bare Git repository
 
-Bare Git repositorys are great to keep all your *dotfiles* aka *config files* in a repository. This way, if you reinstall the operating system again, you can clone the bare repository and have all the config files ready.
+Bare Git repositories are great to keep all your *dotfiles* aka *config files* in a repository. This way, if you reinstall the operating system again, you can clone the bare repository and have all the config files ready.
 
 ```
 git init --bare $HOME/.cfg
@@ -283,5 +288,5 @@ config push -u origin master
 
 <Message variant='important'>
   🔔️ <b>Important</b> <br/>
-  Don't use <strong>config add .</strong> Always specify the files/directories you want to add
+  DO NOT use <strong>config add .</strong> or <strong>config add -A</strong>. Always specify the files/directories you want to add. Otherwise you will add the whole directories and files configured with the `--work-tree` parameter.
 </Message>
