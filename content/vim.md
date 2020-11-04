@@ -101,26 +101,28 @@ Examples:
 - delete/cut word from cursor position -\> **dw** 
 - delete/cut whole word -\> **diw**
 - delete/cut word and insert mode -\> **cw** 
+- delete/cut paragraph -\> **dap**
 - delete/cut line -\> **dd**
-- delete the rest of the line -\> **D**
+- delete the rest of the line -\> **D** or **d$**
 - delete the rest of the line and insert mode -\> **C**
 - delete the whole line and insert mode -\> **S**
 - paste -\> **p**
 - paste line above -\> **P**
 - create new line below -\> **o**
 - create a new line above -\> **O**
-- Move line to absolute line number -\> **:m6**
-- Move line to relative line number above -\> **:m-2** (note that **:m-1** won't work)
-- Move line to relative line number below -\> **:m+1**
-- Move line to beginning/end of document -\> **:m0** / **:m$**
-- Move block of lines -\> **:m5,7 12** (move lines 5,6 and 7 after line 12)
+- Move current line after line 6 -\> **:m 6**
+- Move line two lines above -\> **:m-2** (note that **:m-1** won't work)
+- Move line one line below -\> **:m+1**
+- Move line to beginning/end of document -\> **:m 0** / **:m $**
+- Move block of lines -\> **:5,7m 12** (move lines 5,6,7 after line 12)
+- Move block of lines -\> **:5,7m+4** (move lines 5,6,7 four lines below)
 - undo -\> **u**
 - redo -\> **ctrl** + **r**
 - delete character -\> **x**
 - replace character -\> **r**
 - delete character and insert mode -\> **s**
 - Switch to 'Insert' mode -\> **i**
-- Exit 'Insert' mode -\> **ESC**
+- Exit 'Insert' mode -\> **ESC** or **Ctrl** + **c**
 - Increase/Decrease the first number in a line: **Ctrl** + **a**/**x**
 - Format block of text -\> **V** + *text selection* + **=**
 - Indent current line -\> **<<** or **>>**
