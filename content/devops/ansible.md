@@ -75,7 +75,7 @@ OS Login lets you securely SSH into GCE instances when using a **service account
 
 Note that by default, all GCE instances created had SSH blocked, so OS Login comes handy in these situations also because it is not necessary to manually access via GCP SSH console or gcloud to enable SSH connections. We are looking for fully automatitation, so we don't want  manual interactions with the instance.
 
-The **service account** will be the user of the instances, and as the **service account** has the `compute/instanceAdmin` role and it is already authenticated via **service account** key file and **SSH keys** as you will see in the next steps, it doesn't need to `become` root when using **Playbooks**. This means that we will never need to manually SSH into an instance, and as a result, we can keep the secure blocked default SSH configuration of GCE instances.
+The **service account** will become the Linux user of the instances and it won't need to manually SSH into any instance ever. As a result, security in the server is improved due to the blocked SSH daemon that every GCE instance has by default.
 
 1. Enable OS Login in project-wide metadata so that it applies to all of the instances in your project
 ```
