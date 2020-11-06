@@ -4,6 +4,13 @@ description: "Vim editor concepts and cheat sheet"
 ---
 import { Message } from '@theme-ui/components';
 
+### Save/Quit
+
+- Save file -\> **:w**
+- Save file and quit -\> **:x** or **ZZ**
+- Quit -\> **:q**
+- Quit discarding changes -\> **:q!** or **ZQ**
+
 ### Modes
 
 - Normal -\> **ESC**, **Ctrl** + **c**
@@ -122,7 +129,8 @@ Examples:
 - Move block of lines -\> **:5,7m+4** (move lines 5,6,7 four lines below)
 - undo -\> **u**
 - redo -\> **ctrl** + **r**
-- delete character -\> **x**
+- delete character (Del) -\> **x**
+- delete character (Backspace) -\> **X**
 - replace character -\> **r**
 - delete character and insert mode -\> **s**
 - Switch to 'Insert' mode -\> **i**
@@ -164,13 +172,6 @@ Move all lines that start with specific character/s to the end of the document. 
 - Move windows directionally -\> **Ctrl** + **w** + **H/J/K/L**
 - Close current window -\> **Ctrl + q** or **:hide**
 - Close all windows except current one: -\> **:only**
-
-### Save/Quit
-
-- Save file -\> **:w**
-- Save file and quit -\> **:x**
-- Quit -\> **:q**
-- Quit discarding changes -\> **:q!**
 
 ### Tabs
 

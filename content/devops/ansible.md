@@ -20,27 +20,27 @@ Ansible contains modules for managing Google Cloud Platform resources, including
 The Ansible GCP modules require both the `requests` and the `google-auth` libraries to be installed:
 
 ```
-sudo apt install python-pip
-pip install requests google-auth
+sudo apt install python3-pip
+pip3 install requests google-auth
 ```
 
 
 ## Google Cloud Platform - GCE instance
 
-In this example we are going to create a Playbook to provision and configure a GCE instance in a Debian 10 Buster disk, installing a Python Flask web server application.
+In order to use **Ansible** for creating GCP resources and managing GCE instances, you will need to setup a **service account** with OS Login.
 
 These are the steps:
 
 1. Create a service account
 2. Set up OS Login
 3. (Conditional) Set user permission to `~/.ansible/cp/`
-4. Create Playbook
+4. Using a service account
 
 ### 1. Create a Service Account
 
 We are going to create a Service Account for provisioning and managing GCE instances via Ansible using specific roles for that purpose. It's important to make a distintion here regarding the type of authorization that is necessary for the next tasks:
 
-- **Creating resources**: It is necessary the **service account** key JSON file.
+- **Creating resources**: It is necessary the **service account** JSON key file.
 - **Managing instances**: It is necessary the **service account**'s unique id adquired when OS Login is activated.
 
 1. Create service account:
@@ -88,7 +88,7 @@ gcloud compute project-info add-metadata \
 gcloud iam service-accounts keys create --iam-account [ACCOUNT] [FILE].json
 ```
 
-The [FILE].json file will be downloaded into the path directory where you ran the command.
+The `[FILE].json` file will be downloaded into the path directory where you ran the command.
 
 3. Activate service account 
 ```
@@ -134,14 +134,22 @@ If you are using a Playbook with `add_host` module, you must give user permissio
 sudo chown -R $USER:$USER ~/.ansible/cp
 ```
 
-### 4. Create Playbook
+### 4. Using a service account
 
-You can download the git repository at [git repository](git repository)
-
-`cd` into the downloaded directory and run:
+1. For creating resources and instances, you just run:
 
 ```
+ansible-playbook [FILE].yml
+```
+
+2. For managing instances, you run:
+- Playbooks
+```
 ansible-playbook [FILE].yml -u [sa_<uniqueId>] 
+```
+- Ad-Hoc commands
+```
+ansible -i <inventory> all -m ping -u [sa_<uniqueId>]
 ```
 
 ### Useful commands for managing accounts
@@ -160,13 +168,15 @@ gcloud projects get-iam-policy [PROJECT_ID]
 
 ## Docker
 
-If you want to install **Docker** via **Ansible** in a remote machine, you first must install the **python docker** module and the **Ansible Galaxy** plugin in your local machine:
+If you want to install **Docker** via **Ansible** in a remote machine, you first must install the **python3 docker** module and the **Ansible Galaxy** plugin in your local machine:
 ```
-sudo apt install python-docker
+sudo apt install python3-docker
 ansible-galaxy collection install community.general
 ```
 
-You can check a whole Playbook project that provisions a GCE instance, install docker, creates an image and run a container: [https://github.com/cheomanigua/ansible/tree/main/nginx](https://github.com/cheomanigua/ansible/tree/main/nginx)
+## Ansible Project in Action
+
+You can check a whole Playbook project that provisions a GCE instance, install docker, creates an image and run a container: [https://github.com/cheomanigua/devops/tree/master/ansible/gcp/docker-nginx](https://github.com/cheomanigua/devops/tree/master/ansible/gcp/docker-nginx)
 
 
 ### ERRORS 
@@ -226,7 +236,7 @@ keyed_groups:
   # Create groups by filtering key-values on lables and lists
 groups:
   cms: "'server' in (labels|list)"
-  development: "'python' in name"
+  development: "'python3' in name"
 hostnames:
   # List host by name instead of the default public ip
   - name
@@ -249,12 +259,12 @@ ansible-inventory -i <filename>.gcp.yml --graph
   |--@cms:
   |  |--terraform-instance
   |--@development:
-  |  |--python-test
+  |  |--python3-test
   |--@gcp_server_wordpress:
   |  |--terraform-instance
   |--@ungrouped:
   |--@zone_us_central1_a:
-  |  |--python-test
+  |  |--python3-test
   |  |--terraform-instance
   |  |--test-vm
 ```
@@ -297,3 +307,7 @@ ansible-playbook example-playbook.yml -u [sa_<uniqueId>]
 
 
 Re: [Google Cloud Compute Engine inventory source](https://docs.ansible.com/ansible/latest/collections/google/cloud/gcp_compute_inventory.html#ansible-collections-google-cloud-gcp-compute-inventory)
+
+```
+gcloud compute images list --project freebsd-org-cloud-dev --no-standard-images | grep release
+```
