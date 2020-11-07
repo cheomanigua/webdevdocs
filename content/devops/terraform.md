@@ -7,15 +7,53 @@ Terraform is a tool for building, changing, and versioning infrastructure safely
 
 ## Google Cloud Platform
 
-In order to make requests against the GCP API, you need to authenticate. The method I'm going to use is a service account JSON key file. You must run first and then add this command in your `.bashrc`
+In order to make requests against the GCP API, you need to authenticate with a GCP **service account** JSON key file.
 
+### 1. Create a Service Account
+
+This **service account** will provision GCE instances via Terraform using specific roles for that purpose.
+
+1. Create service account:
 ```
-export GOOGLE_APPLICATION_CREDENTIALS={{path}}
+gcloud iam service-accounts create [NAME] \
+     --display-name "Service account for Ansible"
 ```
 
-Where `path` is the path where you have your service account JSON key file.
+2. Check the full **service account** address created:
+```
+gcloud iam service-accounts list
+```
+
+3. Assign roles:
+```
+for role in \
+  'roles/compute.instanceAdmin' \
+  'roles/compute.instanceAdmin.v1' \
+  'roles/compute.networkAdmin' \
+  'roles/iam.serviceAccountUser'
+do \
+  gcloud projects add-iam-policy-binding \
+    [PROJECT_ID]\
+    --member='serviceAccount:[NAME]@[PROJECT_ID].iam.gserviceaccount.com' \
+    --role="${role}"
+done
+```
+
+4. Generate **service account** JSON key file
+```
+gcloud iam service-accounts keys create --iam-account [ACCOUNT] [FILE].json
+```
+
+The `[FILE].json` file will be downloaded into the path directory where you ran the command.
+
+5. Activate service account
+```
+gcloud auth activate-service-account --key-file=[FILE].json
+```
 
 ### Create GCE instance
+
+**Note**: The source code can be found at [https://github.com/cheomanigua/devops/tree/master/terraform/gcp](https://github.com/cheomanigua/devops/tree/master/terraform/gcp)
 
 1. Create a directory for your Terraform project, and create the file `main.tf`:
 
