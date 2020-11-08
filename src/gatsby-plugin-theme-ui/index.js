@@ -6,7 +6,7 @@ import messages from "./messages";
 
 const transition = "0.2s ease-out";
 const systemFonts =
-  "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen,Ubuntu,Cantarell,Fira Sans,Droid Sans,Helvetica Neue,sans-serif;";
+  "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen,Arial,Ubuntu,Cantarell,Fira Sans,Droid Sans,Helvetica Neue,sans-serif;";
 
 export default {
   colors,
