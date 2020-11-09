@@ -1,5 +1,5 @@
 //import nightOwl from "@theme-ui/prism/presets/night-owl.json";
-import oceanicNext from "@theme-ui/prism/presets/oceanic-next.json";
+import prism from "@theme-ui/prism/presets/prism.json"
 import colors from "./colors";
 import headings from "./headings";
 import messages from "./messages";
@@ -63,7 +63,7 @@ export default {
       }
     },
     pre: {
-      ...oceanicNext,
+      ...prism,
       fontFamily: `"Operator Mono", monospace`,
       fontSize: "0.9rem",
       tabSize: 4,
