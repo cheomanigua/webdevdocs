@@ -143,14 +143,21 @@ Examples:
 - Repeat command mode last command -\> **@:**
 
 #### Special replacement operation
-How to replace *word1* for *word2* X number of times:
-
+- How to replace *word1* for *word2* X number of times:
   1. Search for *word1*: `/word1` + **enter**
   2. Type `cgn` + `word2`
   3. **ESC**
   4. Iterate through the results:
     - Press **.** to replace next *word1* instance for *word2*
     - Press **n** to skip next *word1* instance
+
+- How to comment a block of lines:
+  1. Select the block of lines with **V**
+  2. Enter command mode and type: `norm I#`
+
+- How to uncomment a block of lines:  
+  1. Select the block of lines with **V**
+  2. Enter command mode and type: `norm x` 
 
 #### Special operations
 
