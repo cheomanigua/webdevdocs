@@ -142,8 +142,17 @@ Examples:
 - Select a range of lines and indent -\> **:4,17<**
 - Repeat command mode last command -\> **@:**
 
-#### Special replacement operation
-- How to replace *word1* for *word2* X number of times:
+#### Special operations
+
+- Comment a block of lines:
+  1. Select the block of lines with **V**
+  2. Enter command mode and type: `norm I#`
+
+- Uncomment a block of lines:  
+  1. Select the block of lines with **V**
+  2. Enter command mode and type: `norm x` 
+
+- Replace *word1* for *word2* X number of times:
   1. Search for *word1*: `/word1` + **enter**
   2. Type `cgn` + `word2`
   3. **ESC**
@@ -151,17 +160,7 @@ Examples:
     - Press **.** to replace next *word1* instance for *word2*
     - Press **n** to skip next *word1* instance
 
-- How to comment a block of lines:
-  1. Select the block of lines with **V**
-  2. Enter command mode and type: `norm I#`
-
-- How to uncomment a block of lines:  
-  1. Select the block of lines with **V**
-  2. Enter command mode and type: `norm x` 
-
-#### Special operations
-
-Move all lines that start with specific character/s to the end of the document. In this example, the specific characters is `static`:
+- Move all lines that start with specific character/s to the end of the document. In this example, the specific characters is `static`:
 ```
 :g/^static/m$`
 ```

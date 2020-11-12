@@ -264,6 +264,13 @@ That's it. You have now your static website hosted in Cloud Store.
 
 Further information at [Codelabs](https://codelabs.developers.google.com/codelabs/cloud-webapp-hosting-gcs/index.html#0).
 
+### Using gcloud to create the static site in Cloud store
+
+```
+gsutil mb gs://www.yoursite.com
+gsutil rsync -R local-dir gs://www.yoursite.com
+```
+
 ### Setting up a load balancer for backend buckets for CDN and SSL purposes
 
 **Note**: The external HTTP(S) load balancer doesn't automatically balance traffic across backend buckets based on the user's region. Requests to /static/us/object always go to your US bucket, and requests to /static/eu/object always go to your EU bucket.
@@ -374,11 +381,17 @@ gcloud auth activate-service-account --key-file=Downloads/[FILE].json
 ```
 
 5. Adding SSH keys to a user account
+  - Swith to **service account**
+  ```
+  gcloud config set account [ACCOUNT]
+  ```
+  - Add SSH key
+
 ```
 gcloud compute os-login ssh-keys add --key-file .ssh/id_rsa.pub
 ```
 
-6. Switch back from service account
+6. Switch back from **service account**
 ```
 gcloud config set account your@gmail.com
 ```

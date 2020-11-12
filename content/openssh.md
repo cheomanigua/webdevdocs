@@ -59,7 +59,7 @@ You can also select to generate a passphrase for the private key, which you will
 
 If the remote machine you used to ssh has been deleted and a new system has been installed with the same user and IP address, you will get an error when trying to ssh again.
 
-To solve this issue, you must delete the remote host from the known_hosts file:
+To solve this issue, you must delete the RSA remote host key from the known_hosts file:
 
 `ssh-keygen -R 192.168.1.43 -f ~/.ssh/known_hosts`
 
