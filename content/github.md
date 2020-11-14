@@ -43,7 +43,7 @@ More info at [GitHub Docs](https://docs.github.com/en/free-pro-team@latest/githu
 
 #### Drawback
 
-The SSL certificate will only work for the naked domain. **http://www.mydomain.com** will trigger a nasty warning in the browser. To fix this there are two options:
+The SSL certificate will only work for the naked domain **http://mydomain.com**. This means that **http://www.mydomain.com** will trigger a nasty warning in the browser. To fix this issue there are two options:
 
 1. (Recommended) Create a forwarding rule in you domain host that redirect requests to **www** to your naked domain. In Google Domains you can achieve this by using *Synthetic Records*:
   - Delete the CNAME record for **www**
@@ -52,7 +52,7 @@ The SSL certificate will only work for the naked domain. **http://www.mydomain.c
   - Temporary redirect (302)
   - Forward path
   - Enable SSL
-  - Google Domains will complain this message, but just wait a couple of minutes and it will ok:
+  - Google Domains will complain with the following message, but just wait a couple of minutes and it will go away:
   > This synthetic record has an error and will not function correctly:
   > The SSL Certificate for this domain hasn't been created yet. This process may take up to 24 hours to complete.
 

@@ -424,3 +424,143 @@ sudo chown -R $USER:$USER ~/.ansible/cp
 ```
 ansible-playbook main.yml --user 'sa_<unique_Id>'
 ```
+
+## Setting up a Mail Server in Google Cloud Platform
+
+**Warning**: For outbound mail, port 25 is closed in GCP. Ports 587 and 465 are open only if you have a Google Workspace account or your selected third party providers. You can set up your own email server on an instance by using a non-standard port. You can choose any ephemeral port that isn't blocked by Compute Engine. More information in [GCP documentation](https://cloud.google.com/compute/docs/tutorials/sending-mail).
+
+### DNS Settings
+- **MX**: @ -\> mail.yourdomain.com
+- **A**: mail -\> IP.ADD.RE.SS
+- **PTR**: Follow instructions at [GCP documentation](https://cloud.google.com/compute/docs/instances/create-ptr-record#update_instance)
+
+When the mail server installation script finished, you will be given three DNS records that you must add also: **SPF**, **DKIM** and **DMARC**.
+
+### SSL Certificate Installation
+```
+sudo apt install certbot
+```
+
+- Add the following A record in your domain host: **mail** pointing to your server IP. This way, certbot will verify your domain and grant a certificate.
+
+Now run:
+```
+certbot certonly
+```
+
+```
+Saving debug log to /var/log/letsencrypt/letsencrypt.log
+
+How would you like to authenticate with the ACME CA?
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+1: Spin up a temporary webserver (standalone)
+2: Place files in webroot directory (webroot)
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+Select the appropriate number [1-2] then [enter] (press 'c' to cancel):
+```
+```
+1
+```
+```
+Plugins selected: Authenticator standalone, Installer None
+Enter email address (used for urgent renewal and security notices) (Enter 'c' to
+cancel):
+```
+```
+your.email@address
+```
+```
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+Please read the Terms of Service at
+https://letsencrypt.org/documents/LE-SA-v1.2-November-15-2017.pdf. You must
+agree in order to register with the ACME server at
+https://acme-v02.api.letsencrypt.org/directory
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+(A)gree/(C)ancel:
+```
+```
+A
+```
+```
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+Would you be willing to share your email address with the Electronic Frontier
+Foundation, a founding partner of the Let's Encrypt project and the non-profit
+organization that develops Certbot? We'd like to send you email about our work
+encrypting the web, EFF news, campaigns, and ways to support digital freedom.
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+(Y)es/(N)o:
+```
+```
+N
+```
+```
+Please enter in your domain name(s) (comma and/or space separated)  (Enter 'c'
+to cancel):
+```
+```
+mail.yourdomain.com
+```
+```
+Obtaining a new certificate
+Performing the following challenges:
+http-01 challenge for mail.mydomain.com
+Waiting for verification...
+Cleaning up challenges
+
+IMPORTANT NOTES:
+ - Congratulations! Your certificate and chain have been saved at:
+   /etc/letsencrypt/live/mail.mydomain.com/fullchain.pem
+   Your key file has been saved at:
+   /etc/letsencrypt/live/mail.mydomain.com/privkey.pem
+   Your cert will expire on 2021-02-11. To obtain a new or tweaked
+   version of this certificate in the future, simply run certbot
+   again. To non-interactively renew *all* of your certificates, run
+   "certbot renew"
+ - Your account credentials have been saved in your Certbot
+   configuration directory at /etc/letsencrypt. You should make a
+   secure backup of this folder now. This configuration directory will
+   also contain certificates and private keys obtained by Certbot so
+   making regular backups of this folder is ideal.
+ - If you like Certbot, please consider supporting our work by:
+
+   Donating to ISRG / Let's Encrypt:   https://letsencrypt.org/donate
+   Donating to EFF:                    https://eff.org/donate-le
+```
+
+### Mail Server installation
+
+[Luke Smith script](https://github.com/LukeSmithxyz/emailwiz)
+
+### Create mail user in your server
+
+```
+su -
+useradd -m -G mail -s /bin/bash myuser
+passwd myuser
+```
+
+### Testing
+
+- Check SSL certificate:
+```
+openssl s_client -servername mail.mydomain.com -connect mail.mydomain.com:imaps
+```
+
+- Check IMAP connection:
+```
+curl -v imaps://myuser:password@mail.mydomain.com
+```
+
+- Check SMTP connection:
+```
+curl -vk smtp://mail.mydomain.com:587/ \
+  --mail-from myuser@mydomain.com'\
+  --mail-rcpt rcpt@rcptemail.com'\
+  --upload-file mail.txt\
+  --user 'myuser:password' --ssl
+```
+
+If you mess around a lot your DNS records in your domain host, it is possible that your computer start get confused. You may have to reset the DNS records in your computer:
+```
+sudo systemd-resolve --flush-caches
+```
