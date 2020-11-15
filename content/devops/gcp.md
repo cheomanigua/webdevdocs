@@ -438,7 +438,7 @@ When the mail server installation script finished, you will be given three DNS r
 
 ### Open tcp ports 25, 465, 587, 993
 ```
-gcloud compute firewall-rules create smtp --allow tcp:25 --direction=INGRESS
+gcloud compute firewall-rules create smtp --allow tcp:25
 gcloud compute firewall-rules create smtp --allow tcp:465
 gcloud compute firewall-rules create smtp --allow tcp:587
 gcloud compute firewall-rules create smtp --allow tcp:993
@@ -575,3 +575,10 @@ If you mess around a lot your DNS records in your domain host, it is possible th
 ```
 sudo systemd-resolve --flush-caches
 ```
+
+### Logs
+
+- `/var/log/mail.err | mail.warn | mail.log | mail.info`
+- `/var/log/syslog`
+- `/var/log/auth.log`
+
