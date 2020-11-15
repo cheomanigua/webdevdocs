@@ -436,6 +436,14 @@ ansible-playbook main.yml --user 'sa_<unique_Id>'
 
 When the mail server installation script finished, you will be given three DNS records that you must add also: **SPF**, **DKIM** and **DMARC**.
 
+### Open tcp ports 25, 465, 587, 993
+```
+gcloud compute firewall-rules create smtp --allow tcp:25 --direction=INGRESS
+gcloud compute firewall-rules create smtp --allow tcp:465
+gcloud compute firewall-rules create smtp --allow tcp:587
+gcloud compute firewall-rules create smtp --allow tcp:993
+```
+
 ### SSL Certificate Installation
 ```
 sudo apt install certbot
@@ -543,10 +551,13 @@ passwd myuser
 
 - Check SSL certificate:
 ```
-openssl s_client -servername mail.mydomain.com -connect mail.mydomain.com:imaps
+openssl s_client -connect mail.mydomain.com:25
+openssl s_client -connect mail.mydomain.com:465
+openssl s_client -connect mail.mydomain.com:587
+openssl s_client -connect mail.mydomain.com:993
 ```
 
-- Check IMAP connection:
+- Check IMAP 993 connection:
 ```
 curl -v imaps://myuser:password@mail.mydomain.com
 ```
