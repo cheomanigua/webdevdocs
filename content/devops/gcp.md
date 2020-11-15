@@ -364,10 +364,10 @@ gcloud compute project-info add-metadata \
     --metadata enable-oslogin=TRUE
 ```
 
-2. Configuring OS Login roles on a service account
+2. Configuring OS Login roles on a service account (instances wise or project wise)
 ```
-gcloud compute instances add-iam-policy-binding [MY_INSTANCE] --member='user=[SERVICE_ACCOUNT]' --role='roles/compute.osAdminLogin'
-gcloud compute instances add-iam-policy-binding [MY_INSTANCE] --member='user=[SERVICE_ACCOUNT]' --role='roles/compute.iam.serviceAccountUser'
+gcloud compute instances add-iam-policy-binding [MY_INSTANCE] --member='serviceAccount:[SERVICE_ACCOUNT]' --role='roles/compute.osAdminLogin'
+gcloud compute instances add-iam-policy-binding [MY_INSTANCE] --member='serviceAccount:[SERVICE_ACCOUNT]' --role='roles/iam.serviceAccountUser'
 ```
 
 3. Generating Service Account Key file
