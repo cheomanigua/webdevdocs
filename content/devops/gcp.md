@@ -582,3 +582,9 @@ sudo systemd-resolve --flush-caches
 - `/var/log/syslog`
 - `/var/log/auth.log`
 
+```
+cat /var/log/syslog | grep "smtp.*to=.*" | grep -v 250
+cat /var/log/syslog | grep "from="
+cat /var/log/auth.log | grep Invalid
+cat /var/log/mail.log | grep imap-login
+```
