@@ -405,7 +405,7 @@ gcloud iam service-accounts describe \
 
 8. SSH into an instance using a service account
 ```
-ssh -i .ssh/id_rsa [sa_<uniqueId>]@[INSTANCE_IP]
+ssh [sa_<uniqueId>]@[INSTANCE_IP]
 ```
 
 Note that we prefixed the `uniqueId` with `sa_`
@@ -450,6 +450,7 @@ sudo apt install certbot
 ```
 
 - Add the following A record in your domain host: **mail** pointing to your server IP. This way, certbot will verify your domain and grant a certificate.
+- Be sure that your project firewall has port **80** and port **443** open.
 
 Now run:
 ```
@@ -539,6 +540,24 @@ IMPORTANT NOTES:
 
 [Luke Smith script](https://github.com/LukeSmithxyz/emailwiz)
 
+```
+curl -LO lukesmith.xyz/emailwiz.sh
+sh emailwiz.sh
+```
+
+- Internet site:
+Mail is sent and received directly using SMTP.
+- Internet with smarthost:
+Mail is received directly using SMTP or by running a utility such as fetchmail. Outgoing mail is sent using a smarthost.
+- Satellite system:
+All mail is sent to another machine, called a 'smarthost', for delivery.
+- Local only:
+The only delivered mail is the mail for local users. There is no network.
+
+Select Internet site, and type the your naked domain name: domain.com
+
+When the mail server installation script finished, you will be given three DNS records that you must add also: **SPF**, **DKIM** and **DMARC**.
+
 ### Create mail user in your server
 
 ```
@@ -583,8 +602,39 @@ sudo systemd-resolve --flush-caches
 - `/var/log/auth.log`
 
 ```
-cat /var/log/syslog | grep "smtp.*to=.*" | grep -v 250
-cat /var/log/syslog | grep "from="
-cat /var/log/auth.log | grep Invalid
-cat /var/log/mail.log | grep imap-login
+grep imap-login /var/log/mail.log
+grep "smtp.*to=.*" | grep -v 250 /var/log/syslog
+grep "from=" /var/log/syslog
+grep Invalid /var/log/auth.log
+grep "New session" /var/log/auth.log
+last
+lastlog
+w
+who
 ```
+
+It is recommended to install **fail2ban** to automatically ban IPs that cause too many authentication failures.
+
+### Conf
+
+- `/etc/postfix/main.cf`
+```
+smtpd_recipient_limit = 50
+smtpd_recipient_overshoot_limit = 51
+smtpd_hard_error_limit = 20
+smtpd_client_recipient_rate_limit = 50
+smtpd_client_connection_rate_limit = 10
+smtpd_client_message_rate_limit = 25
+default_extra_recipient_limit = 50
+duplicate_filter_limit = 50
+default_destination_recipient_limit = 50
+smtp_destination_recipient_limit = $default_destination_recipient_limit
+maximal_queue_lifetime = 0
+```
+
+```
+postconf | grep maximal_queue_lifetime #shows the actual value
+postconf -d | grep maximal_queue_lifetime #shows the default value
+```
+
+More info at [http://www.postfix.org/postconf.5.html](http://www.postfix.org/postconf.5.html)

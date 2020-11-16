@@ -121,7 +121,7 @@ gcloud iam service-accounts describe \
 If you have previous instances created, you can SSH into them:
 
 ```
-ssh -i .ssh/id_rsa [sa_<uniqueId>]@[INSTANCE_IP]
+ssh [sa_<uniqueId>]@[INSTANCE_IP]
 ```
 
 Note that we prefixed the `uniqueId` with `sa_`
