@@ -631,6 +631,14 @@ default_destination_recipient_limit = 50
 smtp_destination_recipient_limit = $default_destination_recipient_limit
 maximal_queue_lifetime = 0
 ```
+```
+maximal_queue_lifetime = 1h
+maximal_backoff_time = 15m
+minimal_backoff_time = 5m
+queue_run_delay = 5m
+```
+This configuration instructs postfix to keep emails in deferred queue for no longer than 1 hour(much better than the default 5 days). Postfix scans the deferred queue every 5 minutes and the delivery retry interval is between 5 minutes and 15 minutes. Here is the more information about postfix configuration and postfix debug.
+
 
 ```
 postconf | grep maximal_queue_lifetime #shows the actual value
