@@ -595,6 +595,14 @@ If you mess around a lot your DNS records in your domain host, it is possible th
 sudo systemd-resolve --flush-caches
 ```
 
+### Change GCE instance time
+```
+timedatectl set-timezone 'Europe/Madrid'
+timedatectl set-ntp yes #optional
+date
+reboot
+```
+
 ### Logs
 
 - `/var/log/mail.err | mail.warn | mail.log | mail.info`
@@ -606,6 +614,7 @@ grep imap-login /var/log/mail.log
 grep "smtp.*to=.*" | grep -v 250 /var/log/syslog
 grep "from=" /var/log/syslog
 grep Invalid /var/log/auth.log
+grep Accepted /var/log/auth.log
 grep "New session" /var/log/auth.log
 last
 lastlog
@@ -646,3 +655,21 @@ postconf -d | grep maximal_queue_lifetime #shows the default value
 ```
 
 More info at [http://www.postfix.org/postconf.5.html](http://www.postfix.org/postconf.5.html)
+
+### Errors
+
+- `dovecot: lda(root)<1026><>: Error: chdir(/root/) failed: Permission denied (euid=65534(nobody) egid=65534(nogroup) missing +x perm: /root, dir owned by 0:0 mode=0700)`
+  - Create an alias for root. Append this line in `/etc/aliases`:
+  ```
+  root: myuser 
+  ```
+  - Now update `/etc/aliased.d` by running:
+  ```
+  newaliases
+  ```
+
+- `spamc[]: connect to spamd on ::1 failed, retrying (#1 of 3): Connection refused`
+  - Create the following file `/etc/mail/spamassassin/spamc.conf` and add:
+  ```
+  -d 127.0.0.1
+  ```
