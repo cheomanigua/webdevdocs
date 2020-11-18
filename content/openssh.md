@@ -27,6 +27,7 @@ Upon issuing the above command, you will need to authenticate to the remote serv
 1. User and password of remote user (you need to enter user and password everytime you ssh)
 2. Public and private keys (you don't need to enter user and password)
 
+The first time you connect to a remote server, you will have to authenticate with user and password. You then can generate a public and private key pair to authenticate. 
 
 ### Public and private keys
 
@@ -44,6 +45,9 @@ You can also select to generate a passphrase for the private key, which you will
 
 `$ ssh-copy-id -i id_rsa.pub user@remote_machine_ip`
 
+Alternatively, you can copy the Public key using these command:
+
+`cat ~/.ssh/id_rsa.pub | ssh user@remote_machine_ip "mkdir -p ~/.ssh && chmod 700 ~/.ssh && cat >>  ~/.ssh/authorized_keys"`
 
 ### Copying files
 
@@ -59,7 +63,7 @@ You can also select to generate a passphrase for the private key, which you will
 
 If the remote machine you used to ssh has been deleted and a new system has been installed with the same user and IP address, you will get an error when trying to ssh again.
 
-To solve this issue, you must delete the RSA remote host key from the known_hosts file:
+To solve this issue, you must delete the RSA remote host key from the known_hosts file in your local machine:
 
 `ssh-keygen -R 192.168.1.43 -f ~/.ssh/known_hosts`
 

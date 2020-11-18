@@ -673,3 +673,8 @@ More info at [http://www.postfix.org/postconf.5.html](http://www.postfix.org/pos
   ```
   -d 127.0.0.1
   ```
+
+### Warnings
+
+- `postfix/postfix-script[661]: warning: symlink leaves directory: /etc/postfix/./makedefs.out`  
+  - There are is a symbolic link in directory /etc/postfix that point to files outside of that directory. This may be a security issue if you have not created the symlinks yourself. In this case there is no security issue. Don't try to fix it.
