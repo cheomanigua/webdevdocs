@@ -12,41 +12,16 @@ import { Message } from '@theme-ui/components';
 
 Below are shown the most common git commands. To see these commands in use in real case scenarios, move down to the section [Ordinary operations](#ordinary-operations). 
 
-#### git init
+- **git init**: Create a new **git** repository in the curren directory.
+- **git status**: Checks which files have changed in the working directory and are ready to be added to the staging area.
+- **git checkout [file]**: Remove last edits on the file in the working directory so the file does not appear when running `git status`
+- **git add [file]**: Adds the selected changed files or all changed files (`git add .`) from the working directory to the staging area.
+- **git reset HEAD [file]**: Removes file from the staging area.
+- **git commit**: Add files to the local respository by making a snapshot of the of the current state of the directory as per files added in the staging area.
+- **git reset --soft HEAD^**: Removes file from the local repository and puts it again in the staging area.
+- **git push**: Pushes the new commits in the local repository to the remote repository.
+- **git pull**: Pulls the remote repository commits into the local repository. It's a way to update the local repository.
 
-Create a new **git** repository in the curren directory.
-
-#### git status
-
-Checks which files have changed in the working directory and are ready to be added to the staging area.
-
-#### git checkout [filename]
-
-Remove last edits on the file in the working directory so the file does not appear when running `git status`
-
-#### git add [filename]
-
-Adds the selected changed files or all changed files (`git add .`) from the working directory to the staging area.
-
-#### git reset HEAD [filename]
-
-Removes file from the staging area.
-
-#### git commit
-
-Add files to the local respository by making a snapshot of the of the current state of the directory as per files added in the staging area.
-
-#### git reset --soft HEAD^
-
-Removes file from the local repository and puts it again in the staging area.
-
-#### git push
-
-Pushes the new commits in the local repository to the remote repository.
-
-#### git pull
-
-Pulls the remote repository commits into the local repository. It's a way to update the local repository.
 
 
 ### Ordinary operations
@@ -93,34 +68,17 @@ If there are several machines working with local respositories from a common rem
 
 ### Other operations
 
-#### Cloning a remote repository
+- Cloning a remote repository: `git clone https://github.com/mygitaccount/myrepository.git`
+- See what you haven't git added yet: `git diff [filename]`
+- See what you have git added already: `git diff --cached [filename]`
+- See list of files commited and ready to be pushed: `git diff --cached --stat origin/master`
+- See differences between working directory and local repository: `git diff HEAD`
+- See differences between local repository and remote repository: `git diff master origin/master`
+- See commits historical: `git log`
+- See modified files in each commit: `git log --stat`
+- See changes in a commit: `git show [commit]`
 
-`git clone https://github.com/mygitaccount/myrepository.git`
 
-#### See what you haven't git added yet:
-
-`git diff [filename]`
-
-#### See what you have git added already:
-
-`git diff --cached [filename]`
-
-#### See list of files commited and ready to be pushed 
-
-`git diff --cached --stat origin/master`
-
-#### See differences between working directory and local repository
-`git diff HEAD`
-
-#### See differences between local repository and remote repository
-
-`git diff master origin/master`
-
-#### See commits historical
-`git log`
-
-#### See modified files in each commit
-`git log --stat`
 ### Useful commands
 
 - Edit last commit (edit or add new file to last commit): `git commit --amend`
