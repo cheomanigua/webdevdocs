@@ -622,7 +622,7 @@ w
 who
 ```
 
-It is recommended to install **fail2ban** to automatically ban IPs that cause too many authentication failures.
+It is recommended to install **fail2ban** to automatically ban IPs that cause too many authentication failures. To check all banned IPs: `zgrep 'Ban' /var/log/fail2ban.log*`
 
 ### Conf
 

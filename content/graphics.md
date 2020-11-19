@@ -27,9 +27,35 @@ description: "Graphic tools for web development"
 
 # Inkscape
 
+### Installation
+
+```
+sudo add-apt-repository ppa:inkscape.dev/stable
+sudo apt update
+sudo apt install inkscape
+```
+
+### How to enable isometric grid
+
+1. File ➡ Document properties... ➡ Grids ➡ Creation ➡ Axonometric grid ➡ New
+  - Spacing Y: 10
+2. View ➡ Custome selected
+3. View ➡ Zoom ➡ Zoom 1:1
+4. Shift + Ctrl + f
+
+Example of isometric art: [https://www.youtube.com/watch?v=R31TPsDBs_U](https://www.youtube.com/watch?v=R31TPsDBs_U)
+Example of 3D art with rouded corners: [https://www.youtube.com/watch?v=NMe1yS3tN_8](https://www.youtube.com/watch?v=NMe1yS3tN_8)
+
 ### How to set background transparent
 
 File ➡ Document properties ➡ Page ➡ Background ➡ Checkerboard background
+
+### How to make opaque gradient
+1. Create and edit gradient (Ctrl + F1)
+2. Drag to where you want the gradient direction to apply
+3. Click on the second stop (blue dot of the gradient vector)
+4. Select a color. If you don't select a color, the default is transparency
+
 
 ### How to convert PNG to SVG
 
