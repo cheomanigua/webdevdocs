@@ -84,3 +84,9 @@ Now a vectorized image of your original bitmap will be seen on top of the bitmap
 4. Make rest of colors white:
   * Filters ➡ Color ➡ Fade to Black or White
   * Level: 0.00, Fade to white
+
+## Key shorcuts
+
+- **Alt** + **Left Click**: Select object in the bottom
+- **Hold Left Click** + **space**: Make copy of object
+- **#**: Toggle grid on/off
