@@ -103,7 +103,6 @@ Examples:
 - copy character-\> **yl**
 - copy word -\> **yiw**
 - copy line -\> **yy**
-- copy all lines under the cursor -\> **:+,$y**
 - copy paragraph -\> **yap**
 - Select paragraph -\> **vip**
 - delete/cut selection -\> **d** 
@@ -111,22 +110,7 @@ Examples:
 - delete/cut whole word -\> **diw**
 - delete/cut word and insert mode -\> **cw** 
 - delete/cut paragraph -\> **dap**
-- delete/cut line -\> **dd**
-- delete/cut everything from the beginning of the line up to the cursor -\> **d0**
-- delete/cut everthing from the cursor to the end of the line -\> **D** or **d$**
-- delete/cut the rest of the line and insert mode -\> **C**
-- delete/cut the whole line and insert mode -\> **S**
-- delete/cut all lines under the cursor -\> **:+,$d**
 - paste -\> **p**
-- paste line above -\> **P**
-- create new line below -\> **o**
-- create a new line above -\> **O**
-- Move current line after line 6 -\> **:m 6**
-- Move line two lines above -\> **:m-2** (note that **:m-1** won't work)
-- Move line one line below -\> **:m+1**
-- Move line to beginning/end of document -\> **:m 0** / **:m $**
-- Move block of lines -\> **:5,7m 12** (move lines 5,6,7 after line 12)
-- Move block of lines -\> **:5,7m+4** (move lines 5,6,7 four lines below)
 - undo -\> **u**
 - redo -\> **ctrl** + **r**
 - delete character (Del) -\> **x**
@@ -137,10 +121,44 @@ Examples:
 - Exit 'Insert' mode -\> **ESC** or **Ctrl** + **c**
 - Increase/Decrease the first number in a line: **Ctrl** + **a**/**x**
 - Format block of text -\> **V** + *text selection* + **=**
+- Repeat command mode last command -\> **@:**
+
+
+#### Lines
+
+- copy line -\> **yy**
+- copy all lines under the cursor -\> **:.,$y** or **:+,$y**
+- paste -\> **p**
+- paste line above -\> **P**
+- delete/cut line -\> **dd**
+- delete/cut everything from the beginning of the line up to the cursor -\> **d0**
+- delete/cut everthing from the cursor to the end of the line -\> **D** or **d$**
+- delete/cut the rest of the line and insert mode -\> **C**
+- delete/cut the whole line and insert mode -\> **S**
+- delete/cut from the current line to the end of the file -\> **:.,$d** or **:+,$d**
+- delete/cut from the current line to the beginning of the file -\> **:.,1d**
+- delete/cut from line 3 to line 10 -\> **:3,10d**
+- delete/cut from line 3 to the end of the file -\> **:3,$d**
+- delete/cut the last line-\> **:$d**
+- delete/cut all lines-\> **:%d**
+- create new line below -\> **o**
+- create a new line above -\> **O**
+- Move current line after line 6 -\> **:m 6**
+- Move line two lines above -\> **:m-2** (note that **:m-1** won't work)
+- Move line one line below -\> **:m+1**
+- Move line to beginning/end of document -\> **:m 0** / **:m $**
+- Move block of lines -\> **:5,7m 12** (move lines 5,6,7 after line 12)
+- Move block of lines -\> **:5,7m+4** (move lines 5,6,7 four lines below)
 - Indent current line -\> **<<** or **>>**
 - Indent current line plus 2 lines below -\> **3<<** or **3>>**
 - Select a range of lines and indent -\> **:4,17<**
-- Repeat command mode last command -\> **@:**
+
+- `:g/foo/d` -\> Delete all lines containing the string “foo”. It also removes line where “foo” is embedded in larger words, such as “football”.
+- `:g!/foo/d` -\> Delete all lines not containing the string “foo”.
+- `:g/^#/d` -\> Remove all comments from a Bash script. The pattern ^# means each line beginning with #.
+- `:g/^$/d` -\> Remove all blank lines. The pattern ^$ matches all empty lines.
+- `:g/^\s*$/d` -\> Remove all blank lines. Unlike the previous command, this also removes the blank lines that have zero or more whitespace characters (\s*).
+
 
 #### Special operations
 
