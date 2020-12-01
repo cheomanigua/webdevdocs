@@ -126,6 +126,8 @@ Examples:
 
 #### Lines
 
+- create new line below -\> **o**
+- create a new line above -\> **O**
 - copy line -\> **yy**
 - copy all lines under the cursor -\> **:.,$y** or **:+,$y**
 - paste -\> **p**
@@ -141,23 +143,19 @@ Examples:
 - delete/cut from line 3 to the end of the file -\> **:3,$d**
 - delete/cut the last line-\> **:$d**
 - delete/cut all lines-\> **:%d**
-- create new line below -\> **o**
-- create a new line above -\> **O**
-- Move current line after line 6 -\> **:m 6**
-- Move line two lines above -\> **:m-2** (note that **:m-1** won't work)
-- Move line one line below -\> **:m+1**
-- Move line to beginning/end of document -\> **:m 0** / **:m $**
-- Move block of lines -\> **:5,7m 12** (move lines 5,6,7 after line 12)
-- Move block of lines -\> **:5,7m+4** (move lines 5,6,7 four lines below)
-- Indent current line -\> **<<** or **>>**
-- Indent current line plus 2 lines below -\> **3<<** or **3>>**
-- Select a range of lines and indent -\> **:4,17<**
-
-- `:g/foo/d` -\> Delete all lines containing the string “foo”. It also removes line where “foo” is embedded in larger words, such as “football”.
-- `:g!/foo/d` -\> Delete all lines not containing the string “foo”.
-- `:g/^#/d` -\> Remove all comments from a Bash script. The pattern ^# means each line beginning with #.
-- `:g/^$/d` -\> Remove all blank lines. The pattern ^$ matches all empty lines.
-- `:g/^\s*$/d` -\> Remove all blank lines. Unlike the previous command, this also removes the blank lines that have zero or more whitespace characters (\s*).
+- move current line after line 6 -\> **:m 6**
+- move line two lines above -\> **:m-2** (note that **:m-1** won't work)
+- move line one line below -\> **:m+1**
+- move line to beginning/end of document -\> **:m 0** / **:m $**
+- move block of lines -\> **:5,7m 12** (move lines 5,6,7 after line 12)
+- move block of lines -\> **:5,7m+4** (move lines 5,6,7 four lines below)
+- indent current line -\> **<<** or **>>**
+- indent current line plus 2 lines below -\> **3<<** or **3>>**
+- select a range of lines and indent -\> **:4,17<**
+- Delete all lines containing the string “foo”. It also removes line where “foo” is embedded in larger words, such as “football” -\> **:g/foo/d**
+- Delete all lines not containing the string “foo” -\> **:g!/foo/d**
+- Remove all comments from a Bash script. The pattern ^# means each line beginning with # -\> **:g/^#/d**
+- Remove all blank lines. The pattern ^$ matches all empty lines -\> **:g/^$/d**
 
 
 #### Special operations
