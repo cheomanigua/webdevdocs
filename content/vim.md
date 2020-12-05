@@ -15,6 +15,7 @@ import { Message } from '@theme-ui/components';
 
 - Normal -\> **ESC**, **Ctrl** + **c**
 - Insert -\> **i**, **I**, **a**, **A**
+- Replace -\> **R**
 - Visual -\> **v**, **V**, **Ctrl** + **v**
 - Command -\> **:**
 
