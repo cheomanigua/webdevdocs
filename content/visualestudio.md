@@ -6,6 +6,8 @@ description: "Visual Studio Code cheat sheet"
 ## Shortcut keys
 
 - Toggle word wrap: `Alt` + `Z`
+- Comment selected area: `Ctrl` + `K` + `C`
+- Uncomment selected area: `Ctrl` + `K` + `U`
 - Find: `Ctrl` + `F`
 - Find and Replace: `Ctrl` + `H`
 - Delete word on the left/right of cursor: `Ctrl` + `Backspace`/`Delete`
@@ -33,8 +35,6 @@ description: "Visual Studio Code cheat sheet"
 - Move selected lines (block) up/down: `Alt` + `Up/Down`
 - Duplicate line above/below: `Ctrl` + `Shift` + `Alt` + `Up/Down`
 - Go to beginning/end of line: `Inicio`/`Fin`
-- Add line comment: `Ctrl` + `K` + `C`
-- Remove line comment: `Ctrl` + `K` + `U`
 
 ## Previews
 
