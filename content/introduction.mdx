@@ -1,37 +1,38 @@
 ---
 title: 'Introduction'
-description: 'Basic linux commands to manage linux systems for web development'
+description: 'Basic html tricks'
 ---
 
-### Finding text and files
+## Share Nav and Footer in different html pages
 
-```
-grep -d recurse "text" # Find specific text in files in current directory and child directories
-grep -rnw '/path/to/somewhere/' -e 'pattern' # Find all files with specific text
-sed -i 's/original/new/g' file.txt # Replace especific characters/words in a file
-find / -type f # Get a list of all directories and files
-find / -type f | wc -l # Count the number of all directories and files
-
-```
-
-### Used and available space
-```
-df -h
-du -hc *
-du -shc /usr/*
-```
-
-
-## Configuration files
-
-- Global: `/etc/profile`
-- User: `~/.bashrc`
-
-After making changes to file you need to reset the changes by executing following command:
-
-```
-# source /etc/profile
-OR
-# source ~/.bashrc
+### index.html
+```html
+<html>
+<head>
+  <script src="https://code.jquery.com/jquery.min.js"></script>
+</head>
+<body>
+  <header>
+    <!-- NAVIGATION BAR START HERE -->
+    <div id="nav-placeholder"></div>
+    <script>
+      $.get("nav.html", function(data){
+          $("#nav-placeholder").replaceWith(data);
+      });
+    </script>
+    <!-- NAVIGATION BAR ENDS HERE -->
+  </header>
+</body>
+</html>
 ```
 
+### nav.html
+```html
+<nav>
+  <ul class="nav-list">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="about.html">About us</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+</nav>
+```
