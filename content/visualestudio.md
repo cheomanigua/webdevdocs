@@ -40,7 +40,8 @@ description: "Visual Studio Code cheat sheet"
 
 You can see Markdown previews of the current .md or .mdx file by pressing `Ctrl` + `Shift` + `V`.
 
-
+## Disable auto-saving when exiting VS Studio
+`File` - `Preferences` - `Settings` - `Hot Exit: Off`
 
 ## Extensions
 
