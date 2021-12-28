@@ -40,6 +40,7 @@ Below are shown the most common git commands. To see these commands in use in re
 git init
 git add .
 git commit -m 'first commit'
+git branch -M main
 git remote add origin https://github.com/mygitaccount/myrepository.git
 git push -u origin master
 ```
@@ -65,6 +66,14 @@ git config --get remote.origin.url
 ```
 
 If there are several machines working with local respositories from a common remote repositories, before pushing to the remote repository from one of the local repositories, we must pull the information from the remote repository, as it may have changed due to another machine pushing changes to it.
+
+
+#### Push an existing repository from the command line
+```
+git remote add origin https://github.com/mygitaccount/myrepository.git
+git branch -M main
+git push -u origin main
+```
 
 ### Other operations
 
