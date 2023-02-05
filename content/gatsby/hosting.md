@@ -40,15 +40,15 @@ $ git push
 
 **Note**: Netlify will automatically detect the changes on the Github repository and will deploy the changes on your Netlify site. Awesome !!! This is called continuous deployment (Git-triggered builds). you can disable this setting from Netlify dashboard.
 
-## Hosting on Zeit Now
+## Hosting on Vercel
 
-You can push your Gatsby project of your local machine directly into <a href="https://zeit.co" target="_blank">**Zeit Now**</a> hosting, by using <a href="https://zeit.co/download" target="_blank">Now CLI</a> command line utility and running the command: `$ now`.
+You can push your Gatsby project of your local machine directly into <a href="https://vercel.com" target="_blank">**Vercel**</a> hosting, by using <a href="https://vercel.com/download" target="_blank">Vercel CLI</a> command line utility and running the command: `$ vercel`.
 
-However, I prefer **Zeit Now** to get push commits updates from GitHub. Keep reading...
+However, I prefer **Vercel** to get push commits updates from GitHub. Keep reading...
 
-You can host your site in **<a href="https://zeit.co/" target="_blank">Zeit Now</a>** if you have the **source code** of your site in **<a href="https://github.com" target="_blank">Github</a>**.
+You can host your site in **<a href="https://vercel.com/" target="_blank">Vercel</a>** if you have the **source code** of your site in **<a href="https://github.com" target="_blank">Github</a>**.
  
-Note that if you have deployed the site as explained in the section below "<a href="#hostinggithub">Hosting on Github Pages</a>", you won't be able to host in Zeit.
+Note that if you have deployed the site as explained in the section below "<a href="#hostinggithub">Hosting on Github Pages</a>", you won't be able to host in Vercel.
 
 * First you have to 
 [create a repository](https://help.github.com/en/github/getting-started-with-github/create-a-repo) on Github
@@ -62,36 +62,36 @@ $ git commit -m "first commit"
 $ git remote add origin https://github.com/mygitaccount/myrepository.git
 $ git push -u origin master
 ```
-* Next, you have to follow these steps to deploy the Github repository on Zeit:
-  * Login into your **Zeit Now** account.
+* Next, you have to follow these steps to deploy the Github repository on Vercel:
+  * Login into your **Vercel** account.
   * Click on '*New Project*' arrow button.
   * Select '*From GitHub*' as repository provider
   * Click on 'select' button next to the repository
   * Click 'Import'
 
-Every time you git push, Zeit will automatically detect the changes on the Github repository and will deploy the changes on your Zeit site. Awesome !!! This is called continuous deployment (Git-triggered builds). You can disable this setting from the Zeit dashboard.
+Every time you git push, Vercel will automatically detect the changes on the Github repository and will deploy the changes on your Vercel site. Awesome !!! This is called continuous deployment (Git-triggered builds). You can disable this setting from the Vercel dashboard.
 
 #### Deleting an existing project
 
 <Message variant='important'>
   🔔️ <b>Important</b> <br/>
-  The only way to delete a project hosted in <strong>Zeit Now</strong> dashboard is by using the <a href="https://zeit.co/download" target="_blank">Now CLI</a> command line utility.
+  The only way to delete a project hosted in <strong>Vercel</strong> dashboard is by using the <a href="https://vercel.com/download" target="_blank">Vercel CLI</a> command line utility.
 </Message>
 
-In order to install [Now CLI](https://zeit.co/download) in your local machine, issue these commands:
+In order to install [Vercel](https://vercel.com/download) in your local machine, issue these commands:
 
 ```
-npm i -g now
-now login
+npm i -g vercel
+vercel login
 ```
 
-- Once installed, you can list the existing projects of your **Zeit Now** dashboard:
+- Once installed, you can list the existing projects of your **Vercel** dashboard:
 
-`now ls`
+`vercel ls`
 
-- To delete a particular project (both in your local machine and at **Zeit Now** cloud dashboard), issue:
+- To delete a particular project (both in your local machine and at **Vercel** cloud dashboard), issue:
 
-`now projects rm <your-project-name>`
+`vercel rm <your-project-name>`
 
 
 
