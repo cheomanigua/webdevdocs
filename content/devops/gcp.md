@@ -88,9 +88,9 @@ sudo dd if=/dev/zero of=/swapfile bs=1024 count=1048576
 sudo chmod 600 /swapfile
 sudo mkswap /swapfile
 sudo swapon /swapfile
-echo \'/swapfile none swap sw 0 0\' \| sudo tee -a /etc/fstab
-sudo mount -a
 ```
+`echo '/swapfile none swap sw 0 0' | sudo tee -a /etc/fstab`
+`sudo mount -a`
 
 ### Copy files/directorys from local to VM instance
 
