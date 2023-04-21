@@ -89,7 +89,9 @@ sudo chmod 600 /swapfile
 sudo mkswap /swapfile
 sudo swapon /swapfile
 ```
-`echo '/swapfile none swap sw 0 0' | sudo tee -a /etc/fstab`
+Edit '/etc/fstab' and append this line:
+`/swapfile none swap sw 0 0`
+Now issue:
 `sudo mount -a`
 
 ### Copy files/directorys from local to VM instance
